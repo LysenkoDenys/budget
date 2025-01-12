@@ -26,34 +26,12 @@ export default class Home extends Component {
     }));
   };
 
-  // onIncrease() {
-  //   this.setState((state) => ({
-  //     balance: state.balance + 1,
-  //     transactions: [
-  //       { label: 'increase', value: 1, id: ++id },
-  //       ...state.transactions,
-  //     ],
-  //   }));
-  // }
-
-  // onDecrease = () => {
-  //   this.setState((state) => ({
-  //     balance: state.balance - 1,
-  //     transactions: [
-  //       { label: 'decrease', value: -1, id: ++id },
-  //       ...state.transactions,
-  //     ],
-  //   }));
-  // };
-
   render() {
     console.log('render'); //
     return (
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <Balance balance={this.state.balance} />
-          {/* <button onClick={this.onIncrease}>increment</button>
-          <button onClick={this.onDecrease}>decrement</button> */}
           <Form onChange={this.onChange} />
           <hr />
           <Transactions transactions={this.state.transactions} />
