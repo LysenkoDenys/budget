@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Transaction = (props) => {
+const Transaction = ({ transaction }) => {
   return (
-    <div>
-      label:{props.transaction.label}
-      <p>Value: {props.transaction.value}</p>
+    <div className="bg-white border-red-700 rounded-md p-2">
+      label:{transaction.label}
+      <p>Value: {transaction.value}</p>
     </div>
   );
 };
