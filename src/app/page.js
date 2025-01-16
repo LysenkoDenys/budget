@@ -18,11 +18,11 @@ export default class Home extends Component {
     console.log('constructor');
   }
 
-  onChange = (value) => {
+  onChange = ({ value, date, comment }) => {
     this.setState((state) => ({
       balance: state.balance + +value,
       transactions: [
-        { value, label: 'change', id: ++id },
+        { value: +value, comment, date, id: ++id },
         ...state.transactions,
       ],
     }));
