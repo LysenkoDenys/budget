@@ -7,7 +7,7 @@ const Transaction = ({ transaction: { value, date, comment } }) => {
       : `py-2.5 px-5 me-2 mb-2 text-sm font-medium text-red-900 focus:outline-none bg-red rounded-lg border border-red-200 hover:bg-red-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-red-800 dark:text-red-400 dark:border-red-600 dark:hover:text-white dark:hover:bg-red-700 shadow-lg bg-red-200`;
   return (
     <div className={bgColor}>
-      <p>Value: {value}</p>
+      <p>Value: {value.toFixed(2)}</p>
       <p>Date: {date}</p>
       <p>Comment: {comment}</p>
     </div>
