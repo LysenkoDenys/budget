@@ -1,3 +1,6 @@
 module.exports = {
-  testEnvironment: 'jest-environment-jsdom',
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': ['@swc/jest'], // SWC для транспіляції JavaScript/TypeScript
+  },
+  testEnvironment: 'jsdom',
 };
