@@ -4,14 +4,14 @@ import Form from '.';
 describe('Form component', () => {
   beforeAll(() => {
     jest.useFakeTimers('modern');
-    jest.setSystemTime(new Date(2025, 0, 19)); // January 19, 2025
+    jest.setSystemTime(new Date('2025-01-19'));
   });
 
   afterAll(() => {
     jest.useRealTimers();
   });
 
-  it('should call onChange with the correct data when the form is submitted', () => {
+  it('should call onChange with the correct data when the form is submitted and clear inputs afterward', () => {
     const handleChange = jest.fn();
     render(<Form onChange={handleChange} />);
 
@@ -34,5 +34,11 @@ describe('Form component', () => {
       date: '2025-01-19',
       comment: 'Test comment',
     });
+
+    // Check that inputs are cleared after submission
+    expect(valueInput.value).toBe('');
+    expect(commentInput.value).toBe('');
+    // Date input should reset to the current date
+    expect(dateInput.value).toBe('2025-01-19');
   });
 });

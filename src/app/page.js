@@ -5,7 +5,7 @@ import Transactions from '@/components/Transactions';
 import Form from '@/components/Form';
 import Logo from '@/components/Logo';
 import ErrorBoundary from '@/components/ErrorBoundary';
-import { open, getItems, addItem } from '../../src/utils/inexdb';
+import { open, getItems, addItem } from '../utils/indexdb';
 
 const Home = () => {
   const [balance, setBalance] = useState(0);
