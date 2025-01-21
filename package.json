@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "fake-indexeddb": "^6.0.0",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -33,6 +34,9 @@
     "@swc/jest": "^0.2.37",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
+    "@types/jest": "^29.5.14",
+    "@types/mocha": "^10.0.10",
+    "@types/react": "19.0.7",
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "babel-jest": "^29.7.0",

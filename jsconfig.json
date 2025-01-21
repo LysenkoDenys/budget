@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "@testing-library/react": ["node_modules/@testing-library/react"]
+    },
+    "jsx": "react",
+    "target": "ES6",
+    "module": "ESNext"
   }
 }

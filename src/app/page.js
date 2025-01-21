@@ -1,12 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Balance from '@/components/Balance';
-import Transactions from '@/components/Transactions';
-import Form from '@/components/Form';
-import Logo from '@/components/Logo';
-import ErrorBoundary from '@/components/ErrorBoundary';
+import Balance from '../components/Balance';
+import Transactions from '../components/Transactions';
+import Form from '../components/Form';
+import Logo from '../components/Logo';
+import ErrorBoundary from '../components/ErrorBoundary';
 import { open, getItems, addItem } from '../utils/indexdb';
-import Heading from '@/components/Heading';
+import Heading from '../components/Heading';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -26,6 +26,9 @@ const Home = () => {
         console.error('Error fetching transactions:', e);
       });
   }, [setTransactions]);
+
+  // 1. test if getItems returns data and transactions are set
+  // 2. test if onChange works update the balance
 
   const onChange = ({ value, date, comment }) => {
     const transaction = {
