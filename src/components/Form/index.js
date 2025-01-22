@@ -56,6 +56,7 @@ const Form = (props) => {
         name="comment"
         id="comment"
         value={form.comment}
+        placeholder="Purpose"
         onChange={onChange}
         className="min-h-16 p-1 shadow-lg rounded-lg border border-gray-200 w-full sm:w-60 md:w-72 lg:w-80"
       ></textarea>
