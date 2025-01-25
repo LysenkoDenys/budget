@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Balance from '../components/Balance';
 import Transactions from '../components/Transactions';
 import Form from '../components/Form';
@@ -41,6 +41,16 @@ const Home = () => {
     setBalance(balance + +value);
     addItem(transaction);
   };
+  const onDelete = useCallback(
+    (id) => {
+      console.log(transactions); //
+      debugger;
+      setTransactions((transactions) =>
+        transactions.filter((el) => el.id !== id)
+      );
+    },
+    [setTransactions]
+  );
 
   return (
     <>
@@ -56,7 +66,7 @@ const Home = () => {
             <Balance balance={balance} />
             <Form onChange={onChange} />
             <hr />
-            <Transactions transactions={transactions} />
+            <Transactions transactions={transactions} onDelete={onDelete} />
           </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
         </div>

@@ -31,6 +31,7 @@ const Form = (props) => {
     <form
       onSubmit={onSubmit}
       className="flex justify-center gap-2 flex-wrap items-stretch "
+      role="form"
     >
       <label htmlFor="value">Sum</label>
       <input

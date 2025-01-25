@@ -21,6 +21,9 @@ export default function NavBar() {
         <li>
           <Link href="/statistics">Statistics</Link>
         </li>
+        <li>
+          <Link href="/settings">Settings</Link>
+        </li>
       </ul>
     </nav>
   );
