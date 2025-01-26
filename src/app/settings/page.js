@@ -1,25 +1,24 @@
 'use client';
-import React, { useContext } from 'react';
+import React, { useContext, memo, useMemo } from 'react';
 import { AppContext } from '../../providers/context';
 
-const Test = ({ onClick }) => {
+const Test = memo(({ data }) => {
   console.log('rendering'); //
-  return <button onClick={onClick}>Click me!</button>;
-};
+  return <div>{JSON.stringify(data)}</div>;
+});
 
 const Settings = () => {
   const { state, dispatch } = useContext(AppContext);
   const currencyHandler = (e) => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
   };
-  const onClick = () => {
-    console.log('Parent click'); //
-  };
+
+  const data = useMemo(() => [2], []);
 
   return (
     <>
       <h1 className="text-4xl m-[1%]">Settings</h1>
-      <Test onClick={onClick} />
+      <Test data={data} />
       <div className="m-[1%]">
         <form action="">
           <label htmlFor="selector" className="text-gray-500 ">
