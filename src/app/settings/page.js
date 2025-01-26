@@ -1,14 +1,17 @@
 'use client';
-import React, { useContext, memo, useMemo } from 'react';
+import React, { useContext, memo, useMemo, useState } from 'react';
 import { AppContext } from '../../providers/context';
+import { useBooleanToggle } from '../../hooks';
 
-const Test = memo(({ data }) => {
-  console.log('rendering'); //
-  return <div>{JSON.stringify(data)}</div>;
-});
+// const Test = memo(({ data }) => {
+//   console.log('rendering'); //
+//   return <div>{JSON.stringify(data)}</div>;
+// });
 
 const Settings = () => {
   const { state, dispatch } = useContext(AppContext);
+  const { status, handleStatusChange } = useBooleanToggle();
+  // const [isAdvancedSettingsShown, setIsAdvancedSettingsShown] = useState(false);
   const currencyHandler = (e) => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
   };
@@ -18,8 +21,8 @@ const Settings = () => {
   return (
     <>
       <h1 className="text-4xl m-[1%]">Settings</h1>
-      <Test data={data} />
-      <div className="m-[1%]">
+      {/* <Test data={data} /> */}
+      <div className="m-4">
         <form action="">
           <label htmlFor="selector" className="text-gray-500 ">
             Currency:
@@ -36,6 +39,20 @@ const Settings = () => {
             </select>
           </label>
         </form>
+      </div>
+      <div className="m-4">
+        <button
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-0 px-2 mt-1 border border-blue-500 hover:border-transparent rounded"
+          onClick={handleStatusChange}
+        >
+          Extended settings
+        </button>
+        {status ? (
+          <div className="">
+            <h2>Extended settings</h2>
+            <p>...</p>
+          </div>
+        ) : null}
       </div>
     </>
   );

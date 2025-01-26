@@ -19,7 +19,7 @@ const Home = () => {
       .then((items) => {
         const totalBalance = items.reduce((sum, t) => sum + t.value, 0);
         setTransactions(items); // Set transactions as an array directly
-        setBalance(totalBalance); // Set balance separately
+        setBalance(totalBalance); // Set balance separatitemy
         setLoading(false);
       })
       .catch((e) => {
@@ -46,7 +46,7 @@ const Home = () => {
       console.log(transactions); //
       debugger;
       setTransactions((transactions) =>
-        transactions.filter((el) => el.id !== id)
+        transactions.filter((item) => item.id !== id)
       );
     },
     [setTransactions]
@@ -54,8 +54,8 @@ const Home = () => {
 
   const onStarClick = useCallback((id) => {
     setTransactions((transactions) =>
-      transactions.map((el) =>
-        el.id !== id ? el : { ...el, isStarred: !el.isStarred }
+      transactions.map((item) =>
+        item.id !== id ? item : { ...item, isStarred: !item.isStarred }
       )
     );
   });
