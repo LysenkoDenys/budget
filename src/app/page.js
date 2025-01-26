@@ -7,28 +7,32 @@ import Logo from '../components/Logo';
 import ErrorBoundary from '../components/ErrorBoundary';
 import { open, getItems, addItem } from '../utils/indexdb';
 import Heading from '../components/Heading';
+import { useData } from '../../src/hooks.js';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
-  const [transactions, setTransactions] = useState([]);
+  const [transactionsOld, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    open()
-      .then(() => getItems())
-      .then((items) => {
-        const totalBalance = items.reduce((sum, t) => sum + t.value, 0);
-        setTransactions(items); // Set transactions as an array directly
-        setBalance(totalBalance); // Set balance separatitemy
-        setLoading(false);
-      })
-      .catch((e) => {
-        console.error('Error fetching transactions:', e);
-      });
-  }, [setTransactions]);
+  const { transactions, status } = useData();
 
-  // 1. test if getItems returns data and transactions are set
-  // 2. test if onChange works update the balance
+  useEffect(() => {
+    setLoading(false);
+  }, [transactions]);
+
+  // useEffect(() => {
+  //   open()
+  //     .then(() => getItems())
+  //     .then((items) => {
+  //       const totalBalance = items.reduce((sum, t) => sum + t.value, 0);
+  //       setTransactions(items); // Set transactions as an array directly
+  //       setBalance(totalBalance); // Set balance separatitemy
+  //       setLoading(false);
+  //     })
+  //     .catch((e) => {
+  //       console.error('Error fetching transactions:', e);
+  //     });
+  // }, [setTransactions]);
 
   const onChange = ({ value, date, comment }) => {
     const transaction = {
