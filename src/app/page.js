@@ -1,68 +1,29 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Balance from '../components/Balance';
 import Transactions from '../components/Transactions';
 import Form from '../components/Form';
 import Logo from '../components/Logo';
 import ErrorBoundary from '../components/ErrorBoundary';
-import { open, getItems, addItem } from '../utils/indexdb';
-import Heading from '../components/Heading';
 import { useData } from '../../src/hooks.js';
+import { STATUSES } from '../constants';
+import Heading from '../components/Heading';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
-  const [transactionsOld, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { transactions, status } = useData();
+  const { transactions, status, pushTransaction, onDelete, onStarClick } =
+    useData();
 
   useEffect(() => {
     setLoading(false);
   }, [transactions]);
 
-  // useEffect(() => {
-  //   open()
-  //     .then(() => getItems())
-  //     .then((items) => {
-  //       const totalBalance = items.reduce((sum, t) => sum + t.value, 0);
-  //       setTransactions(items); // Set transactions as an array directly
-  //       setBalance(totalBalance); // Set balance separatitemy
-  //       setLoading(false);
-  //     })
-  //     .catch((e) => {
-  //       console.error('Error fetching transactions:', e);
-  //     });
-  // }, [setTransactions]);
-
-  const onChange = ({ value, date, comment }) => {
-    const transaction = {
-      value: +value,
-      comment,
-      date,
-      id: Date.now(),
-    };
-    setTransactions([transaction, ...transactions]);
-    setBalance(balance + +value);
-    addItem(transaction);
+  const onChange = (transaction) => {
+    pushTransaction(transaction);
+    setBalance(balance + +transaction.value);
   };
-  const onDelete = useCallback(
-    (id) => {
-      console.log(transactions); //
-      debugger;
-      setTransactions((transactions) =>
-        transactions.filter((item) => item.id !== id)
-      );
-    },
-    [setTransactions]
-  );
-
-  const onStarClick = useCallback((id) => {
-    setTransactions((transactions) =>
-      transactions.map((item) =>
-        item.id !== id ? item : { ...item, isStarred: !item.isStarred }
-      )
-    );
-  });
 
   return (
     <>
@@ -78,11 +39,16 @@ const Home = () => {
             <Balance balance={balance} />
             <Form onChange={onChange} />
             <hr />
-            <Transactions
-              transactions={transactions}
-              onDelete={onDelete}
-              onStarClick={onStarClick}
-            />
+            {status === STATUSES.PENDING ? (
+              <div className="">Loading...</div>
+            ) : null}
+            {status === STATUSES.SUCCESS ? (
+              <Transactions
+                transactions={transactions}
+                onDelete={onDelete}
+                onStarClick={onStarClick}
+              />
+            ) : null}
           </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
         </div>
