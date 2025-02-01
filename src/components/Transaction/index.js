@@ -21,7 +21,7 @@ const Transaction = ({ transaction, onDelete, onStarClick }) => {
         onClick={() => onStarClick(id)}
         src={isStarred ? StarFilled : Star}
         alt="Unfilled Star"
-        className="w-5 h-5 cursor-pointer"
+        className="w-5 h-5 cursor-pointer mx-1 dark:shadow-white shadow-sm rounded-full"
       />
       <p>
         Value: {value.toFixed(2)}, {state.currency}

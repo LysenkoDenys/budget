@@ -1,8 +1,10 @@
-// 'use client';
+'use client';
+
+import { useContext, useEffect } from 'react';
+import { AppContext, AppContextProvider } from '../providers/context'; // ✅ Import Provider
 import { Geist, Geist_Mono } from 'next/font/google';
 import NavBar from '../components/NavBar';
 import './globals.css';
-import { AppContextProvider } from '../providers/context';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -14,32 +16,34 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-export const metadata = {
-  title: 'budget',
-  description: 'manage my cash-flows',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-32x32.png',
-    apple: '/apple-touch-icon.png',
-  },
-};
-
 export default function RootLayout({ children }) {
-  const currency = {
-    value: 'UAH',
-    title: 'hryvna',
-  };
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppContextProvider>
-          <NavBar />
-          {children}
+          <ThemedContent>{children}</ThemedContent>
         </AppContextProvider>
       </body>
     </html>
+  );
+}
+
+function ThemedContent({ children }) {
+  const { state } = useContext(AppContext);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.body.classList.remove('light', 'dark');
+      document.body.classList.add(state.themeName);
+    }
+  }, [state.themeName]);
+
+  return (
+    <div className={state.themeName}>
+      <NavBar />
+      {children}
+    </div>
   );
 }

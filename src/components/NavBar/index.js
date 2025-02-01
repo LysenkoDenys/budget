@@ -1,18 +1,20 @@
+'use client';
+
+import { useContext } from 'react';
+import { AppContext } from '../../providers/context';
+
 import Link from 'next/link';
 import ThemeSwitch from '../../components/ThemeSwitch/index';
 
 export default function NavBar() {
+  const { state } = useContext(AppContext);
+  const linkTheme =
+    state.themeName === 'light' ? 'text-sky-500' : 'text-red-300';
+
   return (
     <>
-      <nav
-        style={{
-          padding: '1rem',
-          backgroundColor: '#f0f0f0',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div className="">
+      <nav className="flex justify-between bg-slate-100 p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <div className={linkTheme}>
           <ul
             style={{
               display: 'flex',

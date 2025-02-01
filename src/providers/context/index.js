@@ -1,7 +1,9 @@
 'use client';
 
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
 import defaultContext from './defaultContext';
+import { getFromStorage, saveToStorage } from '../../utils/localStorage';
+import THEMES from '../themes/themeList';
 
 const AppContext = createContext();
 
@@ -15,6 +17,7 @@ const reducer = (state, action) => {
     case 'reset':
       return defaultContext;
     case 'setTheme':
+      saveToStorage('themeName', action.themeName);
       return {
         ...state,
         themeName: action.themeName,
@@ -24,11 +27,25 @@ const reducer = (state, action) => {
   }
 };
 
-const AppContextProvider = (props) => {
+const AppContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultContext);
+  const [isLoaded, setIsLoaded] = useState(false); // Track when theme is loaded
   const value = { state, dispatch };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = getFromStorage('themeName') || THEMES.LIGHT;
+      dispatch({ type: 'setTheme', themeName: savedTheme });
+      setIsLoaded(true);
+    }
+  }, []);
+
+  if (!isLoaded) return null; // Prevents hydration mismatch
+
   return (
-    <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
+    <AppContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 
