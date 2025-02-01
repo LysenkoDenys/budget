@@ -22,6 +22,11 @@ const reducer = (state, action) => {
         ...state,
         themeName: action.themeName,
       };
+    case 'setLocal':
+      return {
+        ...state,
+        locale: action.locale,
+      };
     default:
       throw new Error('No action');
   }

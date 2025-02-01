@@ -5,6 +5,8 @@ import { AppContext, AppContextProvider } from '../providers/context'; // ✅ Im
 import { Geist, Geist_Mono } from 'next/font/google';
 import NavBar from '../components/NavBar';
 import './globals.css';
+import { IntlAppProvider } from '../providers/i18n';
+import { IntlProvider } from 'react-intl';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -23,7 +25,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppContextProvider>
-          <ThemedContent>{children}</ThemedContent>
+          <IntlAppProvider>
+            <ThemedContent>{children}</ThemedContent>
+          </IntlAppProvider>
         </AppContextProvider>
       </body>
     </html>
