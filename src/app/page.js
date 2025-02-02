@@ -8,6 +8,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import { useData } from '../../src/hooks.js';
 import { STATUSES } from '../constants';
 import Heading from '../components/Heading';
+import Modal from '../components/Modal';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -27,6 +28,7 @@ const Home = () => {
 
   return (
     <>
+      <Modal />
       {loading ? (
         <div>Loading...</div>
       ) : (
