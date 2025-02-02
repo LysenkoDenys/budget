@@ -2,6 +2,8 @@
 import React, { useContext, memo, useMemo, useState } from 'react';
 import { AppContext } from '../../providers/context';
 import { useBooleanToggle } from '../../hooks';
+import { LOCALES } from '../../providers/i18n';
+import { saveToStorage } from '../../utils/localStorage';
 
 // const Test = memo(({ data }) => {
 //   console.log('rendering'); //
@@ -16,6 +18,11 @@ const Settings = () => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
   };
 
+  const onChangeLocale = (e) => {
+    dispatch({ type: 'setLocal', locale: e.target.value });
+    saveToStorage('locale', e.target.value);
+  };
+
   const data = useMemo(() => [2], []);
 
   return (
@@ -24,20 +31,37 @@ const Settings = () => {
       {/* <Test data={data} /> */}
       <div className="m-4">
         <form action="">
-          <label htmlFor="selector" className="text-gray-500 ">
-            Currency:
-            <select
-              name="currency"
-              value={state.currency}
-              onChange={currencyHandler}
-              id="selector"
-              className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
-            >
-              <option value="UAH">hryvna</option>
-              <option value="USD">dollar</option>
-              <option value="EUR">euro</option>
-            </select>
-          </label>
+          <div className="my-1">
+            <label htmlFor="selector" className="text-gray-500 ">
+              Currency:
+              <select
+                name="currency"
+                value={state.currency}
+                onChange={currencyHandler}
+                id="selector"
+                className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
+              >
+                <option value="UAH">hryvna</option>
+                <option value="USD">dollar</option>
+                <option value="EUR">euro</option>
+              </select>
+            </label>
+          </div>
+          <div className="my-1">
+            <label htmlFor="selector" className="text-gray-500 ">
+              Language:
+              <select
+                name="locate"
+                value={state.locate}
+                onChange={onChangeLocale}
+                id="selectorTwo"
+                className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
+              >
+                <option value={LOCALES.ENGLISH}>English</option>
+                <option value={LOCALES.UKRAINIAN}>Українська</option>
+              </select>
+            </label>
+          </div>
         </form>
       </div>
       <div className="m-4">

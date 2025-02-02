@@ -2,6 +2,7 @@
 
 import { useContext } from 'react';
 import { AppContext } from '../../providers/context';
+import { FormattedMessage } from 'react-intl';
 
 import Link from 'next/link';
 import ThemeSwitch from '../../components/ThemeSwitch/index';
@@ -25,16 +26,24 @@ export default function NavBar() {
             }}
           >
             <li>
-              <Link href="/">Home</Link>
+              <Link href="/">
+                <FormattedMessage id="menu.home" />
+              </Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/about">
+                <FormattedMessage id="menu.about" />
+              </Link>
             </li>
             <li>
-              <Link href="/statistics">Statistics</Link>
+              <Link href="/statistics">
+                <FormattedMessage id="menu.statistics" />
+              </Link>
             </li>
             <li>
-              <Link href="/settings">Settings</Link>
+              <Link href="/settings">
+                <FormattedMessage id="menu.settings" />
+              </Link>
             </li>
           </ul>
         </div>
