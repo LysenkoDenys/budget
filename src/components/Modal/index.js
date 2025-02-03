@@ -2,30 +2,44 @@
 
 import { useState } from 'react';
 import Portal from '../Portal/index';
+import Form from '../Form';
 
-const Modal = () => {
+const Modal = ({ onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const closeModal = () => setIsOpen(false);
 
   return (
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 bg-blue-500 text-white rounded"
+        className="py-2 px-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white 
+             rounded-full fixed top-16 right-5 text-2xl shadow-lg 
+             transition-all duration-300 transform hover:scale-110 hover:shadow-2xl 
+             active:scale-95 active:shadow-md"
       >
-        Open Modal
+        +
       </button>
 
       {isOpen && (
         <Portal>
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-5 rounded shadow-lg">
-              <h2 className="text-xl font-bold">Hello from Portal!</h2>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="mt-3 p-2 bg-red-500 text-white rounded"
-              >
-                Close
-              </button>
+          <div
+            onClick={closeModal}
+            className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white p-2 rounded shadow-lg"
+            >
+              <div className="flex justify-between items-center mb-2 mx-1">
+                <h2 className="text-xl font-bold">Set your cashflow!</h2>
+                <button
+                  onClick={closeModal}
+                  className="px-2 bg-red-500 text-white rounded"
+                >
+                  x
+                </button>
+              </div>
+              <Form onChange={onChange} onClick={closeModal} />
             </div>
           </div>
         </Portal>

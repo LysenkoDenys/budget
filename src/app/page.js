@@ -2,13 +2,14 @@
 import { useState, useEffect } from 'react';
 import Balance from '../components/Balance';
 import Transactions from '../components/Transactions';
-import Form from '../components/Form';
-import Logo from '../components/Logo';
-import ErrorBoundary from '../components/ErrorBoundary';
+// import Form from '../components/Form';
+// import Logo from '../components/Logo';
+// import ErrorBoundary from '../components/ErrorBoundary';
 import { useData } from '../../src/hooks.js';
 import { STATUSES } from '../constants';
-import Heading from '../components/Heading';
-import Modal from '../components/Modal';
+// import Heading from '../components/Heading';
+// import Modal from '../components/Modal';
+import ChangeBalance from '../components/ChangeBalance/index';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -28,19 +29,17 @@ const Home = () => {
 
   return (
     <>
-      <Modal />
+      <ChangeBalance onChange={onChange} />
       {loading ? (
         <div>Loading...</div>
       ) : (
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-2 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
-            <Heading />
+            {/* <Heading />
             <ErrorBoundary fallback={<p>Something went wrong...</p>}>
               <Logo />
-            </ErrorBoundary>
+            </ErrorBoundary> */}
             <Balance balance={balance} />
-            <Form onChange={onChange} />
-            <hr />
             {status === STATUSES.PENDING ? (
               <div className="">Loading...</div>
             ) : null}

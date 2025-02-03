@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 const Form = (props) => {
+  console.log(props); //
   const [form, setForm] = useState({
     value: '',
     date: new Date().toISOString().substring(0, 10) || '',
@@ -20,6 +21,7 @@ const Form = (props) => {
       value: '',
       comment: '',
     });
+    props.onClick();
   };
 
   const onChange = (e) => {
@@ -38,6 +40,17 @@ const Form = (props) => {
         className="flex justify-center gap-2 flex-wrap items-stretch "
         role="form"
       >
+        <label htmlFor="date">
+          <FormattedMessage id="form.date" />
+        </label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          value={form.date}
+          onChange={onChange}
+          className="min-h-16 p-1 shadow-lg rounded-lg border border-gray-200 w-full sm:w-20 md:w-28 lg:w-36 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
         <label htmlFor="value">
           <FormattedMessage id="form.sum" />
         </label>
@@ -49,18 +62,6 @@ const Form = (props) => {
           onChange={onChange}
           value={form.value}
           className="w-full sm:w-20 md:w-30 lg:w-40 py-2.5 px-5 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
-        />
-        <label htmlFor="date">
-          {' '}
-          <FormattedMessage id="form.date" />
-        </label>
-        <input
-          type="date"
-          id="date"
-          name="date"
-          value={form.date}
-          onChange={onChange}
-          className="min-h-16 p-1 shadow-lg rounded-lg border border-gray-200 w-full sm:w-20 md:w-28 lg:w-36 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
         <label htmlFor="comment">
           <FormattedMessage id="form.comment" />
