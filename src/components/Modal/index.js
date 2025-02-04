@@ -12,10 +12,10 @@ const Modal = ({ onChange }) => {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="py-2 px-4 bg-gradient-to-r from-blue-500 to-indigo-500 text-white 
-             rounded-full fixed top-16 right-5 text-2xl shadow-lg 
+        className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-500 text-white 
+             rounded-full fixed top-16 right-2 text-3xl shadow-xl flex items-center justify-center 
              transition-all duration-300 transform hover:scale-110 hover:shadow-2xl 
-             active:scale-95 active:shadow-md"
+             active:scale-95 active:shadow-md opacity-30"
       >
         +
       </button>
