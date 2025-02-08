@@ -1,25 +1,39 @@
 'use client';
-import { useState } from 'react';
+import { useState, memo, useMemo } from 'react';
 
 const list = new Array(20).fill(0).map(() => {
   return `Item - ${Math.random()}`;
 });
 
-const List = (props) => {
+const ListComponent = (props) => {
+  const [filter, setFilter] = useState('');
+
+  const filteredList = list.filter((item) => item.includes(filter));
+
   return (
-    <ul>
-      {list.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
+    <>
+      <label htmlFor="filter">filter:</label>
+      <input
+        type="text"
+        id="filter"
+        onChange={(e) => setFilter(e.target.value)}
+      />
+      <ul>
+        {filteredList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
+    </>
   );
 };
+export const List = memo(ListComponent);
 
 const Statistics = () => {
   const [n, setN] = useState(0);
+
   return (
     <div className="m-2">
-      <List />
+      <List list={list} />
       <div className="">Clicked {n} times</div>
       <button
         onClick={() => {
