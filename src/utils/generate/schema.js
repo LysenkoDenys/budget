@@ -1,3 +1,6 @@
+// schema.js is not an actual part of the project—it's a template used
+// on json-generator.com to generate mock data for development and testing.
+
 JG.repeat(100, {
   id: JG.objectId(),
   value: JG.floating(-2000, 5000),

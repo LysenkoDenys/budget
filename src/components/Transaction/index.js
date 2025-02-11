@@ -1,11 +1,11 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, memo } from 'react';
 import { AppContext } from '../../providers/context';
 import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
 import { FormattedMessage } from 'react-intl';
 
-const Transaction = ({ transaction, onDelete, onStarClick }) => {
+const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
   const { id, value, date, comment, isStarred } = transaction;
   const bgColor =
     value >= 0
@@ -37,6 +37,6 @@ const Transaction = ({ transaction, onDelete, onStarClick }) => {
       </button>
     </div>
   );
-};
+});
 
 export default Transaction;

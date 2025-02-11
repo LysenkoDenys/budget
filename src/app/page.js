@@ -15,8 +15,15 @@ const Home = () => {
   const [balance, setBalance] = useState(0.0);
   const [loading, setLoading] = useState(true);
 
-  const { transactions, status, pushTransaction, onDelete, onStarClick } =
-    useData();
+  const {
+    transactions,
+    hasNextPage,
+    status,
+    pushTransaction,
+    onDelete,
+    onStarClick,
+    loadMoreRows,
+  } = useData();
 
   useEffect(() => {
     setLoading(false);
@@ -45,7 +52,10 @@ const Home = () => {
             ) : null}
             {status === STATUSES.SUCCESS ? (
               <Transactions
-                transactions={transactions}
+                data={transactions}
+                isNextPageLoading={status === STATUSES.PENDING}
+                hasNextPage={hasNextPage}
+                loadMoreRows={loadMoreRows}
                 onDelete={onDelete}
                 onStarClick={onStarClick}
               />
