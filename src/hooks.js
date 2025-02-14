@@ -27,48 +27,59 @@ export const useData = () => {
   });
 
   useEffect(() => {
-    setState({ ...state, status: STATUSES.PENDING });
+    console.log('State Transactions Before Fetch:', state.transactions);
+
+    setState((prevState) => ({
+      ...prevState,
+      status: STATUSES.PENDING,
+    }));
+
     open()
       .then(() => getData(0, 20))
       .then((transactions) => {
-        setState({
-          ...state,
+        console.log('Fetched transactions:', transactions);
+        setState((prevState) => ({
+          ...prevState,
           transactions,
           status: STATUSES.SUCCESS,
           hasNextPage: true,
-        });
+        }));
       })
       .catch((e) => {
-        setState({
-          ...state,
+        console.error('Error fetching data:', e);
+        setState((prevState) => ({
+          ...prevState,
           transactions: [],
           status: STATUSES.ERROR,
           error: e,
           hasNextPage: false,
-        });
+        }));
       });
+    console.log('State Transactions After Fetch Call:', state.transactions);
   }, []);
 
   const loadMoreRows = useCallback(() => {
-    setState({
-      ...state,
+    setState((prevState) => ({
+      ...prevState,
       status: STATUSES.PENDING,
-    });
-    getData(state.transactions.length, 20)
-      .then((transactions) => {
-        setState({
-          ...state,
-          transactions: [...state.transactions, ...transactions],
+    }));
+
+    getData(state.transactions.length, 1) // Load 1 item at a time
+      .then((newTransactions) => {
+        setState((prevState) => ({
+          ...prevState,
+          transactions: [...prevState.transactions, ...newTransactions],
           status: STATUSES.SUCCESS,
-        });
+          hasNextPage: newTransactions.length > 0,
+        }));
       })
       .catch(() => {
-        setState({
-          ...state,
+        setState((prevState) => ({
+          ...prevState,
           hasNextPage: false,
-        });
+        }));
       });
-  }, [state]);
+  }, [state.transactions.length]);
 
   const pushTransaction = useCallback(
     (data) => {

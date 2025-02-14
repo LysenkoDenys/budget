@@ -14,7 +14,9 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
 
   const { state } = useContext(AppContext);
 
-  const deleteItem = useCallback(() => onDelete(id), [id]);
+  const deleteItem = useCallback(() => onDelete(id), [onDelete, id]);
+
+  console.log('📌 Transaction Component - Received Props:', transaction);
 
   return (
     <div className={bgColor}>
@@ -22,6 +24,8 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
         onClick={() => onStarClick(id)}
         src={isStarred ? StarFilled : Star}
         alt="Unfilled Star"
+        width={20}
+        height={20}
         className="w-5 h-5 cursor-pointer mx-1 dark:shadow-white shadow-sm rounded-full"
       />
       <p>

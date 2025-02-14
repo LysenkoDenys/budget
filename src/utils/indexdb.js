@@ -101,7 +101,7 @@ function getData(start, total) {
 
     store.openCursor(null, 'prev').onsuccess = function (e) {
       var cursor = e.target.result;
-      if (!hasSkipped && start > 0) {
+      if (!hasSkipped && start > 0 && cursor) {
         hasSkipped = true;
         cursor.advance(start);
         return;
@@ -122,4 +122,4 @@ function getData(start, total) {
 
 const updateItem = (item) => addItem(item);
 
-export { open, addItem, getItems, deleteItem, updateItem };
+export { open, addItem, getItems, deleteItem, updateItem, getData };

@@ -13,7 +13,7 @@ import ChangeBalance from '../components/ChangeBalance/index';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const {
     transactions,
@@ -25,8 +25,13 @@ const Home = () => {
     loadMoreRows,
   } = useData();
 
+  // Update balance based on transactions
   useEffect(() => {
-    setLoading(false);
+    console.log('State Transactions:', transactions);
+    if (transactions.length > 0) {
+      const totalBalance = transactions.reduce((sum, tx) => sum + tx.value, 0);
+      setBalance(totalBalance); // Update balance when transactions change
+    }
   }, [transactions]);
 
   const onChange = (transaction) => {
@@ -37,20 +42,17 @@ const Home = () => {
   return (
     <>
       <ChangeBalance onChange={onChange} />
-      {loading ? (
+      {status === STATUSES.PENDING ? (
         <div>Loading...</div>
       ) : (
         <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-2 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-          <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start">
+          <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start w-full">
             {/* <Heading />
             <ErrorBoundary fallback={<p>Something went wrong...</p>}>
               <Logo />
             </ErrorBoundary> */}
             <Balance balance={balance} />
-            {status === STATUSES.PENDING ? (
-              <div className="">Loading...</div>
-            ) : null}
-            {status === STATUSES.SUCCESS ? (
+            {status === STATUSES.SUCCESS && transactions.length > 0 && (
               <Transactions
                 data={transactions}
                 isNextPageLoading={status === STATUSES.PENDING}
@@ -59,7 +61,11 @@ const Home = () => {
                 onDelete={onDelete}
                 onStarClick={onStarClick}
               />
-            ) : null}
+            )}
+            {/* Handle empty transactions */}
+            {status === STATUSES.SUCCESS && transactions.length === 0 && (
+              <div>No transactions available</div>
+            )}
           </main>
           <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
         </div>
