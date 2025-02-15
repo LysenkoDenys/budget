@@ -12,7 +12,6 @@ export const useBooleanToggle = (initialStatus = false) => {
   const [status, setStatus] = useState(initialStatus);
 
   const handleStatusChange = () => {
-    console.log('switch state');
     setStatus((currentStatus) => !currentStatus);
   };
   return { status, handleStatusChange };
@@ -27,8 +26,6 @@ export const useData = () => {
   });
 
   useEffect(() => {
-    console.log('State Transactions Before Fetch:', state.transactions);
-
     setState((prevState) => ({
       ...prevState,
       status: STATUSES.PENDING,
@@ -37,7 +34,6 @@ export const useData = () => {
     open()
       .then(() => getData(0, 20))
       .then((transactions) => {
-        console.log('Fetched transactions:', transactions);
         setState((prevState) => ({
           ...prevState,
           transactions,
@@ -55,7 +51,6 @@ export const useData = () => {
           hasNextPage: false,
         }));
       });
-    console.log('State Transactions After Fetch Call:', state.transactions);
   }, []);
 
   const loadMoreRows = useCallback(() => {

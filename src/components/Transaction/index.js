@@ -16,8 +16,6 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
 
   const deleteItem = useCallback(() => onDelete(id), [onDelete, id]);
 
-  console.log('📌 Transaction Component - Received Props:', transaction);
-
   return (
     <div className={bgColor}>
       <Image

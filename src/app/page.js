@@ -27,7 +27,6 @@ const Home = () => {
 
   // Update balance based on transactions
   useEffect(() => {
-    console.log('State Transactions:', transactions);
     if (transactions.length > 0) {
       const totalBalance = transactions.reduce((sum, tx) => sum + tx.value, 0);
       setBalance(totalBalance); // Update balance when transactions change
