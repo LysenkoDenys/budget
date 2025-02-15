@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "cross-env NODE_OPTIONS=\"--require react-dom/profiling\" NEXT_PUBLIC_PROFILE=true npm run next:build",
+    "next:build": "next build",
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
@@ -49,6 +50,7 @@
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",
     "babel-jest": "^29.7.0",
+    "cross-env": "^7.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "eslint-plugin-storybook": "^0.11.2",
