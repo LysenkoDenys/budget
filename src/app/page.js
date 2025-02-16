@@ -10,6 +10,7 @@ import { STATUSES } from '../constants';
 // import Heading from '../components/Heading';
 // import Modal from '../components/Modal';
 import ChangeBalance from '../components/ChangeBalance/index';
+import BalanceData from '../../src/components/BalanceData';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -35,7 +36,7 @@ const Home = () => {
 
   const onChange = (transaction) => {
     pushTransaction(transaction);
-    setBalance(balance + +transaction.value);
+    // setBalance(balance + +transaction.value);
   };
 
   return (
@@ -50,7 +51,9 @@ const Home = () => {
             <ErrorBoundary fallback={<p>Something went wrong...</p>}>
               <Logo />
             </ErrorBoundary> */}
-            <Balance balance={balance} />
+            <BalanceData>
+              {(balance) => <Balance balance={balance} />}
+            </BalanceData>
             {status === STATUSES.SUCCESS && transactions.length > 0 && (
               <Transactions
                 data={transactions}

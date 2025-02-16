@@ -1,11 +1,12 @@
 'use client';
+import withProfiler from '../../HOCs/withProfiler';
 import { useState } from 'react';
 
 const list = new Array(20).fill(0).map(() => {
   return `Item - ${Math.random()}`;
 });
 
-const List = (props) => {
+const List = ({ list }) => {
   const [filter, setFilter] = useState('');
 
   const filteredList = list.filter((item) => item.includes(filter));
@@ -56,4 +57,4 @@ const Statistics = () => {
   );
 };
 
-export default Statistics;
+export default withProfiler(Statistics, 'Statistics');
