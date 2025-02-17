@@ -41,3 +41,5 @@ https://www.npmjs.com/package/react-window
 https://www.npmjs.com/package/react-virtualized
 https://www.npmjs.com/package/react-virtualized-auto-sizer
 https://www.npmjs.com/package/react-window-infinite-loader
+https://www.npmjs.com/package/webpack-bundle-analyzer
+https://www.npmjs.com/package/chalk

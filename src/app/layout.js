@@ -1,7 +1,7 @@
 'use client';
 
-import { useContext, useEffect, Profiler } from 'react';
-import { AppContext, AppContextProvider } from '../providers/context'; // ✅ Import Provider
+import { StrictMode, useContext, useEffect, Profiler } from 'react';
+import { AppContext, AppContextProvider } from '../providers/context';
 import { Geist, Geist_Mono } from 'next/font/google';
 import NavBar from '../components/NavBar';
 import './globals.css';
@@ -20,22 +20,24 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const onRender = (...data) => {
-    console.log(data); //
+    console.log(data);
   };
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Profiler id="App" onRender={onRender}>
-          <AppContextProvider>
-            <IntlAppProvider>
-              <ThemedContent>{children}</ThemedContent>
-            </IntlAppProvider>
-          </AppContextProvider>
-        </Profiler>
-      </body>
-    </html>
+    <StrictMode>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Profiler id="App" onRender={onRender}>
+            <AppContextProvider>
+              <IntlAppProvider>
+                <ThemedContent>{children}</ThemedContent>
+              </IntlAppProvider>
+            </AppContextProvider>
+          </Profiler>
+        </body>
+      </html>
+    </StrictMode>
   );
 }
 

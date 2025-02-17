@@ -1,11 +1,17 @@
 'use client';
 
 import { useContext } from 'react';
+import dynamic from 'next/dynamic';
 import { AppContext } from '../../providers/context';
 import { FormattedMessage } from 'react-intl';
-
 import Link from 'next/link';
 import ThemeSwitch from '../../components/ThemeSwitch/index';
+
+// Lazy load the Statistics page
+const Statistics = dynamic(() => import('../../app/statistics/page'), {
+  loading: () => <p>Loading Statistics...</p>,
+  ssr: false, // Optional: Disable server-side rendering
+});
 
 export default function NavBar() {
   const { state } = useContext(AppContext);
