@@ -43,3 +43,8 @@ https://www.npmjs.com/package/react-virtualized-auto-sizer
 https://www.npmjs.com/package/react-window-infinite-loader
 https://www.npmjs.com/package/webpack-bundle-analyzer
 https://www.npmjs.com/package/chalk
+
+<h3>PWA</h3>
+<ul>
+<li>added Service Workers</li>
+</ul>
