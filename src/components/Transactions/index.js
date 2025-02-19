@@ -16,10 +16,10 @@ const Transactions = ({
   const itemSizeMap = useRef({});
 
   // Sort transactions by date (descending)
-  const sortedData = useMemo(
-    () => [...data].sort((a, b) => new Date(b.date) - new Date(a.date)),
-    [data]
-  );
+  const sortedData = useMemo(() => {
+    if (!data || data.length === 0) return [];
+    return [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, [data]);
 
   const getItemSize = (index) => itemSizeMap.current[index] || 60;
 
@@ -31,11 +31,29 @@ const Transactions = ({
   };
 
   const isItemLoaded = (index) => !!data[index];
-  const loadMoreItems = isNextPageLoading ? () => {} : loadMoreRows;
+  const loadMoreItems = isNextPageLoading
+    ? () => {}
+    : async () => {
+        if (!navigator.onLine) {
+          console.warn('No internet connection');
+          return;
+        }
+        try {
+          await loadMoreRows();
+        } catch (error) {
+          console.error('Failed to load more rows:', error.message);
+        }
+      };
+
   const itemCount = hasNextPage ? data.length + 1 : data.length;
 
   return (
     <div className="w-full h-full min-h-[300px] sm:min-h-[500px] md:min-h-[calc(100vh-127px)]">
+      {!navigator.onLine && (
+        <div className="fixed top-0 left-0 right-0 bg-yellow-300 text-center p-2">
+          You are offline. Some features may be unavailable.
+        </div>
+      )}
       <AutoSizer>
         {({ height, width }) => (
           <InfiniteLoader
@@ -43,16 +61,20 @@ const Transactions = ({
             itemCount={itemCount}
             loadMoreItems={loadMoreItems}
           >
-            {({ onItemsRendered, ref }) => (
+            {({ onItemsRendered, ref: infiniteRef }) => (
               <List
-                ref={listRef}
+                key={`list-${data.length}`}
+                ref={(node) => {
+                  listRef.current = node;
+                  infiniteRef(node);
+                }}
                 height={height}
                 width={width}
                 itemCount={itemCount}
                 itemSize={getItemSize}
                 estimatedItemSize={120}
                 onItemsRendered={onItemsRendered}
-                itemData={data}
+                itemData={sortedData}
               >
                 {({ index, style }) => {
                   const transaction = sortedData[index];

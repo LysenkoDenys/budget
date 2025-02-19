@@ -1,22 +1,18 @@
 // next.config.mjs
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import withPWA from 'next-pwa';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withPWA({
+  dest: 'public', // ✅ Ensures SW is built to public/
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development', // ⚠ SW is disabled in dev mode
+  buildExcludes: [/middleware-manifest.json$/], // ✅ Avoids Next.js middleware issues
+});
+
+export default {
+  ...nextConfig,
   reactStrictMode: true,
   webpack(config, { isServer }) {
-    if (process.env.ANALYZE === 'true') {
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'server',
-          analyzerHost: '127.0.0.1',
-          analyzerPort: isServer ? 8888 : 8889,
-          openAnalyzer: true,
-        })
-      );
-    }
     return config;
   },
 };
-
-export default nextConfig;
