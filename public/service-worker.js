@@ -33,8 +33,6 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  console.log('[SW] Fetching:', event.request.url);
-
   if (event.request.url.includes('/_next/static/')) {
     // Cache Next.js static files
     event.respondWith(

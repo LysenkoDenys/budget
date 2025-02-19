@@ -1,7 +1,7 @@
 // src/app/client-layout.js (Client Component)
 'use client';
 
-import { StrictMode, useContext, useEffect, Profiler } from 'react';
+import { StrictMode, useContext, useEffect } from 'react';
 import { AppContext, AppContextProvider } from '../providers/context';
 import { Geist, Geist_Mono } from 'next/font/google';
 import NavBar from '../components/NavBar';
@@ -48,13 +48,11 @@ export default function ClientLayout({ children }) {
 
   return (
     <StrictMode>
-      {/* <Profiler id="App" onRender={onRender}> */}
       <AppContextProvider>
         <IntlAppProvider>
           <ThemedContent>{children}</ThemedContent>
         </IntlAppProvider>
       </AppContextProvider>
-      {/* </Profiler> */}
     </StrictMode>
   );
 }
