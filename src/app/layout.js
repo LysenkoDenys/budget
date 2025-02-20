@@ -6,8 +6,8 @@ export const viewport = {
 
 // Metadata for SEO and PWA
 export const metadata = {
-  title: 'My PWA',
-  description: 'Progressive Web App with Next.js',
+  title: 'Balance',
+  description: 'App to manage your cash flows',
   manifest: '/site.webmanifest',
 };
 
