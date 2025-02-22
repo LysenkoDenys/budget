@@ -44,6 +44,7 @@ const Settings = () => {
                 <option value="UAH">hryvna</option>
                 <option value="USD">dollar</option>
                 <option value="EUR">euro</option>
+                <option value="CZK">koruna</option>
               </select>
             </label>
           </div>
@@ -59,6 +60,7 @@ const Settings = () => {
               >
                 <option value={LOCALES.ENGLISH}>English</option>
                 <option value={LOCALES.UKRAINIAN}>Українська</option>
+                <option value={LOCALES.CZECH}>Čeština</option>
               </select>
             </label>
           </div>

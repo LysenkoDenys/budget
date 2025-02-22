@@ -37,3 +37,67 @@ https://budget4u.vercel.app
 
 <hr>
 <p>The app is free to use for personal and commercial purposes, but attribution is required. Please credit the app and its creators in any blog posts or other content generated using the app.</p>
+
+<p>Structure:</p>
+<pre>
+.
+├── next.config.mjs  
+├── package-lock.json   /
+│   ├── src/
+│   ├── __tests__/  
+│   ├── babel.config.js  
+│   ├── constants/  
+│   ├── hooks.js    
+│   ├── scripts/
+│   ├── app/   
+│   │   ├── about/            
+│   │   ├── globals.css    
+│   │   ├── layout.js  
+│   │   ├── settings/
+│   │   ├── client-layout.js  
+│   │   ├── Home.test.tsx  
+│   │   ├── page.js    
+│   │   └── statistics/     
+│   ├── components/ 
+│   │   ├── Balance/        
+│   │   ├── Counter/          
+│   │   ├── Form/     
+│   │   ├── Modal/   
+│   │   ├── ThemeSwitch/
+│   │   ├── BalanceData/    
+│   │   ├── ErrorBoundary/    
+│   │   ├── Heading/  
+│   │   ├── NavBar/  
+│   │   ├── Transaction/
+│   │   ├── ChangeBalance/  
+│   │   ├── ErrorSimulation/  
+│   │   ├── Logo/     
+│   │   ├── Portal/  
+│   │   └── Transactions/     
+│   ├── HOCs/       
+│   ├── providers/  
+│   └── utils/
+├── eslint.config.mjs  
+├── next-env.d.ts    
+├── postcss.config.mjs  
+├── tailwind.config.mjs
+├── jest.config.js     
+├── node_modules/    
+├── public/             
+├── tsconfig.json
+├── jsconfig.json      
+├── package.json     
+└── README.md
+</pre>
+
+<p>TODO:</p>
+<ul>
+<li>❎statistics</li>
+<li>❎balance - to count today transactions only</li>
+<li>❎ adaptive when we switch languages (long words breaks UI)</li>
+<li>✅about</li>
+<li>❎ translate Above</li>
+<li>❎ add categories of budget</li>
+<li>❎ straight transaction`s string </li>
+
+</ul>

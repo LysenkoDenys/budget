@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const BalanceData = ({ children }) => {
-  const [balance, setBalance] = useState(12);
+  const [balance, setBalance] = useState(0);
   return children(balance);
 };
 
