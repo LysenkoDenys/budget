@@ -2,7 +2,6 @@ import { LOCALES } from '../constants';
 
 export default {
   [LOCALES.CZECH]: {
-    hello: 'Ahoj světe!',
     menu: {
       home: 'Rozpočet',
       settings: 'Nastavení',
@@ -15,9 +14,10 @@ export default {
       comment: 'Komentář',
       save: 'Uložit',
       purpose: 'Účel',
+      category: 'Kategorie',
     },
     balance: {
-      balance: 'Zůstatek:',
+      balance: 'Zůstatek pro dnešek:',
     },
     transaction: {
       delete: 'Smazat',

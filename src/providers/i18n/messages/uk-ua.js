@@ -2,7 +2,6 @@ import { LOCALES } from '../../i18n/constants';
 
 export default {
   [LOCALES.UKRAINIAN]: {
-    hello: 'Привіт Світе!',
     menu: {
       home: 'Бюджет',
       settings: 'Налаштування',
@@ -15,9 +14,10 @@ export default {
       comment: 'Коментар',
       save: 'Зберегти',
       purpose: 'Призначення',
+      category: 'Категорія',
     },
     balance: {
-      balance: 'Баланс:',
+      balance: 'Баланс на сьогодні:',
     },
     transaction: {
       delete: 'Видалити',

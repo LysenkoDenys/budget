@@ -7,6 +7,7 @@ const Form = (props) => {
   const [form, setForm] = useState({
     value: '',
     date: new Date().toISOString().substring(0, 10) || '',
+    category: '',
     comment: '',
   });
 
@@ -19,6 +20,7 @@ const Form = (props) => {
     setForm({
       ...form,
       value: '',
+      category: '',
       comment: '',
     });
     props.onClick();
@@ -63,6 +65,17 @@ const Form = (props) => {
           value={form.value}
           className="w-full sm:w-20 md:w-30 lg:w-40 py-2.5 px-5 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
         />
+        {/* <label htmlFor="value">
+          <FormattedMessage id="form.category" />
+        </label>
+        <input
+          type="radio"
+          name="value"
+          id="value"
+          onChange={onChange}
+          value={form.value}
+          className="w-full sm:w-20 md:w-30 lg:w-40 py-2.5 px-5 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 shadow-lg"
+        /> */}
         <label htmlFor="comment">
           <FormattedMessage id="form.comment" />
         </label>

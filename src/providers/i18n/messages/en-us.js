@@ -2,7 +2,6 @@ import { LOCALES } from '../../i18n/constants';
 
 export default {
   [LOCALES.ENGLISH]: {
-    hello: 'Hello World!',
     menu: {
       home: 'Home',
       settings: 'Settings',
@@ -15,9 +14,10 @@ export default {
       comment: 'Comment',
       save: 'Save',
       purpose: 'Purpose',
+      category: 'Category',
     },
     balance: {
-      balance: 'Balance:',
+      balance: 'Daily balance:',
     },
     transaction: {
       delete: 'Delete',

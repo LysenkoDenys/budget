@@ -15,6 +15,7 @@ import BalanceData from '../../src/components/BalanceData';
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
   // const [loading, setLoading] = useState(true);
+  const today = new Date().toISOString().substring(0, 10);
 
   const {
     transactions,
@@ -26,13 +27,16 @@ const Home = () => {
     loadMoreRows,
   } = useData();
 
+  console.log(new Date().toISOString().substring(0, 10)); //
   // Update balance based on transactions
   useEffect(() => {
     if (transactions.length > 0) {
-      const totalBalance = transactions.reduce((sum, tx) => sum + tx.value, 0);
-      setBalance(totalBalance); // Update balance when transactions change
+      const dailyBalance = transactions
+        .filter((el) => el.date === today)
+        .reduce((sum, tx) => sum + tx.value, 0);
+      setBalance(dailyBalance); // Update balance when transactions change
     }
-  }, [transactions]);
+  }, [transactions, today]);
 
   const onChange = (transaction) => {
     pushTransaction(transaction);
@@ -51,9 +55,10 @@ const Home = () => {
             <ErrorBoundary fallback={<p>Something went wrong...</p>}>
               <Logo />
             </ErrorBoundary> */}
-            <BalanceData>
-              {(balance) => <Balance balance={balance} />}
-            </BalanceData>
+            {/* <BalanceData> */}
+            <Balance balance={balance} />
+            {/* {(balance) => <Balance balance={balance} />} */}
+            {/* </BalanceData> */}
             {status === STATUSES.SUCCESS && transactions.length > 0 && (
               <Transactions
                 data={transactions}

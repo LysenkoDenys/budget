@@ -93,11 +93,10 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎statistics</li>
-<li>❎balance - to count today transactions only</li>
 <li>❎ adaptive when we switch languages (long words breaks UI)</li>
-<li>✅about</li>
-<li>❎ translate Above</li>
+<li>❎ translate About</li>
 <li>❎ add categories of budget</li>
-<li>❎ straight transaction`s string </li>
+<li>❎ Render Props for balance </li>
+<li>❎ Set your cashflow! - make visible in dark mode </li>
 
 </ul>
