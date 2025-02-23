@@ -96,7 +96,6 @@ https://budget4u.vercel.app
 <li>❎ adaptive when we switch languages (long words breaks UI)</li>
 <li>❎ translate About</li>
 <li>❎ add categories of budget</li>
-<li>❎ Render Props for balance </li>
 <li>❎ Set your cashflow! - make visible in dark mode </li>
 
 </ul>

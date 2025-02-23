@@ -55,10 +55,9 @@ const Home = () => {
             <ErrorBoundary fallback={<p>Something went wrong...</p>}>
               <Logo />
             </ErrorBoundary> */}
-            {/* <BalanceData> */}
-            <Balance balance={balance} />
-            {/* {(balance) => <Balance balance={balance} />} */}
-            {/* </BalanceData> */}
+            <BalanceData transactions={transactions}>
+              {(balance) => <Balance balance={balance} />}
+            </BalanceData>
             {status === STATUSES.SUCCESS && transactions.length > 0 && (
               <Transactions
                 data={transactions}
