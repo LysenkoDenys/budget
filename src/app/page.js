@@ -49,8 +49,8 @@ const Home = () => {
       {status === STATUSES.PENDING ? (
         <div>Loading...</div>
       ) : (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-2 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-          <main className="flex flex-col gap-4 row-start-2 items-center sm:items-start w-full">
+        <div className="grid grid-rows-[10px_1fr_10px] items-center justify-items-center min-h-screen p-2 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+          <main className="flex flex-col gap-2 row-start-2 items-center sm:items-start w-full">
             {/* <Heading />
             <ErrorBoundary fallback={<p>Something went wrong...</p>}>
               <Logo />
@@ -58,6 +58,19 @@ const Home = () => {
             <BalanceData transactions={transactions}>
               {(balance) => <Balance balance={balance} />}
             </BalanceData>
+            {/* Responsive Table Header */}
+            <div
+              className="grid grid-cols-6 gap-2 bg-gray-500 p-2 w-full rounded-lg shadow-lg text-white 
+                text-[0.5rem] sm:text-sm md:text-base"
+            >
+              <span className="text-center min-w-0 break-words">Mark</span>
+              <span className="text-center min-w-0 break-words">Amount</span>
+              <span className="text-center min-w-0 break-words">Date</span>
+              <span className="text-center min-w-0 break-words">Category</span>
+              <span className="text-left min-w-0 break-words">Comment</span>
+              <span className="text-center min-w-0 break-words">Action</span>
+            </div>
+
             {status === STATUSES.SUCCESS && transactions.length > 0 && (
               <Transactions
                 data={transactions}
