@@ -14,6 +14,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
     "chalk": "^5.4.1",
     "fake-indexeddb": "^6.0.0",
     "flat": "^6.0.1",

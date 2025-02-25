@@ -60,7 +60,7 @@ const Home = () => {
             </BalanceData>
             {/* Responsive Table Header */}
             <div
-              className="grid grid-cols-6 gap-2 bg-gray-500 p-2 w-full rounded-lg shadow-lg text-white 
+              className="grid grid-cols-6 gap-1 bg-gray-500 p-1 w-full rounded-lg shadow-lg text-white 
                 text-[0.5rem] sm:text-sm md:text-base"
             >
               <span className="text-center min-w-0 break-words">Mark</span>
