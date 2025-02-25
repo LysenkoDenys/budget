@@ -99,5 +99,6 @@ https://budget4u.vercel.app
 <li>❎ Set your cashflow! - make visible in dark mode </li>
 <li>❎ language and currency - to the localstore </li>
 <li>❎ add edit button --> make it icon not a word </li>
-
+<li>❎ align transaction with sections grid</li>
+<li>❎ align nav with grid for mobile devices</li>
 </ul>
