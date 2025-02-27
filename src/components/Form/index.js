@@ -88,7 +88,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.income" />
                 </a>
@@ -98,7 +98,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.food" />
                 </a>
@@ -106,7 +106,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.transportation" />
                 </a>
@@ -114,7 +114,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.utility" />
                 </a>
@@ -122,7 +122,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.communication" />
                 </a>
@@ -130,7 +130,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.children" />
                 </a>
@@ -138,7 +138,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.health" />
                 </a>
@@ -146,7 +146,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.new_things" />
                 </a>
@@ -154,7 +154,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.holidays" />
                 </a>
@@ -162,7 +162,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.repairs" />
                 </a>
@@ -170,7 +170,7 @@ const Form = (props) => {
               <MenuItem>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
+                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
                 >
                   <FormattedMessage id="form.other" />
                 </a>
