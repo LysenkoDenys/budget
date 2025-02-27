@@ -9,6 +9,7 @@ export default {
       about: 'About',
     },
     form: {
+      caption: 'Set your cashflow',
       sum: 'Sum',
       date: 'Date',
       comment: 'Comment',

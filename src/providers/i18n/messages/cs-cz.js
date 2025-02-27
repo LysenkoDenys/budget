@@ -9,6 +9,7 @@ export default {
       about: 'O aplikaci',
     },
     form: {
+      caption: 'Zaznamenávejte své peněžní toky',
       sum: 'Částka',
       date: 'Datum',
       comment: 'Komentář',

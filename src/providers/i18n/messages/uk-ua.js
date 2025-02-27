@@ -9,6 +9,7 @@ export default {
       about: 'Про додаток',
     },
     form: {
+      caption: 'Запиши свої грошові потоки',
       sum: 'Сума',
       date: 'Дата',
       comment: 'Коментар',
