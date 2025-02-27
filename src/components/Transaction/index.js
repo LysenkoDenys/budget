@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FormattedMessage } from 'react-intl';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
-  const { id, value, date, comment, isStarred } = transaction;
+  const { id, value, date, comment, category, isStarred } = transaction;
   const bgColor =
     value >= 0
       ? `grid grid-cols-6 items-center py-2 px-4 sm:px-6 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700`
@@ -31,7 +31,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
       </div>
       <p className="text-right min-w-[60px]">{value.toFixed(2)}</p>
       <p className="text-center min-w-[60px] sm:min-w-[80px]">{date}</p>
-      <p className="text-center min-w-[80px] sm:min-w-[100px]">Category</p>
+      <p className="text-center min-w-[80px] sm:min-w-[100px]">{category}</p>
       <p className="text-center min-w-[120px] sm:min-w-[150px] truncate">
         {comment}
       </p>

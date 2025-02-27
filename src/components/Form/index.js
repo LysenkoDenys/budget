@@ -36,6 +36,10 @@ const Form = (props) => {
     setForm({ ...form, [name]: value });
   };
 
+  const handleCategorySelect = (category) => {
+    setForm({ ...form, category });
+  };
+
   return (
     <>
       {/* <FormattedMessage id="hello" /> */}
@@ -71,8 +75,8 @@ const Form = (props) => {
         {/* category: */}
         <Menu as="div" className="relative inline-block text-left">
           <div>
-            <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:hover:text-white ">
-              <FormattedMessage id="form.category" />
+            <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 ring-1 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white">
+              {form.category || <FormattedMessage id="form.category" />}
               <ChevronDownIcon
                 aria-hidden="true"
                 className="-mr-1 size-5 text-gray-400"
@@ -80,102 +84,40 @@ const Form = (props) => {
             </MenuButton>
           </div>
 
-          <MenuItems
-            transition
-            className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-          >
-            <div className="py-1">
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.income" />
-                </a>
-              </MenuItem>
-            </div>
-            <div className="py-1">
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.food" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.transportation" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.utility" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.communication" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.children" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.health" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.new_things" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.holidays" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.repairs" />
-                </a>
-              </MenuItem>
-              <MenuItem>
-                <a
-                  href="#"
-                  className="block px-4 py-1 text-sm text-gray-700 dark:text-white data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                >
-                  <FormattedMessage id="form.other" />
-                </a>
-              </MenuItem>
-            </div>
+          <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden">
+            {[
+              'income',
+              'food',
+              'transportation',
+              'utility',
+              'communication',
+              'children',
+              'health',
+              'new_things',
+              'holidays',
+              'repairs',
+              'other',
+            ].map((categoryKey) => (
+              <div key={categoryKey} className="py-1">
+                <MenuItem>
+                  {({ active }) => (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleCategorySelect(
+                          intl.formatMessage({ id: `form.${categoryKey}` })
+                        )
+                      }
+                      className={`block px-4 py-1 text-sm text-gray-700 dark:text-white ${
+                        active ? 'bg-gray-100 text-gray-900' : ''
+                      }`}
+                    >
+                      <FormattedMessage id={`form.${categoryKey}`} />
+                    </button>
+                  )}
+                </MenuItem>
+              </div>
+            ))}
           </MenuItems>
         </Menu>
         {/* category */}

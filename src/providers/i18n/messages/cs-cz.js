@@ -36,7 +36,7 @@ export default {
     },
     header: {
       mark: 'Označit',
-      amount: 'Součet',
+      amount: 'Částka',
       date: 'Datum',
       category: 'Kategorie',
       comment: 'Komentář',
