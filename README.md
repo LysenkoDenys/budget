@@ -97,6 +97,10 @@ https://budget4u.vercel.app
 <li>❎ translate About</li>
 <li>❎ add categories of budget</li>
 <li>❎ Set your cashflow! - make visible in dark mode </li>
-<li>❎ language and currency - to the localstore </li>
+<li>❎ currency - to the Local storage </li>
 <li>❎ add edit button --> make it icon not a word </li>
+<li>❎ translate table caption </li>
+<li>❎ make category change after choosing and put it into indexedDB </li>
+<li>❎ advanced settings - make plan amount of categories per day to mark them red or green</li>
+
 </ul>

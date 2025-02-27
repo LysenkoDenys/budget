@@ -34,5 +34,13 @@ export default {
     transaction: {
       delete: 'Smazat',
     },
+    header: {
+      mark: 'Označit',
+      amount: 'Součet',
+      date: 'Datum',
+      category: 'Kategorie',
+      comment: 'Komentář',
+      actions: 'Akce',
+    },
   },
 };

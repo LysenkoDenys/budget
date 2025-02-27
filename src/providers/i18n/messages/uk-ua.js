@@ -28,12 +28,19 @@ export default {
       repairs: 'ремонти',
       other: 'інше',
     },
-
     balance: {
       balance: 'Баланс на сьогодні:',
     },
     transaction: {
       delete: 'Видалити',
+    },
+    header: {
+      mark: 'Позначка',
+      amount: 'Сума',
+      date: 'Дата',
+      category: 'Стаття',
+      comment: 'Коментар',
+      actions: 'Дії',
     },
   },
 };

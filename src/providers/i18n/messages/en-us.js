@@ -34,5 +34,13 @@ export default {
     transaction: {
       delete: 'Delete',
     },
+    header: {
+      mark: 'Mark',
+      amount: 'Amount',
+      date: 'Date',
+      category: 'Category',
+      comment: 'Comment',
+      actions: 'Actions',
+    },
   },
 };
