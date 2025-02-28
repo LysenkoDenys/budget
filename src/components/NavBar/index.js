@@ -3,9 +3,15 @@
 import { useContext } from 'react';
 import dynamic from 'next/dynamic';
 import { AppContext } from '../../providers/context';
-import { FormattedMessage } from 'react-intl';
 import Link from 'next/link';
 import ThemeSwitch from '../../components/ThemeSwitch/index';
+
+import {
+  IoSettingsOutline,
+  IoInformationCircleOutline,
+  IoHomeOutline,
+  IoBarChartOutline,
+} from 'react-icons/io5';
 
 // Lazy load the Statistics page
 const Statistics = dynamic(() => import('../../app/statistics/page'), {
@@ -15,47 +21,47 @@ const Statistics = dynamic(() => import('../../app/statistics/page'), {
 
 export default function NavBar() {
   const { state } = useContext(AppContext);
-  const linkTheme =
-    state.themeName === 'light' ? 'text-sky-500' : 'text-red-300';
 
   return (
     <>
-      <nav className="flex justify-between bg-slate-100 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <div className={linkTheme}>
-          <ul
-            style={{
-              display: 'flex',
-              listStyle: 'none',
-              gap: '0.5rem',
-              margin: 0,
-              padding: 0,
-            }}
-          >
-            <li>
-              <Link href="/">
-                <FormattedMessage id="menu.home" />
-              </Link>
-            </li>
-            <li>
-              <Link href="/about">
-                <FormattedMessage id="menu.about" />
-              </Link>
-            </li>
-            <li>
-              <Link href="/statistics">
-                <FormattedMessage id="menu.statistics" />
-              </Link>
-            </li>
-            <li>
-              <Link href="/settings">
-                <FormattedMessage id="menu.settings" />
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="flex wrap ">
-          <ThemeSwitch />
-        </div>
+      <nav className="w-full fixed top-0 left-0 flex bg-slate-100 p-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white shadow-md opacity-50 z-10">
+        <ul className="w-full flex justify-around items-center gap-6">
+          <li>
+            <Link href="/">
+              <IoHomeOutline
+                title="home"
+                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+              />
+            </Link>
+          </li>
+          <li>
+            <Link href="/about">
+              <IoInformationCircleOutline
+                title="about"
+                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+              />
+            </Link>
+          </li>
+          <li>
+            <Link href="/statistics">
+              <IoBarChartOutline
+                title="statistics"
+                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+              />
+            </Link>
+          </li>
+          <li>
+            <Link href="/settings">
+              <IoSettingsOutline
+                title="settings"
+                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+              />
+            </Link>
+          </li>
+          <li>
+            <ThemeSwitch />
+          </li>
+        </ul>
       </nav>
     </>
   );

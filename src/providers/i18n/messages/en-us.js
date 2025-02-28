@@ -2,12 +2,6 @@ import { LOCALES } from '../../i18n/constants';
 
 export default {
   [LOCALES.ENGLISH]: {
-    menu: {
-      home: 'Home',
-      settings: 'Settings',
-      statistics: 'Statistics',
-      about: 'About',
-    },
     form: {
       caption: 'Set your cashflow',
       sum: 'Sum',

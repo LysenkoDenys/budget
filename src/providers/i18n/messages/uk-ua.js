@@ -2,12 +2,6 @@ import { LOCALES } from '../../i18n/constants';
 
 export default {
   [LOCALES.UKRAINIAN]: {
-    menu: {
-      home: 'Бюджет',
-      settings: 'Налаштування',
-      statistics: 'Статистика',
-      about: 'Про додаток',
-    },
     form: {
       caption: 'Запиши свої грошові потоки',
       sum: 'Сума',

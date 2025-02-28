@@ -2,12 +2,6 @@ import { LOCALES } from '../constants';
 
 export default {
   [LOCALES.CZECH]: {
-    menu: {
-      home: 'Rozpočet',
-      settings: 'Nastavení',
-      statistics: 'Statistiky',
-      about: 'O aplikaci',
-    },
     form: {
       caption: 'Zaznamenávejte své peněžní toky',
       sum: 'Částka',
