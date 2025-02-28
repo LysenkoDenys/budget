@@ -18,7 +18,7 @@ const Modal = ({ onChange }) => {
         className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-500 text-white 
              rounded-full fixed top-16 right-2 text-3xl shadow-xl flex items-center justify-center 
              transition-all duration-300 transform hover:scale-110 hover:shadow-2xl 
-             active:scale-95 active:shadow-md opacity-30 dark:opacity-80"
+             active:scale-95 active:shadow-md opacity-30 dark:opacity-80 z-10"
       >
         +
       </button>
