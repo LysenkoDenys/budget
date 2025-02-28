@@ -16,6 +16,7 @@ const Settings = () => {
   // const [isAdvancedSettingsShown, setIsAdvancedSettingsShown] = useState(false);
   const currencyHandler = (e) => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
+    saveToStorage('currency', e.target.value);
   };
 
   const onChangeLocale = (e) => {

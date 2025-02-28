@@ -31,9 +31,6 @@ export default {
     balance: {
       balance: 'Zůstatek pro dnešek:',
     },
-    transaction: {
-      delete: 'Smazat',
-    },
     header: {
       mark: 'Označit',
       amount: 'Částka',

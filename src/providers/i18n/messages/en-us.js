@@ -31,9 +31,6 @@ export default {
     balance: {
       balance: 'Daily balance:',
     },
-    transaction: {
-      delete: 'Delete',
-    },
     header: {
       mark: 'Mark',
       amount: 'Amount',

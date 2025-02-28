@@ -20,13 +20,13 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="flex justify-between bg-slate-100 p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <nav className="flex justify-between bg-slate-100 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <div className={linkTheme}>
           <ul
             style={{
               display: 'flex',
               listStyle: 'none',
-              gap: '1rem',
+              gap: '0.5rem',
               margin: 0,
               padding: 0,
             }}

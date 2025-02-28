@@ -22,7 +22,6 @@ const Home = () => {
     loadMoreRows,
   } = useData();
 
-  console.log(new Date().toISOString().substring(0, 10)); //
   // Update balance based on transactions
   useEffect(() => {
     if (transactions.length > 0) {
@@ -44,7 +43,7 @@ const Home = () => {
       {status === STATUSES.PENDING ? (
         <div>Loading...</div>
       ) : (
-        <div className="grid grid-rows-[10px_1fr_10px] items-center justify-items-center min-h-screen p-2 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <main className="flex flex-col gap-2 row-start-2 items-center sm:items-start w-full">
             <BalanceData transactions={transactions}>
               {(balance) => <Balance balance={balance} />}

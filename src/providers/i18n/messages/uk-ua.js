@@ -31,9 +31,6 @@ export default {
     balance: {
       balance: 'Баланс на сьогодні:',
     },
-    transaction: {
-      delete: 'Видалити',
-    },
     header: {
       mark: 'Позначка',
       amount: 'Сума',

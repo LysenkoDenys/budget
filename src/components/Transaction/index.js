@@ -4,6 +4,7 @@ import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
 import { FormattedMessage } from 'react-intl';
+import { RiEditBoxLine, RiDeleteBin4Line } from 'react-icons/ri';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
@@ -36,12 +37,11 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
         {comment}
       </p>
       <div className="flex justify-center">
-        <button
+        <RiEditBoxLine className="text-2xl mr-3 cursor-pointer" />
+        <RiDeleteBin4Line
           onClick={deleteItem}
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
-        >
-          <FormattedMessage id="transaction.delete" />
-        </button>
+          className="text-2xl cursor-pointer"
+        />
       </div>
     </div>
   );
