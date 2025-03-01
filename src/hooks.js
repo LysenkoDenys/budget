@@ -103,6 +103,19 @@ export const useData = () => {
     [setState]
   );
 
+  // todo==========================
+  const onEdit = useCallback(
+    (id) => {
+      setState((state) => ({
+        ...state,
+        transactions: state.transactions.filter((item) => item.id !== id),
+      }));
+      deleteItem(id);
+    },
+    [setState]
+  );
+  // todo========================
+
   const onStarClick = useCallback(
     (id) => {
       const item = state.transactions.find((i) => i.id === id);
@@ -131,6 +144,7 @@ export const useData = () => {
     ...state,
     pushTransaction,
     onDelete,
+    onEdit,
     onStarClick,
     loadMoreRows,
   };

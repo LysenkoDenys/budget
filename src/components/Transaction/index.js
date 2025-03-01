@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FormattedMessage } from 'react-intl';
 import { RiEditBoxLine, RiDeleteBin4Line } from 'react-icons/ri';
 
-const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
+const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
   const bgColor =
     value >= 0
@@ -16,6 +16,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
   const { state } = useContext(AppContext);
 
   const deleteItem = useCallback(() => onDelete(id), [onDelete, id]);
+  const editItem = useCallback(() => onEdit(id), [onEdit, id]);
 
   return (
     <div className={bgColor}>
@@ -37,7 +38,10 @@ const Transaction = memo(({ transaction, onDelete, onStarClick }) => {
         {comment}
       </p>
       <div className="flex justify-center">
-        <RiEditBoxLine className="text-2xl mr-3 cursor-pointer" />
+        <RiEditBoxLine
+          className="text-2xl mr-3 cursor-pointer"
+          onClick={editItem}
+        />
         <RiDeleteBin4Line
           onClick={deleteItem}
           className="text-2xl cursor-pointer"

@@ -8,6 +8,7 @@ const Transactions = ({
   data = [],
   loadMoreRows,
   onDelete,
+  onEdit,
   onStarClick,
   isNextPageLoading,
   hasNextPage,
@@ -93,6 +94,7 @@ const Transactions = ({
                       <Transaction
                         transaction={transaction}
                         onDelete={onDelete}
+                        onEdit={onEdit}
                         onStarClick={onStarClick}
                         setItemSize={(size) => setItemSize(index, size)}
                       />

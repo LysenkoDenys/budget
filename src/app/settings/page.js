@@ -28,11 +28,11 @@ const Settings = () => {
 
   return (
     <>
-      <h1 className="text-4xl m-[1%]">Settings</h1>
+      <h1 className="text-4xl mx-[2%] mt-12">Settings</h1>
       {/* <Test data={data} /> */}
       <div className="m-4">
         <form action="">
-          <div className="my-1">
+          <div className="my-2">
             <label htmlFor="selector" className="text-gray-500 ">
               Currency:
               <select
@@ -69,15 +69,42 @@ const Settings = () => {
       </div>
       <div className="m-4">
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-0 px-2 mt-1 border border-blue-500 hover:border-transparent rounded"
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded"
           onClick={handleStatusChange}
         >
           Extended settings
         </button>
         {status ? (
           <div className="">
-            <h2>Extended settings</h2>
-            <p>...</p>
+            <ul className="space-y-2">
+              <li>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox text-blue-600"
+                  />
+                  Decimal digits in sum
+                </label>
+              </li>
+              <li>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox text-blue-600"
+                  />
+                  Comparing with the plan
+                </label>
+              </li>
+              <li>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    className="form-checkbox text-blue-600"
+                  />
+                  Another option
+                </label>
+              </li>
+            </ul>
           </div>
         ) : null}
       </div>

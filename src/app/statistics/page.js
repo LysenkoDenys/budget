@@ -13,17 +13,21 @@ const List = ({ list }) => {
 
   return (
     <>
-      <label htmlFor="filter">filter:</label>
-      <input
-        type="text"
-        id="filter"
-        onChange={(e) => setFilter(e.target.value)}
-      />
-      <ul>
-        {filteredList.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <section className="mt-12">
+        <h1 className="text-4xl mx-[2%] mt-12">Statistics</h1>
+        <br />
+        <label htmlFor="filter">filter:</label>
+        <input
+          type="text"
+          id="filter"
+          onChange={(e) => setFilter(e.target.value)}
+        />
+        <ul>
+          {filteredList.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 };

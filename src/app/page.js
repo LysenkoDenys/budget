@@ -18,6 +18,7 @@ const Home = () => {
     status,
     pushTransaction,
     onDelete,
+    onEdit,
     onStarClick,
     loadMoreRows,
   } = useData();
@@ -56,6 +57,7 @@ const Home = () => {
                 hasNextPage={hasNextPage}
                 loadMoreRows={loadMoreRows}
                 onDelete={onDelete}
+                onEdit={onEdit}
                 onStarClick={onStarClick}
               />
             )}

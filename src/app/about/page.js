@@ -3,7 +3,7 @@
 const About = () => {
   return (
     <section className="max-w-4xl mx-auto px-6 py-10 bg-white dark:bg-gray-900 rounded-2xl shadow-lg transition-all sm:px-8 sm:py-12 md:px-10 md:py-14">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+      <h1 className="text-3xl mt-3 sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">
         About Budget
       </h1>
 
