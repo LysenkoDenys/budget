@@ -13,7 +13,7 @@ const Balance = ({ balance }) => {
 
   return (
     <div>
-      <FormattedMessage id="balance.balance" /> {formattedBalance}
+      <FormattedMessage id="balance.balance" /> {formattedBalance}{' '}
       {state.currency}
     </div>
   );

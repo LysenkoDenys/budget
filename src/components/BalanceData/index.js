@@ -9,7 +9,7 @@ const BalanceData = ({ transactions, children }) => {
     if (transactions.length > 0) {
       const dailyBalance = transactions
         .filter((el) => el.date === today)
-        .reduce((sum, tx) => sum + tx.value, 0);
+        .reduce((sum, tx) => sum + (Number(tx.value) || 0), 0);
       setBalance(dailyBalance);
     } else {
       setBalance(0);
@@ -19,7 +19,7 @@ const BalanceData = ({ transactions, children }) => {
   return children(balance);
 };
 
-BalanceData.PropTypes = {
+BalanceData.propTypes = {
   children: PropTypes.func.isRequired,
 };
 

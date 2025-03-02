@@ -25,16 +25,30 @@ const Home = () => {
 
   // Update balance based on transactions
   useEffect(() => {
-    setBalance(
-      transactions
+    setTimeout(() => {
+      const dailyBalance = transactions
         .filter((el) => el.date === today)
-        .reduce((sum, tx) => sum + tx.value, 0)
-    );
+        .reduce((sum, tx) => sum + (Number(tx.value) || 0), 0);
+      setBalance(dailyBalance);
+    }, 100); // Small delay to allow transactions to update
   }, [transactions, today]);
 
   const onSave = (transaction) => {
     pushTransaction(transaction);
-    // setBalance(balance + +transaction.value);
+    // Recalculate the balance after adding a new transaction
+    const newDailyBalance = transactions
+      .filter((el) => el.date === today)
+      .reduce((sum, tx) => sum + (Number(tx.value) || 0), 0);
+    setBalance(newDailyBalance);
+  };
+
+  const onEditTransaction = (id, updatedTransaction) => {
+    onEdit(id, updatedTransaction);
+    // After editing, recalculate the daily balance
+    const newDailyBalance = transactions
+      .filter((el) => el.date === today)
+      .reduce((sum, tx) => sum + (Number(tx.value) || 0), 0);
+    setBalance(newDailyBalance);
   };
 
   return (
@@ -56,7 +70,7 @@ const Home = () => {
                 hasNextPage={hasNextPage}
                 loadMoreRows={loadMoreRows}
                 onDelete={onDelete}
-                onEdit={onEdit}
+                onEdit={onEditTransaction}
                 onStarClick={onStarClick}
                 onAddTransaction={onSave}
               />
