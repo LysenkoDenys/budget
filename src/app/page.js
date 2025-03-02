@@ -25,22 +25,21 @@ const Home = () => {
 
   // Update balance based on transactions
   useEffect(() => {
-    if (transactions.length > 0) {
-      const dailyBalance = transactions
+    setBalance(
+      transactions
         .filter((el) => el.date === today)
-        .reduce((sum, tx) => sum + tx.value, 0);
-      setBalance(dailyBalance); // Update balance when transactions change
-    }
+        .reduce((sum, tx) => sum + tx.value, 0)
+    );
   }, [transactions, today]);
 
-  const onChange = (transaction) => {
+  const onSave = (transaction) => {
     pushTransaction(transaction);
     // setBalance(balance + +transaction.value);
   };
 
   return (
     <>
-      <ChangeBalance onChange={onChange} />
+      <ChangeBalance onSave={onSave} />
       {status === STATUSES.PENDING ? (
         <div>Loading...</div>
       ) : (
@@ -59,6 +58,7 @@ const Home = () => {
                 onDelete={onDelete}
                 onEdit={onEdit}
                 onStarClick={onStarClick}
+                onAddTransaction={onSave}
               />
             )}
             {/* Handle empty transactions */}

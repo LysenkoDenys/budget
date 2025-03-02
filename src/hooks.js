@@ -83,10 +83,15 @@ export const useData = () => {
         value: +data.value,
         id: Date.now(),
       };
-      setState((state) => ({
-        ...state,
-        transactions: [transaction, ...state.transactions],
-      }));
+
+      setState((prevState) => {
+        const newTransactions = [transaction, ...prevState.transactions];
+        return {
+          ...prevState,
+          transactions: newTransactions,
+        };
+      });
+
       addItem(transaction);
     },
     [setState]
@@ -103,18 +108,20 @@ export const useData = () => {
     [setState]
   );
 
-  // todo==========================
   const onEdit = useCallback(
-    (id) => {
-      setState((state) => ({
-        ...state,
-        transactions: state.transactions.filter((item) => item.id !== id),
-      }));
-      deleteItem(id);
+    (id, updatedData) => {
+      setState((state) => {
+        const updatedTransactions = state.transactions.map((item) =>
+          item.id === id ? { ...item, ...updatedData } : item
+        );
+
+        return { ...state, transactions: updatedTransactions };
+      });
+
+      updateItem({ id, ...updatedData }); // Save changes to IndexedDB
     },
     [setState]
   );
-  // todo========================
 
   const onStarClick = useCallback(
     (id) => {

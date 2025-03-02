@@ -1,8 +1,9 @@
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, useState } from 'react';
 import { VariableSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import InfiniteLoader from 'react-window-infinite-loader';
 import Transaction from '../Transaction';
+import Modal from '../Modal';
 
 const Transactions = ({
   data = [],
@@ -12,18 +13,40 @@ const Transactions = ({
   onStarClick,
   isNextPageLoading,
   hasNextPage,
+  onAddTransaction,
 }) => {
   const listRef = useRef(null);
   const itemSizeMap = useRef({});
 
-  // Sort transactions by date (descending)
+  // Modal State
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [editData, setEditData] = useState(null);
+
+  // Open modal for adding a new transaction
+  const handleOpenModal = () => {
+    setEditData(null);
+    setModalOpen(true);
+  };
+
+  // Open modal for editing an existing transaction
+  const handleEditTransaction = (transaction) => {
+    setEditData(transaction);
+    setModalOpen(true);
+  };
+
+  // Close modal
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setEditData(null);
+  };
+
+  // Sorting transactions by date (descending)
   const sortedData = useMemo(() => {
     if (!data || data.length === 0) return [];
     return [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
   }, [data]);
 
   const getItemSize = (index) => itemSizeMap.current[index] || 60;
-
   const setItemSize = (index, size) => {
     if (itemSizeMap.current[index] !== size) {
       itemSizeMap.current[index] = size;
@@ -50,11 +73,22 @@ const Transactions = ({
 
   return (
     <div className="w-full h-full min-h-[300px] sm:min-h-[500px] md:min-h-[calc(100vh-127px)]">
+      {/* Show offline warning */}
       {!navigator.onLine && (
-        <div className="fixed top-0 left-0 right-0 bg-yellow-300 text-center p-2">
+        <div className="fixed top-0 left-0 right-0 bg-yellow-300 text-center p-1">
           You are offline. Some features may be unavailable.
         </div>
       )}
+
+      <Modal
+        isOpen={isModalOpen}
+        onOpen={handleOpenModal}
+        onClose={handleCloseModal}
+        editData={editData}
+        onEdit={onEdit}
+        onSave={onAddTransaction}
+      />
+
       <AutoSizer>
         {({ height, width }) => (
           <InfiniteLoader
@@ -94,7 +128,7 @@ const Transactions = ({
                       <Transaction
                         transaction={transaction}
                         onDelete={onDelete}
-                        onEdit={onEdit}
+                        onEdit={handleEditTransaction}
                         onStarClick={onStarClick}
                         setItemSize={(size) => setItemSize(index, size)}
                       />

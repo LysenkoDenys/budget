@@ -3,11 +3,9 @@ import { LOCALES } from '../../i18n/constants';
 export default {
   [LOCALES.ENGLISH]: {
     form: {
-      caption: 'Set your cashflow',
       sum: 'Sum',
       date: 'Date',
       comment: 'Comment',
-      save: 'Save',
       purpose: 'Comment',
       category: 'Category',
       income: 'income',
@@ -21,6 +19,10 @@ export default {
       holidays: 'holidays',
       repairs: 'repairs',
       other: 'other',
+      save: 'Save',
+      update: 'Update',
+      addCaption: 'Set your transaction',
+      editCaption: 'Edit your transaction',
     },
     balance: {
       balance: 'Daily balance:',

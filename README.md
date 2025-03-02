@@ -94,9 +94,9 @@ https://budget4u.vercel.app
 <ul>
 <li>❎statistics</li>
 <li>❎format of sum: 3 digits separated </li>
-<li>❎ adaptive when we switch languages (long words breaks UI)</li>
 <li>❎ translate About</li>
 <li>❎ get rid of decimal in advanced settings</li>
-<li>❎ add edit button and function to change the transaction</li>
+<li>❎ add edit button and function to change the transaction -> edit language:       update: 'Update',
+      edit: { caption: 'Edit' }, and change it in the modal Edit </li>
 <li>❎ advanced settings - make plan amount of categories per day to mark them red or green</li>
 </ul>

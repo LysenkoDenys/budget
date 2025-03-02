@@ -3,11 +3,9 @@ import { LOCALES } from '../constants';
 export default {
   [LOCALES.CZECH]: {
     form: {
-      caption: 'Zaznamenávejte své peněžní toky',
       sum: 'Částka',
       date: 'Datum',
       comment: 'Komentář',
-      save: 'Uložit',
       purpose: 'Komentář',
       category: 'Kategorie',
       income: 'příjem',
@@ -21,6 +19,10 @@ export default {
       holidays: 'dovolená',
       repairs: 'opravit',
       other: 'ostatní',
+      save: 'Uložit',
+      update: 'Aktualizovat',
+      addCaption: 'Transakční záznam',
+      editCaption: 'Oprava transakce',
     },
     balance: {
       balance: 'Zůstatek pro dnešek:',

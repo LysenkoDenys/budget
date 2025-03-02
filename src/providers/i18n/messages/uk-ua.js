@@ -7,7 +7,6 @@ export default {
       sum: 'Сума',
       date: 'Дата',
       comment: 'Коментар',
-      save: 'Зберегти',
       purpose: 'Коментар',
       category: 'Категорія',
       income: 'дохід',
@@ -21,6 +20,10 @@ export default {
       holidays: 'свята',
       repairs: 'ремонти',
       other: 'інше',
+      save: 'Зберегти',
+      update: 'Оновити',
+      addCaption: 'Запис транзакції',
+      editCaption: 'Коригування транзакції',
     },
     balance: {
       balance: 'Баланс на сьогодні:',
