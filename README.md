@@ -93,7 +93,6 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎statistics</li>
-<li>❎format of sum: 3 digits separated </li>
 <li>❎ translate About</li>
 <li>❎ get rid of decimal in advanced settings</li>
 <li>❎ advanced settings - make plan amount of categories per day to mark them red or green</li>

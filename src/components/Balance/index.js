@@ -8,7 +8,10 @@ const Balance = ({ balance }) => {
   // Check if balance is a valid number and fallback to 0 if not
   const formattedBalance =
     typeof balance === 'number' && !isNaN(balance)
-      ? balance.toFixed(2)
+      ? new Intl.NumberFormat('uk-UA', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }).format(balance)
       : '0.00';
 
   return (
