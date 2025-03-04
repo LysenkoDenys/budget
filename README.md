@@ -93,6 +93,7 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎statistics</li>
+<li>❎fix UI as a table</li>
 <li>❎1000 to all digits in Amount</li>
 <li>❎ translate About</li>
 <li>❎ get rid of decimal in advanced settings to the balance and all amound digits</li>

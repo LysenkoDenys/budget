@@ -3,7 +3,6 @@ import { AppContext } from '../../providers/context';
 import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
-import { FormattedMessage } from 'react-intl';
 import { RiEditBoxLine, RiDeleteBin4Line } from 'react-icons/ri';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
