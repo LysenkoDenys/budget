@@ -4,6 +4,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import InfiniteLoader from 'react-window-infinite-loader';
 import Transaction from '../Transaction';
 import Modal from '../Modal';
+import { useModal } from '../../hooks';
 
 const Transactions = ({
   data = [],
@@ -19,24 +20,24 @@ const Transactions = ({
   const itemSizeMap = useRef({});
 
   // Modal State
-  const [isModalOpen, setModalOpen] = useState(false);
+  const { isModalOpen, openModal, closeModal } = useModal();
   const [editData, setEditData] = useState(null);
 
   // Open modal for adding a new transaction
-  const handleOpenModal = () => {
-    setEditData(null);
-    setModalOpen(true);
+  const handleOpenModal = (transaction) => {
+    setEditData(transaction);
+    openModal();
   };
 
   // Open modal for editing an existing transaction
   const handleEditTransaction = (transaction) => {
     setEditData(transaction);
-    setModalOpen(true);
+    openModal();
   };
 
   // Close modal
   const handleCloseModal = () => {
-    setModalOpen(false);
+    closeModal();
     setEditData(null);
   };
 
@@ -74,15 +75,14 @@ const Transactions = ({
   return (
     <div className="w-full h-full min-h-[300px] sm:min-h-[500px] md:min-h-[calc(100vh-127px)]">
       {/* Show offline warning */}
-      {!navigator.onLine && (
+      {/* {!navigator.onLine && (
         <div className="fixed top-0 left-0 right-0 bg-yellow-300 text-center p-1">
           You are offline. Some features may be unavailable.
         </div>
-      )}
+      )} */}
 
       <Modal
         isOpen={isModalOpen}
-        onOpen={handleOpenModal}
         onClose={handleCloseModal}
         editData={editData}
         onEdit={onEdit}

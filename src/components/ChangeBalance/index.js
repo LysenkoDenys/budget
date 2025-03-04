@@ -1,28 +1,10 @@
-import { useState } from 'react';
+import { useModal } from '../../hooks';
 import Modal from '../Modal';
 
 const ChangeBalance = ({ onSave }) => {
-  const [isModalOpen, setModalOpen] = useState(false); // Стан для відкриття/закриття модального вікна
+  const { isModalOpen, openModal, closeModal } = useModal();
 
-  const handleOpenModal = () => {
-    setModalOpen(true); // Відкриває модальне вікно
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false); // Закриває модальне вікно
-  };
-
-  return (
-    <div>
-      {/* Modal компонент з передачею необхідних пропсів */}
-      <Modal
-        onOpen={handleOpenModal}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onSave={onSave}
-      />
-    </div>
-  );
+  return <Modal isOpen={isModalOpen} onClose={closeModal} onSave={onSave} />;
 };
 
 export default ChangeBalance;

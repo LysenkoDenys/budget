@@ -8,6 +8,19 @@ import {
   updateItem,
 } from './utils/indexdb';
 
+export const useModal = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  return {
+    isModalOpen,
+    openModal,
+    closeModal,
+  };
+};
+
 export const useBooleanToggle = (initialStatus = false) => {
   const [status, setStatus] = useState(initialStatus);
 

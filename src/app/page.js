@@ -7,6 +7,9 @@ import { STATUSES } from '../constants';
 import ChangeBalance from '../components/ChangeBalance/index';
 import BalanceData from '../../src/components/BalanceData';
 import TransactionsHeader from '../components/TransactionsHeader';
+import ButtonAddTransaction from '../components/ButtonAddTransaction';
+import { useModal } from '../hooks';
+import Modal from '../components/Modal';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -22,6 +25,8 @@ const Home = () => {
     onStarClick,
     loadMoreRows,
   } = useData();
+
+  const { isModalOpen, openModal, closeModal } = useModal();
 
   // Update balance based on transactions
   useEffect(() => {
@@ -54,6 +59,11 @@ const Home = () => {
   return (
     <>
       <ChangeBalance onSave={onSave} />
+
+      <ButtonAddTransaction onClick={openModal} />
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={closeModal} onSave={onSave} />
+      )}
       {status === STATUSES.PENDING ? (
         <div>Loading...</div>
       ) : (
