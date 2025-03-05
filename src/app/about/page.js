@@ -3,21 +3,21 @@
 const About = () => {
   return (
     <section className="max-w-4xl mx-auto px-6 py-10 bg-white dark:bg-gray-900 rounded-2xl shadow-lg transition-all sm:px-8 sm:py-12 md:px-10 md:py-14">
-      <h1 className="text-3xl mt-3 sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+      <h1 className="text-2xl mt-3 sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">
         About Budget
       </h1>
 
-      <p className="text-gray-600 dark:text-gray-300 text-lg sm:text-xl leading-relaxed text-center">
+      <p className="text-gray-600 dark:text-gray-300 text-lg sm:text-sm leading-relaxed text-center">
         <strong>Budget</strong> is a modern progressive web application (PWA)
         designed to help you manage your finances efficiently. Track your
         balance, analyze expenses and income, and improve your financial habits.
       </p>
 
-      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
+      <h2 className="text-xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
         Key Features
       </h2>
 
-      <ul className="space-y-4 text-gray-600 dark:text-gray-300 text-lg">
+      <ul className="space-y-4 text-gray-600 dark:text-gray-300 text-sm">
         <li>
           ✔ <strong>Real-time balance</strong> – track your income and expenses
           easily.
@@ -40,11 +40,11 @@ const About = () => {
         </li>
       </ul>
 
-      <h2 className="text-2xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
+      <h2 className="text-xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
         Why Budget?
       </h2>
 
-      <ul className="space-y-4 text-gray-600 dark:text-gray-300 text-lg">
+      <ul className="space-y-4 text-gray-600 dark:text-gray-300 text-sm">
         <li>
           💰 <strong>Manage your money stress-free</strong> – always know how
           much you have.
@@ -56,6 +56,23 @@ const About = () => {
         <li>
           🚀 <strong>Simple & intuitive</strong> – easy-to-use interface for
           fast access to financial data.
+        </li>
+      </ul>
+      <h2 className="text-xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
+        How it builds and works
+      </h2>
+
+      <ul className="space-y-4 text-gray-600 dark:text-gray-300 text-sm">
+        <li>
+          👨 <strong>Built with Maxim Rudny's React.js free course</strong> –
+          thanks to him for the app.
+        </li>
+        <li>
+          🚆 <strong>Technologies</strong> – React.js 19, Next.js 14,
+          TailwindCSS.
+        </li>
+        <li>
+          📌 <strong>Non-commercial</strong> – no advertisements.
         </li>
       </ul>
     </section>

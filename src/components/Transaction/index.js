@@ -33,7 +33,12 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
           className="w-5 h-5 cursor-pointer mx-auto dark:shadow-white shadow-sm rounded-full"
         />
       </div>
-      <p className="text-right min-w-[60px]">{value}</p>
+      <p className="text-right min-w-[60px]">
+        {new Intl.NumberFormat('uk-UA', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }).format(value)}
+      </p>
       <p className="text-center min-w-[60px] sm:min-w-[80px]">{date}</p>
       <p className="text-center min-w-[80px] sm:min-w-[100px]">{category}</p>
       <p className="text-center min-w-[120px] sm:min-w-[150px] truncate">
