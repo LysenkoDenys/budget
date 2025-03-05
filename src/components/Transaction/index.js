@@ -9,8 +9,15 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
   const bgColor =
     value >= 0
-      ? `grid grid-cols-6 items-center py-2 px-4 sm:px-6 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700`
-      : `grid grid-cols-6 items-center py-2 px-4 sm:px-6 text-sm font-medium text-red-900 bg-red-200 rounded-lg border border-red-200 shadow-lg hover:bg-red-100 hover:text-red-700 dark:bg-red-300 dark:text-red-900 dark:border-red-600 dark:hover:text-white dark:hover:bg-red-700`;
+      ? `grid grid-cols-[30px_40px_50px_60px_auto_50px] 
+       xs:grid-cols-[30px_70px_80px_100px_auto_50px] 
+       sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
+       items-center py-2 px-2 border-b border-gray-300 bg-white shadow-sm 
+       dark:bg-gray-800 dark:border-gray-600 
+       text-[0.55rem] text-[0.65rem] xs:text-[1rem]  sm:text-sm`
+      : `grid grid-cols-6 items-center py-2 px-4 sm:px-6 text-sm font-medium text-red-900 bg-red-200 rounded-lg 
+       border border-red-200 shadow-lg hover:bg-red-100 hover:text-red-700 
+       dark:bg-red-300 dark:text-red-900 dark:border-red-600 dark:hover:text-white dark:hover:bg-red-700`;
 
   const { state } = useContext(AppContext);
 
@@ -23,7 +30,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   return (
     <div className={bgColor}>
       {/* Star Icon */}
-      <div className="text-center max-w-[20px]">
+      <div className="flex justify-center max-w-[20px]">
         <Image
           onClick={() => onStarClick(id)}
           src={isStarred ? StarFilled : Star}
@@ -33,25 +40,25 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
           className="w-5 h-5 cursor-pointer mx-auto dark:shadow-white shadow-sm rounded-full"
         />
       </div>
-      <p className="text-right min-w-[60px]">
+      <p className="text-right min-w-0 break-words whitespace-pre-wrap">
         {new Intl.NumberFormat('uk-UA', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         }).format(value)}
       </p>
-      <p className="text-center min-w-[60px] sm:min-w-[80px]">{date}</p>
-      <p className="text-center min-w-[80px] sm:min-w-[100px]">{category}</p>
-      <p className="text-center min-w-[120px] sm:min-w-[150px] truncate">
-        {comment}
+      <p className="text-center min-w-0">{date}</p>
+      <p className="text-left break-words whitespace-pre-wrap min-w-0 text-blue-500">
+        {category}
       </p>
+      <p className="text-left truncate min-w-0">{comment}</p>
       <div className="flex justify-center">
         <RiEditBoxLine
-          className="text-2xl mr-3 cursor-pointer"
+          className="text-2xl mr-1 sm:mr-3 text-blue-500 cursor-pointer hover:text-blue-700"
           onClick={editItem}
         />
         <RiDeleteBin4Line
           onClick={deleteItem}
-          className="text-2xl cursor-pointer"
+          className="text-2xl cursor-pointer text-red-500 hover:text-red-700"
         />
       </div>
     </div>
