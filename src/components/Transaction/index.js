@@ -9,12 +9,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
   const bgColor =
     value >= 0
-      ? `grid grid-cols-[30px_40px_50px_60px_auto_50px] 
-       xs:grid-cols-[30px_70px_80px_100px_auto_50px] 
-       sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
-       items-center py-2 px-2 border-b border-gray-300 bg-white shadow-sm 
-       dark:bg-gray-800 dark:border-gray-600 
-       text-[0.55rem] text-[0.65rem] xs:text-[1rem]  sm:text-sm`
+      ? `grid grid-cols-[20px_50px_60px_50px_auto_50px] [@media(min-width:350px)]:grid-cols-[20px_70px_80px_50px_auto_50px] sm:grid-cols-[30px_100px_140px_120px_auto_60px] items-center py-2 px-2 border-b border-gray-300 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-600 text-[0.6rem] [@media(min-width:350px)]:text-[0.7rem]  sm:text-sm`
       : `grid grid-cols-6 items-center py-2 px-4 sm:px-6 text-sm font-medium text-red-900 bg-red-200 rounded-lg 
        border border-red-200 shadow-lg hover:bg-red-100 hover:text-red-700 
        dark:bg-red-300 dark:text-red-900 dark:border-red-600 dark:hover:text-white dark:hover:bg-red-700`;
@@ -40,13 +35,13 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
           className="w-5 h-5 cursor-pointer mx-auto dark:shadow-white shadow-sm rounded-full"
         />
       </div>
-      <p className="text-right min-w-0 break-words whitespace-pre-wrap">
+      <p className="text-right min-w-0 break-words whitespace-pre-wrap text-blue-500 ">
         {new Intl.NumberFormat('uk-UA', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         }).format(value)}
       </p>
-      <p className="text-center min-w-0">{date}</p>
+      <p className="text-center min-w-0 sm:text-sm text-[0.4rem]">{date}</p>
       <p className="text-left break-words whitespace-pre-wrap min-w-0 text-blue-500">
         {category}
       </p>
