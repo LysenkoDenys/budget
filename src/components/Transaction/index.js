@@ -54,7 +54,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
         }).format(value)}
       </p>
       <p className="text-center min-w-0 sm:text-sm text-[0.4rem]">{date}</p>
-      <p className="text-left break-words whitespace-pre-wrap min-w-0 text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem]">
+      <p className="text-left min-w-0 text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem] truncate">
         {category}
       </p>
       <p className="text-left truncate min-w-0 sm:text-sm text-[0.7rem]">

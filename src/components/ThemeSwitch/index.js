@@ -18,14 +18,14 @@ const ThemeSwitch = () => {
     saveToStorage('themeName', newTheme);
   };
   return (
-    <button onClick={toggleTheme}>
+    <div onClick={toggleTheme}>
       {/* Conditionally render the sun or moon icon based on the current theme */}
       {state.themeName === THEMES.DARK ? (
-        <IoSunnyOutline className=" h-8 w-8 hover:scale-110 ease-in-out duration-300" />
+        <IoSunnyOutline className=" h-8 w-8 hover:scale-110 ease-in-out duration-300 cursor-pointer" />
       ) : (
-        <IoMoonOutline className=" h-8 w-8 hover:scale-110 ease-in-out duration-300" />
+        <IoMoonOutline className=" h-8 w-8 hover:scale-110 ease-in-out duration-300 cursor-pointer" />
       )}
-    </button>
+    </div>
   );
 };
 
