@@ -73,7 +73,7 @@ const Transactions = ({
   const itemCount = hasNextPage ? data.length + 1 : data.length;
 
   return (
-    <div className="w-full h-full min-h-[300px] sm:min-h-[500px] md:min-h-[calc(100vh-127px)]">
+    <div className="w-full h-screen min-h-screen sm:min-h-[500px] md:min-h-[calc(100vh-127px)]">
       {/* Show offline warning */}
       {/* {!navigator.onLine && (
         <div className="fixed top-0 left-0 right-0 bg-yellow-300 text-center p-1">
