@@ -29,7 +29,6 @@ export default {
       balance: 'Баланс на сьогодні:',
     },
     header: {
-      mark: 'Позначка',
       amount: 'Сума',
       date: 'Дата',
       category: 'Стаття',

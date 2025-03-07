@@ -124,7 +124,7 @@ const Transactions = ({
                     );
                   }
                   return transaction ? (
-                    <div style={{ ...style, padding: '2px', minWidth: '100%' }}>
+                    <div style={{ ...style, minWidth: '100%' }}>
                       <Transaction
                         transaction={transaction}
                         onDelete={onDelete}

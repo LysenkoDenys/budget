@@ -28,7 +28,6 @@ export default {
       balance: 'Zůstatek pro dnešek:',
     },
     header: {
-      mark: 'Označit',
       amount: 'Částka',
       date: 'Datum',
       category: 'Kategorie',

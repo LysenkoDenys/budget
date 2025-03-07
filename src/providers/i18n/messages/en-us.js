@@ -28,7 +28,6 @@ export default {
       balance: 'Daily balance:',
     },
     header: {
-      mark: 'Mark',
       amount: 'Amount',
       date: 'Date',
       category: 'Category',
