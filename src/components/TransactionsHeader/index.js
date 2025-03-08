@@ -9,7 +9,7 @@ const TransactionsHeader = () => {
   const { state } = useContext(AppContext);
   return (
     <div
-      className="grid grid-cols-[20px_50px_60px_50px_auto_50px] 
+      className="grid items-center grid-cols-[20px_50px_60px_50px_auto_50px] 
        xs:grid-cols-[20px_70px_80px_50px_auto_50px] 
        sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
        md:grid-cols-[30px_100px_180px_150px_auto_70px] 

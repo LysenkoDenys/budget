@@ -97,6 +97,6 @@ https://budget4u.vercel.app
 <li>❎fix UI as a table</li>
 <li>❎ translate About</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
-<li>❎ get rid of decimal in advanced settings to the balance and all amound digits</li>
+<li>❎ get rid of decimal in advanced settings to the balance and all amount digits</li>
 <li>❎ advanced settings - make plan amount of categories per day to mark them red or green</li>
 </ul>

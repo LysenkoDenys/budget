@@ -9,14 +9,14 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
   const bgColor =
     value >= 0
-      ? `grid grid-cols-[20px_50px_60px_50px_auto_50px] 
+      ? `grid items-center grid-cols-[20px_50px_60px_50px_auto_50px] 
        xs:grid-cols-[20px_70px_80px_50px_auto_50px] 
        sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
        md:grid-cols-[30px_100px_180px_150px_auto_70px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_80px] 
        xl:grid-cols-[30px_120px_250px_200px_auto_100px] 
       py-3 px-2 bg-white rounded-lg border border-gray-200 shadow-lg hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700`
-      : `grid grid-cols-[20px_50px_60px_50px_auto_50px] 
+      : `grid items-center grid-cols-[20px_50px_60px_50px_auto_50px] 
        xs:grid-cols-[20px_70px_80px_50px_auto_50px] 
        sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
        md:grid-cols-[30px_100px_180px_150px_auto_70px] 
