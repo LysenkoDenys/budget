@@ -35,5 +35,12 @@ export default {
       comment: 'Коментар',
       actions: 'Дії',
     },
+    settings: {
+      settings: 'Налаштування',
+      currency: 'Валюта:',
+      language: 'Мова:',
+      extended: 'Розширені налаштування',
+      decimal: 'копійки',
+    },
   },
 };

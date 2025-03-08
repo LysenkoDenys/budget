@@ -34,5 +34,12 @@ export default {
       comment: 'Komentář',
       actions: 'Akce',
     },
+    settings: {
+      settings: 'Nastavení',
+      currency: 'Currency:',
+      language: 'Jazyk:',
+      extended: 'Rozšířená nastavení',
+      decimal: 'centy',
+    },
   },
 };

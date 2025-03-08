@@ -34,5 +34,12 @@ export default {
       comment: 'Comment',
       actions: 'Actions',
     },
+    settings: {
+      settings: 'Settings',
+      currency: 'Currency:',
+      language: 'Language:',
+      extended: 'Extended settings',
+      decimal: 'Cents',
+    },
   },
 };

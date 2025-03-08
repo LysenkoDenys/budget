@@ -4,6 +4,7 @@ import { AppContext } from '../../providers/context';
 import { useBooleanToggle } from '../../hooks';
 import { LOCALES } from '../../providers/i18n';
 import { saveToStorage } from '../../utils/localStorage';
+import { FormattedMessage } from 'react-intl';
 
 // const Test = memo(({ data }) => {
 //   console.log('rendering'); //
@@ -28,19 +29,22 @@ const Settings = () => {
 
   return (
     <>
-      <h1 className="text-4xl mx-[2%] mt-12">Settings</h1>
+      <h1 className="text-4xl mx-[2%] mt-12">
+        {' '}
+        <FormattedMessage id="settings.settings" />
+      </h1>
       {/* <Test data={data} /> */}
       <div className="m-4">
         <form action="">
           <div className="my-2">
             <label htmlFor="selector" className="text-gray-500 ">
-              Currency:
+              <FormattedMessage id="settings.currency" />
               <select
                 name="currency"
                 value={state.currency}
                 onChange={currencyHandler}
                 id="selector"
-                className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
+                className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-1 py-1 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
               >
                 <option value="UAH">hryvna</option>
                 <option value="USD">dollar</option>
@@ -51,13 +55,13 @@ const Settings = () => {
           </div>
           <div className="my-1">
             <label htmlFor="selector" className="text-gray-500 ">
-              Language:
+              <FormattedMessage id="settings.language" />
               <select
                 name="locate"
                 value={state.locate}
                 onChange={onChangeLocale}
                 id="selectorTwo"
-                className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
+                className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-1 py-1 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
               >
                 <option value={LOCALES.ENGLISH}>English</option>
                 <option value={LOCALES.UKRAINIAN}>Українська</option>
@@ -72,7 +76,7 @@ const Settings = () => {
           className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded"
           onClick={handleStatusChange}
         >
-          Extended settings
+          <FormattedMessage id="settings.extended" />
         </button>
         {status ? (
           <div className="">
@@ -83,25 +87,7 @@ const Settings = () => {
                     type="checkbox"
                     className="form-checkbox text-blue-600"
                   />
-                  Decimal digits in sum
-                </label>
-              </li>
-              <li>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    className="form-checkbox text-blue-600"
-                  />
-                  Comparing with the plan
-                </label>
-              </li>
-              <li>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    className="form-checkbox text-blue-600"
-                  />
-                  Another option
+                  <FormattedMessage id="settings.decimal" />
                 </label>
               </li>
             </ul>
