@@ -15,7 +15,7 @@ const Balance = ({ balance }) => {
       : '0.00';
 
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900">
       <FormattedMessage id="balance.balance" /> {formattedBalance}{' '}
       {state.currency}
     </div>

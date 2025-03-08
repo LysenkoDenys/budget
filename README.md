@@ -94,7 +94,7 @@ https://budget4u.vercel.app
 <ul>
 <li>❎statistics</li>
 <li>❎checkbox for filter starred transactions</li>
-<li>❎fix UI as a table</li>
+<li>❎add - to all transactions if it is not income</li>
 <li>❎ translate About</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
 <li>❎ get rid of decimal in advanced settings to the balance and all amount digits</li>

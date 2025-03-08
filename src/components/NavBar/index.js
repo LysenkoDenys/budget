@@ -24,7 +24,7 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="w-full fixed top-0 left-0 flex bg-slate-100 p-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white shadow-md opacity-50 z-50">
+      <nav className="w-full fixed top-0 left-0 flex bg-slate-100 p-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white shadow-md z-50">
         <ul className="w-full flex justify-around items-center gap-6">
           <li>
             <Link href="/">

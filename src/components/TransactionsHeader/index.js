@@ -14,7 +14,7 @@ const TransactionsHeader = () => {
        sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
        md:grid-cols-[30px_100px_180px_150px_auto_70px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_80px] 
-       xl:grid-cols-[30px_120px_250px_200px_auto_100px]  bg-gray-300 px-2 py-2 w-full rounded-lg shadow-lg dark:bg-gray-600 dark:text-gray-200
+       xl:grid-cols-[30px_120px_250px_200px_auto_100px]  bg-gray-300 px-2 py-2 w-full shadow-lg dark:bg-gray-600 dark:text-gray-200
        sm:text-sm text-[0.55rem] mb-2"
     >
       <span className="text-center min-w-0 break-words">
