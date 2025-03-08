@@ -30,23 +30,23 @@ const TransactionsHeader = () => {
           />
         </div>
       </span>
-      <span className="text-center min-w-0 break-words">
+      <span className="text-center min-w-0 truncate">
         {' '}
         <FormattedMessage id="header.amount" />
       </span>
-      <span className="text-center min-w-0 break-words">
+      <span className="text-center min-w-0 truncate">
         {' '}
         <FormattedMessage id="header.date" />
       </span>
-      <span className="text-center min-w-0 break-words">
+      <span className="text-center min-w-0 truncate">
         {' '}
         <FormattedMessage id="header.category" />
       </span>
-      <span className="text-left min-w-0 break-words">
+      <span className="text-left min-w-0 truncate">
         {' '}
         <FormattedMessage id="header.comment" />
       </span>
-      <span className="text-center min-w-0 break-words">
+      <span className="text-center min-w-0 truncate">
         {' '}
         <FormattedMessage id="header.actions" />
       </span>

@@ -26,7 +26,7 @@ export default {
       editCaption: 'Коригування транзакції',
     },
     balance: {
-      balance: 'Баланс на сьогодні:',
+      balance: 'Бюджет на сьогодні:',
     },
     header: {
       amount: 'Сума',

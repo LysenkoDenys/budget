@@ -15,7 +15,6 @@ const Form = ({ initialData, onSave, onClose }) => {
 
   const intl = useIntl();
 
-  // Populate form if editing
   useEffect(() => {
     if (initialData) {
       setForm(initialData);
@@ -35,12 +34,37 @@ const Form = ({ initialData, onSave, onClose }) => {
   };
 
   const handleChange = (e) => {
-    const { value, name } = e.target;
-    setForm({ ...form, [name]: value });
+    let { value, name } = e.target;
+
+    if (name === 'value') {
+      value = value.replace(/[^\d.-]/g, '');
+      setForm((prevForm) => {
+        if (prevForm.category === intl.formatMessage({ id: 'form.income' })) {
+          value = value.replace('-', '');
+        } else {
+          if (value.length > 0 && !value.startsWith('-')) {
+            value = `-${value}`;
+          }
+        }
+        return { ...prevForm, [name]: value };
+      });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleCategorySelect = (category) => {
-    setForm({ ...form, category });
+    setForm((prevForm) => {
+      let newValue = prevForm.value;
+      if (category === intl.formatMessage({ id: 'form.income' })) {
+        newValue = newValue.replace('-', '');
+      } else {
+        if (newValue.length > 0 && !newValue.startsWith('-')) {
+          newValue = `-${newValue}`;
+        }
+      }
+      return { ...prevForm, category, value: newValue };
+    });
   };
 
   return (

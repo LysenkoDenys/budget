@@ -25,7 +25,7 @@ export default {
       editCaption: 'Edit your transaction',
     },
     balance: {
-      balance: 'Daily balance:',
+      balance: 'Daily budget:',
     },
     header: {
       amount: 'Amount',

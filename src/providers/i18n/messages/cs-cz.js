@@ -25,7 +25,7 @@ export default {
       editCaption: 'Oprava transakce',
     },
     balance: {
-      balance: 'Zůstatek pro dnešek:',
+      balance: 'Rozpočet na dnešek:',
     },
     header: {
       amount: 'Částka',
