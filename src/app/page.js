@@ -68,7 +68,7 @@ const Home = () => {
       {status === STATUSES.PENDING ? (
         <Spinner />
       ) : (
-        <div className="grid grid-rows-[75px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">
+        <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">
           <div className="sticky top-[40px] z-40 w-full">
             <BalanceData transactions={transactions}>
               {(balance) => <Balance balance={balance} />}

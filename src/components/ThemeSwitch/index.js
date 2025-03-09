@@ -21,9 +21,9 @@ const ThemeSwitch = () => {
     <div onClick={toggleTheme}>
       {/* Conditionally render the sun or moon icon based on the current theme */}
       {state.themeName === THEMES.DARK ? (
-        <IoSunnyOutline className=" h-8 w-8 hover:scale-110 ease-in-out duration-300 cursor-pointer" />
+        <IoSunnyOutline className=" h-6 w-6 hover:scale-110 ease-in-out duration-300 cursor-pointer" />
       ) : (
-        <IoMoonOutline className=" h-8 w-8 hover:scale-110 ease-in-out duration-300 cursor-pointer" />
+        <IoMoonOutline className=" h-6 w-6 hover:scale-110 ease-in-out duration-300 cursor-pointer" />
       )}
     </div>
   );

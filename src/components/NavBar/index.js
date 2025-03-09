@@ -25,13 +25,13 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="w-full fixed top-0 left-0 flex bg-slate-100 p-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white shadow-md z-50">
+      <nav className="w-full fixed top-0 left-0 flex bg-slate-100 p-2 dark:bg-gray-700 dark:border-gray-600 dark:text-white shadow-md z-50">
         <ul className="w-full flex justify-around items-center gap-6">
           <li>
             <Link href="/">
               <IoHomeOutline
                 title="home"
-                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+                className="h-6 w-6 hover:scale-110 ease-in-out duration-300"
               />
             </Link>
           </li>
@@ -39,7 +39,7 @@ export default function NavBar() {
             <Link href="/about">
               <IoInformationCircleOutline
                 title="about"
-                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+                className="h-6 w-6 hover:scale-110 ease-in-out duration-300"
               />
             </Link>
           </li>
@@ -47,7 +47,7 @@ export default function NavBar() {
             <Link href="/statistics">
               <IoBarChartOutline
                 title="statistics"
-                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+                className="h-6 w-6 hover:scale-110 ease-in-out duration-300"
               />
             </Link>
           </li>
@@ -55,7 +55,7 @@ export default function NavBar() {
             <Link href="/settings">
               <IoSettingsOutline
                 title="settings"
-                className="h-8 w-8 hover:scale-110 ease-in-out duration-300"
+                className="h-6 w-6 hover:scale-110 ease-in-out duration-300"
               />
             </Link>
           </li>
