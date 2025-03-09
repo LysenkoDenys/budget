@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { AppContext } from '../../providers/context';
 import Link from 'next/link';
 import ThemeSwitch from '../../components/ThemeSwitch/index';
+import Spinner from '../Spinner';
 
 import {
   IoSettingsOutline,
@@ -15,7 +16,7 @@ import {
 
 // Lazy load the Statistics page
 const Statistics = dynamic(() => import('../../app/statistics/page'), {
-  loading: () => <p>Loading Statistics...</p>,
+  loading: () => <Spinner />,
   ssr: false, // Optional: Disable server-side rendering
 });
 

@@ -93,10 +93,7 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎!!statistics filter for period of time</li>
-<li>❎spinner instead of loading...</li>
 <li>❎upload/download transactions</li>
 <li>❎ translate About</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
-<li>❎ get rid of decimal in advanced settings to the balance and all amount digits</li>
-<li>❎ advanced settings - make plan amount of categories per day to mark them red or green</li>
 </ul>

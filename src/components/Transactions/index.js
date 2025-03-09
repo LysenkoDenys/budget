@@ -5,6 +5,7 @@ import InfiniteLoader from 'react-window-infinite-loader';
 import Transaction from '../Transaction';
 import Modal from '../Modal';
 import { useModal } from '../../hooks';
+import Spinner from '../Spinner';
 
 const Transactions = ({
   data = [],
@@ -114,14 +115,7 @@ const Transactions = ({
                 {({ index, style }) => {
                   const transaction = sortedData[index];
                   if (!transaction && hasNextPage) {
-                    return (
-                      <div
-                        style={style}
-                        className="text-center p-4 bg-gray-200"
-                      >
-                        Loading...
-                      </div>
-                    );
+                    return <Spinner />;
                   }
                   return transaction ? (
                     <div style={{ ...style, minWidth: '100%' }}>
