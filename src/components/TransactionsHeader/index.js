@@ -42,7 +42,7 @@ const TransactionsHeader = () => {
         {' '}
         <FormattedMessage id="header.category" />
       </span>
-      <span className="text-left min-w-0 truncate">
+      <span className="text-center min-w-0 truncate">
         {' '}
         <FormattedMessage id="header.comment" />
       </span>
