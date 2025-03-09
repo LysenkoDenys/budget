@@ -8,9 +8,9 @@ const Balance = ({ balance }) => {
   // Check if balance is a valid number and fallback to 0 if not
   const formattedBalance =
     typeof balance === 'number' && !isNaN(balance)
-      ? new Intl.NumberFormat('uk-UA', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
+      ? new Intl.NumberFormat(state.locale, {
+          minimumFractionDigits: state.showDecimals ? 2 : 0,
+          maximumFractionDigits: state.showDecimals ? 2 : 0,
         }).format(balance)
       : '0.00';
 
