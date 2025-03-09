@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, memo, useMemo, useState } from 'react';
+import React, { useContext, memo, useMemo, useEffect } from 'react';
 import { AppContext } from '../../providers/context';
 import { useBooleanToggle } from '../../hooks';
 import { LOCALES } from '../../providers/i18n';
@@ -25,7 +25,20 @@ const Settings = () => {
     saveToStorage('locale', e.target.value);
   };
 
-  const data = useMemo(() => [2], []);
+  // const data = useMemo(() => [2], []);
+
+  const handleDecimalToggle = () => {
+    const newValue = !state.showDecimals;
+    dispatch({ type: 'setShowDecimals', showDecimals: newValue });
+    saveToStorage('showDecimals', newValue);
+  };
+
+  useEffect(() => {
+    const savedDecimals = JSON.parse(localStorage.getItem('showDecimals'));
+    if (savedDecimals !== null) {
+      dispatch({ type: 'setShowDecimals', showDecimals: savedDecimals });
+    }
+  }, [dispatch]);
 
   return (
     <>
@@ -85,6 +98,8 @@ const Settings = () => {
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
+                    checked={state.showDecimals}
+                    onChange={handleDecimalToggle}
                     className="form-checkbox text-blue-600"
                   />
                   <FormattedMessage id="settings.decimal" />

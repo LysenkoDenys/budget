@@ -25,10 +25,16 @@ const reducer = (state, action) => {
     case 'setLocal':
       return {
         ...state,
-        locale: action.locale,
+        locale: action.locale || LOCALES.ENGLISH,
+      };
+    case 'setShowDecimals':
+      saveToStorage('showDecimals', action.showDecimals);
+      return {
+        ...state,
+        showDecimals: action.showDecimals,
       };
     default:
-      throw new Error('No action');
+      throw new Error(`No action: ${action.type}`);
   }
 };
 

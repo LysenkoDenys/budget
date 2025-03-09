@@ -48,9 +48,9 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
         />
       </div>
       <p className="text-right min-w-0 break-words whitespace-pre-wrap text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem]">
-        {new Intl.NumberFormat('uk-UA', {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
+        {new Intl.NumberFormat(state.locale, {
+          minimumFractionDigits: state.showDecimals ? 2 : 0,
+          maximumFractionDigits: state.showDecimals ? 2 : 0,
         }).format(value)}
       </p>
       <p className="text-center min-w-0 sm:text-sm text-[0.4rem]">{date}</p>

@@ -93,6 +93,7 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎!!statistics filter for period of time</li>
+<li>❎spinner instead of loading...</li>
 <li>❎upload/download transactions</li>
 <li>❎ translate About</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
