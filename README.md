@@ -23,6 +23,7 @@ https://budget4u.vercel.app
 <li>⭐https://www.npmjs.com/package/react-window-infinite-loader</li>
 <li>⭐https://www.npmjs.com/package/webpack-bundle-analyzer</li>
 <li>⭐https://www.npmjs.com/package/chalk</li>
+<li>⭐https://recharts.org/</li>
 </ul>
 
 <p>Built with Tailwind CSS (adaptive designed), and suitable for most popular devices.</p>
@@ -92,7 +93,8 @@ https://budget4u.vercel.app
 
 <p>TODO:</p>
 <ul>
-<li>❎!!statistics filter for period of time</li>
+<li>❎get rid of spinner offline</li>
+<li>❎!!statistics filter for period of time - need adjustment</li>
 <li>❎upload/download transactions</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
 <li>❎ Skipping auto-scroll behavior due to `position: sticky` or `position: fixed` on element... addButton is above scrollable component Transactions - warning message</li>

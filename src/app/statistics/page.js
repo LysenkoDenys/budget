@@ -1,68 +1,4 @@
 'use client';
-// import withProfiler from '../../HOCs/withProfiler';
-// import { useState } from 'react';
-
-// const list = new Array(20).fill(0).map(() => {
-//   return `Item - ${Math.random()}`;
-// });
-
-// const List = ({ list }) => {
-//   const [filter, setFilter] = useState('');
-
-//   const filteredList = list.filter((item) => item.includes(filter));
-
-//   return (
-//     <>
-//       <section className="mt-12">
-//         <h1 className="text-4xl mx-[2%] mt-12">Statistics</h1>
-//         <br />
-//         <label htmlFor="filter">filter:</label>
-//         <input
-//           type="text"
-//           id="filter"
-//           onChange={(e) => setFilter(e.target.value)}
-//         />
-//         <ul>
-//           {filteredList.map((item, index) => (
-//             <li key={index}>{item}</li>
-//           ))}
-//         </ul>
-//       </section>
-//     </>
-//   );
-// };
-
-// const Clicker = ({ children }) => {
-//   const [n, setN] = useState(0);
-//   return (
-//     <div data-count={n}>
-//       {children}
-//       <div className="">Clicked {n} times</div>
-//       <button
-//         onClick={() => {
-//           return setN(n + 1);
-//         }}
-//         className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white
-//          rounded-full px-2 text-sm shadow-xl flex items-center justify-center
-//          transition-all duration-300 transform hover:scale-110 hover:shadow-2xl
-//          active:scale-95 active:shadow-md opacity-70"
-//       >
-//         Click me
-//       </button>
-//     </div>
-//   );
-// };
-
-// const Statistics = () => {
-//   return (
-//     <Clicker className="m-2">
-//       <List list={list} />
-//     </Clicker>
-//   );
-// };
-
-// export default withProfiler(Statistics, 'Statistics');
-
 import React, { useState, useEffect } from 'react';
 import {
   BarChart,
@@ -97,36 +33,31 @@ const StatisticsChart = () => {
         groupedData = data;
         break;
       case 'weekly':
-        groupedData = data.reduce((acc, curr) => {
-          const weekStartDate = new Date(curr.date);
-          const weekNumber = `${weekStartDate.getFullYear()}-W${Math.ceil(
-            (weekStartDate.getDate() - 1) / 7
-          )}`;
-          const existingWeek = acc.find((item) => item.date === weekNumber);
-          if (existingWeek) {
-            existingWeek.amount += parseFloat(curr.value); // Use `value` instead of `amount`
-          } else {
-            acc.push({ date: weekNumber, amount: parseFloat(curr.value) });
-          }
-          return acc;
-        }, []);
-        break;
       case 'monthly':
         groupedData = data.reduce((acc, curr) => {
-          const monthStartDate = new Date(curr.date);
-          const month = `${monthStartDate.getFullYear()}-${
-            monthStartDate.getMonth() + 1
-          }`;
-          const existingMonth = acc.find((item) => item.date === month);
-          if (existingMonth) {
-            existingMonth.amount += parseFloat(curr.value); // Use `value` instead of `amount`
+          const date =
+            period === 'weekly'
+              ? `${new Date(curr.date).getFullYear()}-W${Math.ceil(
+                  new Date(curr.date).getDate() / 7
+                )}`
+              : `${new Date(curr.date).getFullYear()}-${
+                  new Date(curr.date).getMonth() + 1
+                }`;
+
+          const existing = acc.find(
+            (item) => item.date === date && item.category === curr.category
+          );
+          if (existing) {
+            existing.amount += parseFloat(curr.value);
           } else {
-            acc.push({ date: month, amount: parseFloat(curr.value) });
+            acc.push({
+              date,
+              amount: parseFloat(curr.value),
+              category: curr.category,
+            });
           }
           return acc;
         }, []);
-        break;
-      default:
         break;
     }
 
@@ -163,7 +94,14 @@ const StatisticsChart = () => {
         // Open the IndexedDB and fetch data
         await open(); // Initialize IndexedDB
         const data = await getData(0, 50); // Get the first 50 records (you can modify this logic)
-        setTransactions(data);
+        const parsedData = data
+          .map((transaction) => ({
+            ...transaction,
+            value: Number(transaction.value), // Convert value to a number
+          }))
+          .filter((transaction) => !isNaN(transaction.value)); // Remove invalid values
+
+        setTransactions(parsedData);
 
         // Extract unique categories from the data
         const uniqueCategories = [
@@ -215,16 +153,22 @@ const StatisticsChart = () => {
         textAnchor="middle"
         dominantBaseline="central"
       >
-        {`${filteredData[index].category}: ${value}`}
+        {`${filteredData[index]?.category || 'Unknown'}: ${value}`}
       </text>
     );
   };
 
   // PieChart data preparation
-  const pieChartData = filteredData.map((item) => ({
-    name: item.category,
-    value: item.amount, // Make sure to map `amount` instead of `value`
-  }));
+  const pieChartData = transactions.reduce((acc, transaction) => {
+    if (!transaction.category) return acc; // Skip items with no category
+    const existing = acc.find((item) => item.name === transaction.category);
+    if (existing) {
+      existing.value += transaction.value; // Accumulate values by category
+    } else {
+      acc.push({ name: transaction.category, value: transaction.value });
+    }
+    return acc;
+  }, []);
 
   return (
     <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg">
