@@ -65,7 +65,7 @@ const Home = () => {
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal} onSave={onSave} />
       )}
-      {status === STATUSES.PENDING ? (
+      {status === STATUSES.PENDING && navigator.onLine ? (
         <Spinner />
       ) : (
         <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">
