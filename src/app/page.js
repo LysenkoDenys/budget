@@ -15,7 +15,6 @@ import Spinner from '../components/Spinner';
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
   const today = new Date().toISOString().substring(0, 10);
-  const [isOffline, setIsOffline] = useState(!navigator.onLine);
 
   const {
     transactions,
@@ -39,20 +38,6 @@ const Home = () => {
       setBalance(dailyBalance);
     }, 100); // Small delay to allow transactions to update
   }, [transactions, today]);
-
-  // Check for online/offline status
-  useEffect(() => {
-    const handleOnline = () => setIsOffline(false);
-    const handleOffline = () => setIsOffline(true);
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
 
   const onSave = (transaction) => {
     pushTransaction(transaction);
@@ -80,7 +65,7 @@ const Home = () => {
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal} onSave={onSave} />
       )}
-      {status === STATUSES.PENDING && !isOffline ? (
+      {status === STATUSES.PENDING ? (
         <Spinner />
       ) : (
         <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">

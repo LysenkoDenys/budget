@@ -114,7 +114,7 @@ const Transactions = ({
               >
                 {({ index, style }) => {
                   const transaction = sortedData[index];
-                  if (!transaction && hasNextPage && !navigator.onLine) {
+                  if (!transaction && hasNextPage) {
                     return <Spinner />;
                   }
                   return transaction ? (
