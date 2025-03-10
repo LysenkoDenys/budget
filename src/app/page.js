@@ -82,6 +82,10 @@ const Home = () => {
       )}
       {status === STATUSES.PENDING && !isOffline ? (
         <Spinner />
+      ) : status === STATUSES.OFFLINE ? ( // ✅ Show a message when offline
+        <div className="text-center text-red-600">
+          You're offline. Data may be outdated.
+        </div>
       ) : (
         <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">
           <div className="sticky top-[40px] z-40 w-full">
