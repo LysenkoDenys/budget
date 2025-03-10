@@ -86,6 +86,7 @@ const Form = ({ initialData, onSave, onClose }) => {
         type="number"
         name="value"
         id="value"
+        autoFocus
         placeholder={intl.formatMessage({ id: 'form.sum' })}
         onChange={handleChange}
         value={form.value}
