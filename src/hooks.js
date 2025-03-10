@@ -39,16 +39,6 @@ export const useData = () => {
   });
 
   useEffect(() => {
-    if (!navigator.onLine) {
-      // ✅ Handle offline mode
-      console.warn('Offline mode detected - using cached transactions.');
-      setState((prevState) => ({
-        ...prevState,
-        status: STATUSES.OFFLINE, // ✅ New status for offline mode
-      }));
-      return;
-    }
-
     setState((prevState) => ({
       ...prevState,
       status: STATUSES.PENDING,
