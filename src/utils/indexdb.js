@@ -120,6 +120,28 @@ function getData(start, total) {
   });
 }
 
+async function getAllData() {
+  return new Promise((resolve, reject) => {
+    open()
+      .then(() => {
+        const db = html5rocks.indexedDB.db;
+        if (!db) {
+          reject(Error('No database found'));
+          return;
+        }
+
+        const transaction = db.transaction(['budget'], 'readonly');
+        const store = transaction.objectStore('budget');
+
+        const request = store.getAll();
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = (e) => reject(e);
+      })
+      .catch(reject);
+  });
+}
+
 const updateItem = (item) => addItem(item);
 
-export { open, addItem, getItems, deleteItem, updateItem, getData };
+export { open, addItem, getItems, deleteItem, updateItem, getData, getAllData };

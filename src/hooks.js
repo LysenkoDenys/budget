@@ -6,6 +6,7 @@ import {
   addItem,
   deleteItem,
   updateItem,
+  getAllData,
 } from './utils/indexdb';
 
 export const useModal = () => {
@@ -160,6 +161,32 @@ export const useData = () => {
     [setState, state]
   );
 
+  const downloadTransactions = async () => {
+    try {
+      const transactions = await getAllData();
+
+      if (!transactions.length) {
+        alert('No transactions found to download.');
+        return;
+      }
+
+      const dataStr = JSON.stringify(transactions, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'transactions.json';
+      document.body.appendChild(a);
+      a.click();
+
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading transactions:', error);
+    }
+  };
+
   return {
     ...state,
     pushTransaction,
@@ -167,5 +194,6 @@ export const useData = () => {
     onEdit,
     onStarClick,
     loadMoreRows,
+    downloadTransactions,
   };
 };

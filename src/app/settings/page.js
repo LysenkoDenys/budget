@@ -5,6 +5,8 @@ import { useBooleanToggle } from '../../hooks';
 import { LOCALES } from '../../providers/i18n';
 import { saveToStorage } from '../../utils/localStorage';
 import { FormattedMessage } from 'react-intl';
+import ButtonUploadDownload from '../../components/ButtonUploadDownload';
+import { useData } from '../../hooks';
 
 // const Test = memo(({ data }) => {
 //   console.log('rendering'); //
@@ -14,6 +16,7 @@ import { FormattedMessage } from 'react-intl';
 const Settings = () => {
   const { state, dispatch } = useContext(AppContext);
   const { status, handleStatusChange } = useBooleanToggle();
+  const { downloadTransactions } = useData();
   // const [isAdvancedSettingsShown, setIsAdvancedSettingsShown] = useState(false);
   const currencyHandler = (e) => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
@@ -93,7 +96,7 @@ const Settings = () => {
         </button>
         {status ? (
           <div className="">
-            <ul className="space-y-2">
+            <ul className="space-y-2 list-none">
               <li>
                 <label className="flex items-center gap-2">
                   <input
@@ -104,6 +107,16 @@ const Settings = () => {
                   />
                   <FormattedMessage id="settings.decimal" />
                 </label>
+              </li>
+              <li>
+                <ButtonUploadDownload buttonName={'Upload transactions'} />
+              </li>
+              <li>
+                <ButtonUploadDownload
+                  buttonName={'Download transactions'}
+                  downloadTransactions={downloadTransactions}
+                  title="download all the transactions in a JSON file"
+                />
               </li>
             </ul>
           </div>

@@ -93,7 +93,6 @@ https://budget4u.vercel.app
 
 <p>TODO:</p>
 <ul>
-<li>❎get rid of spinner offline</li>
 <li>❎!!statistics filter for period of time - need adjustment</li>
 <li>❎upload/download transactions</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
