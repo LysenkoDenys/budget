@@ -39,6 +39,12 @@ export const useData = () => {
     hasNextPage: true,
   });
 
+  // 🔹 NEW: Date range state for filtering
+  const [dateFilter, setDateFilter] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
   useEffect(() => {
     setState((prevState) => ({
       ...prevState,
@@ -113,6 +119,10 @@ export const useData = () => {
 
   const onDelete = useCallback(
     (id) => {
+      // const confirmDelete = window.confirm(
+      //   'Are you sure you want to delete this transaction?'
+      // );
+      // if (!confirmDelete) return;
       setState((state) => ({
         ...state,
         transactions: state.transactions.filter((item) => item.id !== id),
@@ -200,10 +210,28 @@ export const useData = () => {
             return;
           }
 
-          // Add each transaction to IndexedDB
-          transactions.forEach((transaction) => {
-            addItem(transaction);
-          });
+          const existingTransactions = await getAllData();
+          const existingIds = new Set(existingTransactions.map((t) => t.id));
+
+          const newTransactions = transactions
+            .filter((t) => t.id && !existingIds.has(t.id))
+            .map((t) => ({
+              ...t,
+              value: +t.value,
+              id: t.id || Date.now(),
+            }));
+
+          if (!newTransactions.length) {
+            alert('No new transactions to upload.');
+            return;
+          }
+
+          await Promise.all(newTransactions.map(addItem));
+
+          setState((prevState) => ({
+            ...prevState,
+            transactions: [...newTransactions, ...prevState.transactions],
+          }));
 
           alert('Transactions uploaded successfully!');
         } catch (error) {

@@ -113,7 +113,7 @@ const Settings = () => {
                 <ButtonUpload
                   buttonName={'Upload transactions'}
                   uploadTransactions={uploadTransactions}
-                  title="upload transactions from a JSON file"
+                  title="upload (add) transactions from a JSON file"
                 />
               </li>
               <li>

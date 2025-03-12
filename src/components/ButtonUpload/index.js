@@ -1,29 +1,22 @@
-const ButtonUpload = ({ buttonName, downloadTransactions, title }) => {
+const ButtonUpload = ({ buttonName, uploadTransactions, title }) => {
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        try {
-          const transactions = JSON.parse(e.target.result);
-          uploadTransactions(transactions); // Save to IndexedDB
-        } catch (error) {
-          console.error('Error parsing JSON file:', error);
-        }
-      };
-      reader.readAsText(file);
+      uploadTransactions(file); // Directly pass the file to be handled properly
     }
   };
 
   return (
-    <label className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded text-sm cursor-pointer">
+    <label
+      className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded text-sm cursor-pointer"
+      title={title}
+    >
       {buttonName}
       <input
         type="file"
         accept=".json"
         className="hidden"
         onChange={handleFileUpload}
-        title={title}
       />
     </label>
   );
