@@ -5,7 +5,8 @@ import { useBooleanToggle } from '../../hooks';
 import { LOCALES } from '../../providers/i18n';
 import { saveToStorage } from '../../utils/localStorage';
 import { FormattedMessage } from 'react-intl';
-import ButtonUploadDownload from '../../components/ButtonUploadDownload';
+import ButtonDownload from '../../components/ButtonDownload';
+import ButtonUpload from '../../components/ButtonUpload';
 import { useData } from '../../hooks';
 
 // const Test = memo(({ data }) => {
@@ -16,7 +17,7 @@ import { useData } from '../../hooks';
 const Settings = () => {
   const { state, dispatch } = useContext(AppContext);
   const { status, handleStatusChange } = useBooleanToggle();
-  const { downloadTransactions } = useData();
+  const { downloadTransactions, uploadTransactions } = useData();
   // const [isAdvancedSettingsShown, setIsAdvancedSettingsShown] = useState(false);
   const currencyHandler = (e) => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
@@ -109,10 +110,14 @@ const Settings = () => {
                 </label>
               </li>
               <li>
-                <ButtonUploadDownload buttonName={'Upload transactions'} />
+                <ButtonUpload
+                  buttonName={'Upload transactions'}
+                  uploadTransactions={uploadTransactions}
+                  title="upload transactions from a JSON file"
+                />
               </li>
               <li>
-                <ButtonUploadDownload
+                <ButtonDownload
                   buttonName={'Download transactions'}
                   downloadTransactions={downloadTransactions}
                   title="download all the transactions in a JSON file"

@@ -187,6 +187,37 @@ export const useData = () => {
     }
   };
 
+  const uploadTransactions = async (file) => {
+    try {
+      const reader = new FileReader();
+
+      reader.onload = async (event) => {
+        try {
+          const transactions = JSON.parse(event.target.result);
+
+          if (!Array.isArray(transactions)) {
+            alert('Invalid file format! Please upload a valid JSON file.');
+            return;
+          }
+
+          // Add each transaction to IndexedDB
+          transactions.forEach((transaction) => {
+            addItem(transaction);
+          });
+
+          alert('Transactions uploaded successfully!');
+        } catch (error) {
+          console.error('Error parsing file:', error);
+          alert("Error processing the file. Make sure it's a valid JSON.");
+        }
+      };
+
+      reader.readAsText(file);
+    } catch (error) {
+      console.error('Error uploading transactions:', error);
+    }
+  };
+
   return {
     ...state,
     pushTransaction,
@@ -195,5 +226,6 @@ export const useData = () => {
     onStarClick,
     loadMoreRows,
     downloadTransactions,
+    uploadTransactions,
   };
 };
