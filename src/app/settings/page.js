@@ -86,6 +86,19 @@ const Settings = () => {
               </select>
             </label>
           </div>
+          <ul className="space-y-2 list-none">
+            <li>
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={state.showDecimals}
+                  onChange={handleDecimalToggle}
+                  className="form-checkbox text-blue-600"
+                />
+                <FormattedMessage id="settings.decimal" />
+              </label>
+            </li>
+          </ul>
         </form>
       </div>
       <div className="m-4">
@@ -95,6 +108,7 @@ const Settings = () => {
         >
           <FormattedMessage id="settings.extended" />
         </button>
+
         {status ? (
           <div className="">
             <ul className="space-y-2 list-none">

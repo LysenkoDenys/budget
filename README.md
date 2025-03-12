@@ -94,7 +94,6 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎!!statistics filter for period of time - need adjustment</li>
-<li>❎upload/download transactions</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
 <li>❎ Skipping auto-scroll behavior due to `position: sticky` or `position: fixed` on element... addButton is above scrollable component Transactions - warning message</li>
 </ul>
