@@ -42,5 +42,8 @@ export default {
       extended: 'Розширені налаштування',
       decimal: 'копійки',
     },
+    statistics: {
+      statistics: 'Статистика',
+    },
   },
 };

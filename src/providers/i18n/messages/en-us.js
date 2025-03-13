@@ -41,5 +41,8 @@ export default {
       extended: 'Extended settings',
       decimal: 'Cents',
     },
+    statistics: {
+      statistics: 'Statistics',
+    },
   },
 };

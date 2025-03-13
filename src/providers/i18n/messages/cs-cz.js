@@ -41,5 +41,8 @@ export default {
       extended: 'Rozšířená nastavení',
       decimal: 'centy',
     },
+    statistics: {
+      statistics: 'Statistika',
+    },
   },
 };
