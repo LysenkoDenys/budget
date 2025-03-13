@@ -140,23 +140,23 @@ const StatisticsChart = () => {
       <h1 className="text-4xl mx-[2%] mt-12">
         <FormattedMessage id="statistics.statistics" />
       </h1>
-      <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg">
+      <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500 mb-2">
         <div className="flex flex-wrap justify-center gap-4 mb-4">
           <button
             onClick={() => setTimePeriod('daily')}
-            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none"
+            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-800"
           >
             Daily
           </button>
           <button
             onClick={() => setTimePeriod('weekly')}
-            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none"
+            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-800"
           >
             Weekly
           </button>
           <button
             onClick={() => setTimePeriod('monthly')}
-            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none"
+            className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-800"
           >
             Monthly
           </button>
@@ -166,14 +166,14 @@ const StatisticsChart = () => {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none"
+              className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-800"
               placeholder="Start Date"
             />
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none"
+              className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-800"
               placeholder="End Date"
             />
           </div>
@@ -181,7 +181,7 @@ const StatisticsChart = () => {
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none"
+            className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-800"
           >
             {categories.map((category, index) => (
               <option key={index} value={category}>
@@ -192,6 +192,8 @@ const StatisticsChart = () => {
         </div>
         <h2 className="text-xl font-bold text-center mb-4">Bar chart</h2>
         <StackedBarChartComponent data={filteredData} />
+      </div>
+      <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500">
         <h2 className="text-xl font-bold text-center mb-4">Pie chart</h2>
         <PieChartComponent data={filteredData} />
       </div>
