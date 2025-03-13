@@ -103,7 +103,7 @@ const Settings = () => {
       </div>
       <div className="m-4">
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded"
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded mb-4"
           onClick={handleStatusChange}
         >
           <FormattedMessage id="settings.extended" />
@@ -112,17 +112,6 @@ const Settings = () => {
         {status ? (
           <div className="">
             <ul className="space-y-2 list-none">
-              <li>
-                <label className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    checked={state.showDecimals}
-                    onChange={handleDecimalToggle}
-                    className="form-checkbox text-blue-600"
-                  />
-                  <FormattedMessage id="settings.decimal" />
-                </label>
-              </li>
               <li>
                 <ButtonUpload
                   buttonName={'Upload transactions'}
