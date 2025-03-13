@@ -151,19 +151,15 @@ export const useData = () => {
     (id) => {
       const item = state.transactions.find((i) => i.id === id);
 
-      updateItem({
-        ...item,
-        isStarred: !item.isStarred,
-      }).then(() => {
+      // Toggle the isStarred value
+      const updatedItem = { ...item, isStarred: !item.isStarred };
+
+      // Update the transaction in IndexedDB
+      updateItem(updatedItem).then(() => {
         setState((state) => ({
           ...state,
-          transactions: state.transactions.map((item) =>
-            item.id !== id
-              ? item
-              : {
-                  ...item,
-                  isStarred: !item.isStarred,
-                }
+          transactions: state.transactions.map(
+            (item) => (item.id !== id ? item : updatedItem) // Update the local state with the new starred status
           ),
         }));
       });

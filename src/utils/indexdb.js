@@ -44,7 +44,12 @@ function addItem(item) {
     const trans = db.transaction([DB_NAME], 'readwrite');
     const store = trans.objectStore(DB_NAME);
 
-    const request = store.put(item);
+    const itemWithStar = {
+      ...item,
+      isStarred: item.isStarred ?? false,
+    };
+
+    const request = store.put(itemWithStar);
 
     request.onsuccess = function (e) {
       resolve();
