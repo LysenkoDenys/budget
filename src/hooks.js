@@ -79,7 +79,7 @@ export const useData = () => {
       status: STATUSES.PENDING,
     }));
 
-    getData(state.transactions.length, 1) // Load 1 item at a time
+    getData(state.transactions.length, 20) // Load 1 item at a time
       .then((newTransactions) => {
         setState((prevState) => ({
           ...prevState,
