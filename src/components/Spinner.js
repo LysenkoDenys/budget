@@ -1,7 +1,6 @@
-// src/components/Spinner.js
 const Spinner = () => (
-  <div className="flex justify-center items-center h-32">
-    <div className="border-t-4 border-blue-500 border-solid w-16 h-16 rounded-full animate-spin"></div>
+  <div className="flex justify-center items-center h-screen">
+    <div className="w-10 h-10 border-4 border-t-transparent border-blue-500 border-solid rounded-full animate-spin"></div>
   </div>
 );
 
