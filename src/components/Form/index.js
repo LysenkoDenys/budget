@@ -126,7 +126,7 @@ const Form = ({ initialData, onSave, onClose }) => {
                         intl.formatMessage({ id: `form.${categoryKey}` })
                       )
                     }
-                    className={`block px-4 py-0 text-sm text-gray-700 dark:text-white ${
+                    className={`w-full block px-4 py-0 text-sm text-gray-700 dark:text-white ${
                       active ? 'bg-gray-100 text-gray-900' : ''
                     }`}
                   >
