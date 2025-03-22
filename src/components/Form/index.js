@@ -102,7 +102,7 @@ const Form = ({ initialData, onSave, onClose }) => {
             className="-mr-1 size-5 text-gray-400"
           />
         </MenuButton>
-        <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden">
+        <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden max-h-60 overflow-y-auto">
           {[
             'income',
             'food',
@@ -126,9 +126,9 @@ const Form = ({ initialData, onSave, onClose }) => {
                         intl.formatMessage({ id: `form.${categoryKey}` })
                       )
                     }
-                    className={`w-full block px-4 py-0 text-sm text-gray-700 dark:text-white ${
+                    className={`w-full block px-4 py-0 text-base text-gray-700 dark:text-white ${
                       active ? 'bg-gray-100 text-gray-900' : ''
-                    }`}
+                    } ${categoryKey === 'income' ? 'bg-green-200' : ''} `}
                   >
                     <FormattedMessage id={`form.${categoryKey}`} />
                   </button>
