@@ -1,12 +1,20 @@
-import React, { useContext, useCallback, memo } from 'react';
+import React, { useContext, useCallback, memo, useState } from 'react';
 import { AppContext } from '../../providers/context';
 import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
 import { RiEditBoxLine, RiDeleteBin4Line } from 'react-icons/ri';
+import ConfirmModal from '../ConfirmModal/ConfirmModal';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const confirmDelete = () => {
+    onDelete(id);
+    setIsModalOpen(false);
+  };
+
   const bgColor =
     value >= 0
       ? `grid items-center grid-cols-[20px_50px_60px_50px_auto_50px] 
@@ -66,10 +74,15 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
           onClick={editItem}
         />
         <RiDeleteBin4Line
-          onClick={deleteItem}
+          onClick={() => setIsModalOpen(true)}
           className="text-2xl cursor-pointer text-red-500 hover:text-red-700 dark:text-red-400"
         />
       </div>
+      <ConfirmModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={confirmDelete}
+      />
     </div>
   );
 });
