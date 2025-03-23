@@ -90,7 +90,7 @@ const Form = ({ initialData, onSave, onClose }) => {
         placeholder={intl.formatMessage({ id: 'form.sum' })}
         onChange={handleChange}
         value={form.value}
-        className="w-full sm:w-18 md:w-22 lg:w-32 py-1 px-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg "
+        className="w-full sm:w-18 md:w-22 lg:w-32 py-1 px-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
       />
 
       {/* Category Dropdown */}
@@ -128,10 +128,14 @@ const Form = ({ initialData, onSave, onClose }) => {
                     }
                     className={`w-full block px-4 py-0 text-base text-gray-700 gap-2 flex items-center dark:text-white ${
                       active ? 'bg-gray-100 text-gray-900' : ''
-                    } ${categoryKey === 'income' ? 'bg-green-200' : ''} `}
+                    } ${
+                      categoryKey === 'income'
+                        ? 'bg-green-200 dark:bg-green-700'
+                        : ''
+                    } `}
                   >
                     {categoryKey === 'income' && <span>💰</span>}
-                    {categoryKey === 'food' && <span>🍔</span>}
+                    {categoryKey === 'food' && <span>🥝</span>}
                     {categoryKey === 'transportation' && <span>🚍</span>}
                     {categoryKey === 'utility' && <span>💡</span>}
                     {categoryKey === 'communication' && <span>📱</span>}
