@@ -2,7 +2,7 @@
 import { FormattedMessage } from 'react-intl';
 import React, { useState, useEffect } from 'react';
 import { open, getData } from '../../utils/indexdb';
-import StackedBarChartComponent from '../../components/StackedBarChartComponent/StackedBarChartComponent';
+// import StackedBarChartComponent from '../../components/StackedBarChartComponent/StackedBarChartComponent';
 import PieChartComponent from '../../components/PieChartComponent/PieChartComponent';
 
 const StatisticsChart = () => {
@@ -142,7 +142,7 @@ const StatisticsChart = () => {
       </h1>
       <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500 mb-2">
         <div className="flex flex-wrap justify-center gap-4 mb-4">
-          <button
+          {/* <button
             onClick={() => setTimePeriod('daily')}
             className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-800"
           >
@@ -159,7 +159,7 @@ const StatisticsChart = () => {
             className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none dark:bg-gray-800"
           >
             Monthly
-          </button>
+          </button> */}
 
           <div className="flex gap-4">
             <input
@@ -178,7 +178,7 @@ const StatisticsChart = () => {
             />
           </div>
 
-          <select
+          {/* <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
             className="px-4 py-2 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-800"
@@ -188,10 +188,10 @@ const StatisticsChart = () => {
                 {category}
               </option>
             ))}
-          </select>
+          </select> */}
         </div>
-        <h2 className="text-xl font-bold text-center mb-4">Bar chart</h2>
-        <StackedBarChartComponent data={filteredData} />
+        {/* <h2 className="text-xl font-bold text-center mb-4">Bar chart</h2>
+        <StackedBarChartComponent data={filteredData} /> */}
       </div>
       <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500">
         <h2 className="text-xl font-bold text-center mb-4">Pie chart</h2>
