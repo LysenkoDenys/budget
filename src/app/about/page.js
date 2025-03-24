@@ -3,7 +3,7 @@
 const About = () => {
   return (
     <section className="max-w-4xl mx-auto px-6 py-10 bg-white dark:bg-gray-900 rounded-2xl shadow-lg transition-all sm:px-8 sm:py-12 md:px-10 md:py-14">
-      <h1 className="text-2xl mt-3 sm:text-4xl font-bold text-gray-800 dark:text-white mb-6 text-center">
+      <h1 className="text-2xl mt-3 sm:text-4xl font-bold text-gray-800 dark:text-white mb-2 text-center">
         About Budget
       </h1>
 
@@ -73,6 +73,16 @@ const About = () => {
         </li>
         <li>
           📌 <strong>Non-commercial</strong> – no advertisements.
+        </li>
+      </ul>
+      <h2 className="text-xl sm:text-3xl font-semibold text-gray-700 dark:text-gray-200 mt-8 mb-4">
+        Special thanks:
+      </h2>
+
+      <ul className="space-y-4 text-gray-600 dark:text-gray-300 text-sm">
+        <li>
+          👨 <strong>QA testing - Eugen Chub</strong> – thanks to him for the
+          inspiration and good ideas.
         </li>
       </ul>
     </section>

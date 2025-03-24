@@ -14,6 +14,8 @@ https://budget4u.vercel.app
 
 <p>Sample:</p>
 
+![Image](https://github.com/user-attachments/assets/ad3af4e3-04e0-411a-95cb-e2181cb24d2e)
+
 <p>This Next.js PWA project uses next plug-ns, API, libraries:</p>
 <ul>
 <li>⭐https://www.npmjs.com/package/react-intl</li>

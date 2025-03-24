@@ -3,20 +3,20 @@ import React from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 
 const COLORS = [
-  '#0088FE', // Blue
-  '#00C49F', // Green
-  '#FFBB28', // Yellow
-  '#FF8042', // Orange
-  '#A28EF0', // Purple
-  '#FF6384', // Pink
-  '#36A2EB', // Light Blue
-  '#4BC0C0', // Cyan
-  '#F77825', // Deep Orange
-  '#D4A5A5', // Soft Red
+  '#0088FE',
+  '#00C49F',
+  '#FFBB28',
+  '#FF8042',
+  '#A28EF0',
+  '#FF6384',
+  '#36A2EB',
+  '#4BC0C0',
+  '#F77825',
+  '#D4A5A5',
 ];
 
 const PieChartComponent = ({ data }) => (
-  <ResponsiveContainer width="100%" height={400}>
+  <ResponsiveContainer width="100%" height={300}>
     <PieChart>
       <Pie
         data={data}
