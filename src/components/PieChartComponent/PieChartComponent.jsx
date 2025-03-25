@@ -51,7 +51,7 @@ const PieChartComponent = ({ data }) => (
               dominantBaseline="central"
               fontSize={window.innerWidth < 600 ? 10 : 14}
             >
-              {`${data[index]?.name || 'Unknown'}: ${value}`}
+              {`${data[index]?.name || 'Unknown'}: ${value.toFixed(0)}`}
             </text>
           );
         }}
