@@ -1,6 +1,7 @@
 'use client';
 import { FormattedMessage } from 'react-intl';
-import React, { useState, useEffect } from 'react';
+import { AppContext } from '../../providers/context';
+import React, { useState, useEffect, useContext } from 'react';
 import { open, getData } from '../../utils/indexdb';
 import PieChartComponent from '../../components/PieChartComponent/PieChartComponent';
 
@@ -10,11 +11,13 @@ const StatisticsChart = () => {
   const [endDate, setEndDate] = useState('');
   const [transactions, setTransactions] = useState([]);
 
+  const { state } = useContext(AppContext);
+
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
         await open();
-        const data = await getData(0, 50);
+        const data = await getData(0, Infinity);
 
         const parsedData = data.map((transaction) => ({
           ...transaction,
@@ -70,6 +73,16 @@ const StatisticsChart = () => {
     }
   }, [transactions, startDate, endDate]);
 
+  const totalExpenses = filteredData
+    .reduce((acc, t) => acc + t.value, 0)
+    .toFixed(0);
+  const totalIncomes = transactions
+    .filter((t) => t.value > 0)
+    .reduce((acc, t) => acc + t.value, 0)
+    .toFixed(0);
+
+  const totalBudget = totalIncomes - totalExpenses;
+
   return (
     <>
       <h1 className="text-2xl mt-12 sm:text-4xl font-bold text-gray-800 dark:text-white mb-2 text-center">
@@ -103,17 +116,16 @@ const StatisticsChart = () => {
       </div>
 
       <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500">
-        <h2 className="text-xl font-bold text-center mb-2">Statistics:</h2>
+        <h2 className="text-xl font-bold text-center mb-2">
+          Budget in the period:
+        </h2>
         <p>
-          Your income in the period:{' '}
-          {transactions
-            .filter((t) => t.value > 0)
-            .reduce((acc, t) => acc + t.value, 0)}
+          income: {new Intl.NumberFormat(state.locale).format(totalIncomes)}
         </p>
         <p>
-          Your expenses in the period:{' '}
-          {filteredData.reduce((acc, t) => acc + t.value, 0)}
+          expenses: {new Intl.NumberFormat(state.locale).format(totalExpenses)}
         </p>
+        <p>budget: {new Intl.NumberFormat(state.locale).format(totalBudget)}</p>
       </div>
     </>
   );
