@@ -43,6 +43,11 @@ export default {
     },
     statistics: {
       statistics: 'Statistics',
+      pieChart: 'Expenses',
+      budgetPer: 'Budget in the period:',
+      income: 'income:',
+      expenses: 'expenses:',
+      budget: 'budget:',
     },
   },
 };

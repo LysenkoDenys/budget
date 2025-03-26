@@ -105,27 +105,42 @@ const StatisticsChart = () => {
             className="w-full md:w-auto px-4 py-1 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-700 text-gray-900 dark:text-white"
             placeholder="End Date"
           />
+          <input
+            type="button"
+            value="Last month"
+            onChange={() => {}}
+            className="w-full md:w-auto px-4 py-1 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-700 text-gray-900 dark:text-white cursor-pointer"
+            placeholder="Last month"
+          />
         </div>
       </div>
 
       <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500 mb-2">
         <h2 className="text-xl font-bold text-center mb-2">
-          Pie Chart (Expenses %)
+          <FormattedMessage id="statistics.pieChart" />
         </h2>
         <PieChartComponent data={filteredData} />
       </div>
 
       <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500">
         <h2 className="text-xl font-bold text-center mb-2">
-          Budget in the period:
+          <FormattedMessage id="statistics.budgetPer" />
         </h2>
-        <p>
-          income: {new Intl.NumberFormat(state.locale).format(totalIncomes)}
+        <p className="text-center">
+          <FormattedMessage id="statistics.income" />{' '}
+          {new Intl.NumberFormat(state.locale).format(totalIncomes)}{' '}
+          {state.currency}
         </p>
-        <p>
-          expenses: {new Intl.NumberFormat(state.locale).format(totalExpenses)}
+        <p className="text-center">
+          <FormattedMessage id="statistics.expenses" />{' '}
+          {new Intl.NumberFormat(state.locale).format(totalExpenses)}{' '}
+          {state.currency}
         </p>
-        <p>budget: {new Intl.NumberFormat(state.locale).format(totalBudget)}</p>
+        <p className="text-center">
+          <FormattedMessage id="statistics.budget" />{' '}
+          {new Intl.NumberFormat(state.locale).format(totalBudget)}{' '}
+          {state.currency}
+        </p>
       </div>
     </>
   );

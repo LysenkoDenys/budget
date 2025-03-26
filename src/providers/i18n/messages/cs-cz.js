@@ -43,6 +43,11 @@ export default {
     },
     statistics: {
       statistics: 'Statistika',
+      pieChart: 'Výdaje',
+      budgetPer: 'Rozpočet v období:',
+      income: 'příjem:',
+      expenses: 'výdaje:',
+      budget: 'rozpočet:',
     },
   },
 };

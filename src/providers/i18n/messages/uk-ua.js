@@ -44,6 +44,11 @@ export default {
     },
     statistics: {
       statistics: 'Статистика',
+      pieChart: 'Витрати',
+      budgetPer: 'Бюджет за період:',
+      income: 'надходження:',
+      expenses: 'витрати:',
+      budget: 'бюджет:',
     },
   },
 };

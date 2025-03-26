@@ -96,6 +96,7 @@ https://budget4u.vercel.app
 <p>TODO:</p>
 <ul>
 <li>❎!!statistics filter for period of time - need adjustment</li>
+<li>❎ edit transaction when customer hit the transaction</li>
 <li>❎ set filter on the star in TransactionsHeader</li>
 <li>❎ transactions do not scroll till the end and just jump up</li>
 <li>❎ Skipping auto-scroll behavior due to `position: sticky` or `position: fixed` on element... addButton is above scrollable component Transactions - warning message</li>
