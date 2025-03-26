@@ -73,10 +73,18 @@ const StatisticsChart = () => {
     }
   }, [transactions, startDate, endDate]);
 
+  const filteredTransactions = transactions.filter((t) => {
+    const transactionDate = new Date(t.date);
+    return (
+      (!startDate || transactionDate >= new Date(startDate)) &&
+      (!endDate || transactionDate <= new Date(endDate))
+    );
+  });
+
   const totalExpenses = filteredData
     .reduce((acc, t) => acc + t.value, 0)
     .toFixed(0);
-  const totalIncomes = transactions
+  const totalIncomes = filteredTransactions
     .filter((t) => t.value > 0)
     .reduce((acc, t) => acc + t.value, 0)
     .toFixed(0);
