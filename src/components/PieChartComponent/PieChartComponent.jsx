@@ -50,7 +50,7 @@ const PieChartComponent = ({ data }) => {
               <text
                 x={x}
                 y={y}
-                fill="white"
+                className="fill-gray-900 dark:fill-white"
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontSize={window.innerWidth < 600 ? 10 : 14}

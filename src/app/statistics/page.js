@@ -113,13 +113,6 @@ const StatisticsChart = () => {
             className="w-full md:w-auto px-4 py-1 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-700 text-gray-900 dark:text-white"
             placeholder="End Date"
           />
-          <input
-            type="button"
-            value="Last month"
-            onChange={() => {}}
-            className="w-full md:w-auto px-4 py-1 bg-gray-200 rounded-lg focus:outline-none dark:bg-gray-700 text-gray-900 dark:text-white cursor-pointer"
-            placeholder="Last month"
-          />
         </div>
       </div>
 
