@@ -44,8 +44,11 @@ const Transactions = ({
 
   // Sorting transactions by date (descending)
   const sortedData = useMemo(() => {
+    console.log('Original Data:', data); // Debugging step
     if (!data || data.length === 0) return [];
-    return [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+    return [...data].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   }, [data]);
 
   const getItemSize = (index) => itemSizeMap.current[index] || 60;

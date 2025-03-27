@@ -39,6 +39,8 @@ export default {
       currency: 'Currency:',
       language: 'Language:',
       extended: 'Extended settings',
+      upload: 'Upload transactions',
+      download: 'Download transactions',
       decimal: 'Cents',
     },
     statistics: {

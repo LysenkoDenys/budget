@@ -114,14 +114,14 @@ const Settings = () => {
             <ul className="space-y-2 list-none">
               <li>
                 <ButtonUpload
-                  buttonName={'Upload transactions'}
+                  buttonName={<FormattedMessage id="settings.upload" />}
                   uploadTransactions={uploadTransactions}
                   title="upload (add) transactions from a JSON file"
                 />
               </li>
               <li>
                 <ButtonDownload
-                  buttonName={'Download transactions'}
+                  buttonName={<FormattedMessage id="settings.download" />}
                   downloadTransactions={downloadTransactions}
                   title="download all the transactions in a JSON file"
                 />

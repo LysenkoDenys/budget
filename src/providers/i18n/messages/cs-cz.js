@@ -39,6 +39,8 @@ export default {
       currency: 'Currency:',
       language: 'Jazyk:',
       extended: 'Rozšířená nastavení',
+      upload: 'Nahrát transakce',
+      download: 'Stáhnout transakce',
       decimal: 'centy',
     },
     statistics: {

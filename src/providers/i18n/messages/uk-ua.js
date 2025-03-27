@@ -40,6 +40,8 @@ export default {
       currency: 'Валюта:',
       language: 'Мова:',
       extended: 'Розширені налаштування',
+      upload: 'Заватнажити транзакції',
+      download: 'Скачати транзакції',
       decimal: 'копійки',
     },
     statistics: {
