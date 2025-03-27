@@ -45,13 +45,13 @@ const Settings = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <h1 className="text-4xl mx-[2%] mt-12">
         {' '}
         <FormattedMessage id="settings.settings" />
       </h1>
       {/* <Test data={data} /> */}
-      <div className="m-4">
+      <div className="m-4 ">
         <form action="">
           <div className="my-2">
             <label htmlFor="selector" className="text-gray-500 ">
@@ -130,7 +130,7 @@ const Settings = () => {
           </div>
         ) : null}
       </div>
-    </>
+    </div>
   );
 };
 

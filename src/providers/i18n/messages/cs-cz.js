@@ -51,5 +51,10 @@ export default {
       expenses: 'výdaje:',
       budget: 'rozpočet:',
     },
+    confirmModal: {
+      caption: 'Smazat transakci?',
+      cancel: 'Zrušit',
+      delete: 'Vymazat',
+    },
   },
 };

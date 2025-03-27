@@ -52,5 +52,10 @@ export default {
       expenses: 'витрати:',
       budget: 'бюджет:',
     },
+    confirmModal: {
+      caption: 'Видалити транзакцію?',
+      cancel: 'Скасувати',
+      delete: 'Видалити',
+    },
   },
 };

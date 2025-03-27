@@ -51,5 +51,10 @@ export default {
       expenses: 'expenses:',
       budget: 'budget:',
     },
+    confirmModal: {
+      caption: 'Delete the transaction?',
+      cancel: 'Cancel',
+      delete: 'Delete',
+    },
   },
 };
