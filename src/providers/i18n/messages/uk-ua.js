@@ -33,7 +33,7 @@ export default {
       date: 'Дата',
       category: 'Стаття',
       comment: 'Коментар',
-      actions: 'Дії',
+      actions: 'Дія',
     },
     settings: {
       settings: 'Налаштування',

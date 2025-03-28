@@ -32,7 +32,7 @@ export default {
       date: 'Date',
       category: 'Category',
       comment: 'Comment',
-      actions: 'Actions',
+      actions: 'Action',
     },
     settings: {
       settings: 'Settings',
