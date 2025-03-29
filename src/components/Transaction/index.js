@@ -47,7 +47,10 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
     <div className={bgColor} onClick={editItem}>
       <div className="flex justify-center max-w-[20px]">
         <Image
-          onClick={() => onStarClick(id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onStarClick(id);
+          }}
           src={isStarred ? StarFilled : Star}
           alt="Star"
           width={16}
