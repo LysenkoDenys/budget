@@ -69,7 +69,10 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
         {comment}
       </p>
       <RiDeleteBin4Line
-        onClick={() => setIsModalOpen(true)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsModalOpen(true);
+        }}
         className="text-xl cursor-pointer text-red-500 hover:text-red-700 dark:text-red-400"
       />
       <ConfirmModal
