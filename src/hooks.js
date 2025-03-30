@@ -209,12 +209,14 @@ export const useData = () => {
           const existingTransactions = await getAllData();
           const existingIds = new Set(existingTransactions.map((t) => t.id));
 
+          // ✅ Ensure all uploaded dates are properly formatted
           const newTransactions = transactions
             .filter((t) => t.id && !existingIds.has(t.id))
             .map((t) => ({
               ...t,
               value: +t.value,
               id: t.id || Date.now(),
+              date: new Date(t.date).toISOString().split('T')[0], // Ensure correct format
             }));
 
           if (!newTransactions.length) {
@@ -222,11 +224,19 @@ export const useData = () => {
             return;
           }
 
+          // ✅ Insert into IndexedDB
           await Promise.all(newTransactions.map(addItem));
+
+          // ✅ Re-fetch all transactions and sort them after uploading
+          const updatedTransactions = await getAllData();
+
+          updatedTransactions.sort(
+            (a, b) => new Date(b.date) - new Date(a.date)
+          ); // Sort newest first
 
           setState((prevState) => ({
             ...prevState,
-            transactions: [...newTransactions, ...prevState.transactions],
+            transactions: updatedTransactions, // ✅ Overwrite transactions state with sorted data
           }));
 
           alert('Transactions uploaded successfully!');

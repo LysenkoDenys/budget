@@ -1,5 +1,5 @@
 const html5rocks = {};
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 const DB_NAME = 'budget';
 
 html5rocks.indexedDB = {};
@@ -10,21 +10,24 @@ html5rocks.indexedDB.onerror = function (e) {
 };
 
 function open() {
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
 
-    // We can only create Object stores in a versionchange transaction.
     request.onupgradeneeded = function (e) {
       const db = e.target.result;
+      let store;
 
-      // A versionchange transaction is started automatically.
-      e.target.transaction.onerror = html5rocks.indexedDB.onerror;
-
-      if (db.objectStoreNames.contains(DB_NAME)) {
-        db.deleteObjectStore(DB_NAME);
+      // Якщо сховище не існує - створюємо
+      if (!db.objectStoreNames.contains(DB_NAME)) {
+        store = db.createObjectStore(DB_NAME, { keyPath: 'id' });
+      } else {
+        store = e.target.transaction.objectStore(DB_NAME);
       }
 
-      db.createObjectStore(DB_NAME, { keyPath: 'id' });
+      // 🔹 Гарантуємо створення `dateIndex`
+      if (!store.indexNames.contains('dateIndex')) {
+        store.createIndex('dateIndex', 'date', { unique: false });
+      }
     };
 
     request.onsuccess = function (e) {
@@ -97,15 +100,18 @@ function getItems() {
 }
 
 function getData(start, total) {
-  return new Promise(function (resolve, reject) {
-    var db = html5rocks.indexedDB.db;
-    var t = db.transaction([DB_NAME], 'readonly');
-    var store = t.objectStore(DB_NAME);
-    var transactions = [];
-    var hasSkipped = false;
+  return new Promise((resolve, reject) => {
+    const db = html5rocks.indexedDB.db;
+    const t = db.transaction([DB_NAME], 'readonly');
+    const store = t.objectStore(DB_NAME);
 
-    store.openCursor(null, 'prev').onsuccess = function (e) {
-      var cursor = e.target.result;
+    // Використовуємо `dateIndex` для сортування
+    const index = store.index('dateIndex');
+    const transactions = [];
+    let hasSkipped = false;
+
+    index.openCursor(null, 'prev').onsuccess = function (e) {
+      const cursor = e.target.result;
       if (!hasSkipped && start > 0 && cursor) {
         hasSkipped = true;
         cursor.advance(start);
