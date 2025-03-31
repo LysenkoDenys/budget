@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, memo, useMemo, useEffect } from 'react';
+import React, { useContext, memo, useMemo, useEffect, useState } from 'react';
 import { AppContext } from '../../providers/context';
 import { useBooleanToggle } from '../../hooks';
 import { LOCALES } from '../../providers/i18n';
@@ -9,6 +9,7 @@ import ButtonDownload from '../../components/ButtonDownload';
 import ButtonUpload from '../../components/ButtonUpload';
 import ButtonClear from '../../components/ButtonClear';
 import { useData } from '../../hooks';
+import ConfirmModal from '../../components/ConfirmModal/ConfirmModal';
 
 // const Test = memo(({ data }) => {
 //   console.log('rendering'); //
@@ -17,6 +18,7 @@ import { useData } from '../../hooks';
 
 const Settings = () => {
   const { state, dispatch } = useContext(AppContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { status, handleStatusChange } = useBooleanToggle();
   const { downloadTransactions, uploadTransactions, clearDatabase } = useData();
   // const [isAdvancedSettingsShown, setIsAdvancedSettingsShown] = useState(false);
@@ -44,6 +46,13 @@ const Settings = () => {
       dispatch({ type: 'setShowDecimals', showDecimals: savedDecimals });
     }
   }, [dispatch]);
+
+  const confirmDelete = () => {
+    clearDatabase();
+    setIsModalOpen(false);
+  };
+
+  console.log('Modal open state:', isModalOpen);
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -130,14 +139,22 @@ const Settings = () => {
               <li>
                 <ButtonClear
                   buttonName={<FormattedMessage id="settings.clear" />}
-                  clearDatabase={clearDatabase}
                   title="remove all the transactions"
+                  clearDatabase={() => {
+                    setIsModalOpen(true);
+                  }}
                 />
               </li>
             </ul>
           </div>
         ) : null}
       </div>
+      <ConfirmModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={confirmDelete}
+        caption="captionDB"
+      />
     </div>
   );
 };

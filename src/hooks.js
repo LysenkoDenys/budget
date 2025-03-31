@@ -253,7 +253,6 @@ export const useData = () => {
   };
 
   const clearDatabase = async () => {
-    console.log('clearDatabase function triggered!');
     try {
       // Check if the database exists before attempting to delete it
       const databases = await indexedDB.databases();
@@ -264,12 +263,10 @@ export const useData = () => {
         return;
       }
 
-      console.log('Attempting to delete IndexedDB database...');
+      console.log('Attempting to delete IndexedDB...');
       const request = indexedDB.deleteDatabase('budget');
 
       request.onsuccess = () => {
-        console.log('Database deleted successfully!');
-        alert('База даних успішно видалена! Перезавантажте сторінку.');
         setTimeout(() => {
           window.location.reload(); // Reload after a small delay to ensure cleanup
         }, 500);
@@ -283,18 +280,18 @@ export const useData = () => {
         hasNextPage: false,
       }));
 
-      setTimeout(() => window.location.reload(), 500); // Optional: Reload page after 0.5s
+      setTimeout(() => window.location.reload(), 100); // Optional: Reload page after 0.5s
 
       request.onerror = (e) => {
         console.error('Database deletion error:', e);
-        alert('Сталася помилка під час видалення бази даних.');
+        alert('There is an error in attempt to remove the db');
       };
 
       request.onblocked = () => {
-        alert('Закрийте всі вкладки з додатком і спробуйте знову.');
+        console.log('db is blocked - it is normal - do not worry');
       };
     } catch (error) {
-      console.error('Помилка видалення бази даних:', error);
+      console.error('error of the db:', error);
     }
   };
 

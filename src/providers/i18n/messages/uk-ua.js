@@ -55,6 +55,7 @@ export default {
     },
     confirmModal: {
       caption: 'Видалити транзакцію?',
+      captionDB: 'Видалити ВСІ транзакції?',
       cancel: 'Скасувати',
       delete: 'Видалити',
     },

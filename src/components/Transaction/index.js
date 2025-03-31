@@ -3,7 +3,7 @@ import { AppContext } from '../../providers/context';
 import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
-import { RiEditBoxLine, RiDeleteBin4Line } from 'react-icons/ri';
+import { RiDeleteBin4Line } from 'react-icons/ri';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {

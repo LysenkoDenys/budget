@@ -2,7 +2,7 @@
 import Portal from '../Portal';
 import { FormattedMessage } from 'react-intl';
 
-const ConfirmModal = ({ isOpen, onClose, onConfirm }) => {
+const ConfirmModal = ({ isOpen, onClose, onConfirm, caption }) => {
   if (!isOpen) return null;
 
   return (
@@ -16,9 +16,11 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm }) => {
           className="bg-white p-2 rounded shadow-lg dark:bg-gray-700 z-50"
         >
           <h2 className="text-sm font-bold dark:text-white mb-2 text-center">
-            <FormattedMessage id="confirmModal.caption" />
+            <FormattedMessage
+              id={caption ? `confirmModal.${caption}` : 'confirmModal.caption'}
+            />
           </h2>
-          <div className="flex justify-end gap-2">
+          <div className="flex justify-center gap-2">
             <button
               onClick={onClose}
               className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"

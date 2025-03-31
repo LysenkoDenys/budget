@@ -54,6 +54,7 @@ export default {
     },
     confirmModal: {
       caption: 'Delete the transaction?',
+      captionDB: 'Remove ALL the transactions?',
       cancel: 'Cancel',
       delete: 'Delete',
     },

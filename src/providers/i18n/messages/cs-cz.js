@@ -54,6 +54,7 @@ export default {
     },
     confirmModal: {
       caption: 'Smazat transakci?',
+      captionDB: 'Odstranit VŠECHNY transakce?',
       cancel: 'Zrušit',
       delete: 'Vymazat',
     },
