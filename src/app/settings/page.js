@@ -7,6 +7,7 @@ import { saveToStorage } from '../../utils/localStorage';
 import { FormattedMessage } from 'react-intl';
 import ButtonDownload from '../../components/ButtonDownload';
 import ButtonUpload from '../../components/ButtonUpload';
+import ButtonClear from '../../components/ButtonClear';
 import { useData } from '../../hooks';
 
 // const Test = memo(({ data }) => {
@@ -17,7 +18,7 @@ import { useData } from '../../hooks';
 const Settings = () => {
   const { state, dispatch } = useContext(AppContext);
   const { status, handleStatusChange } = useBooleanToggle();
-  const { downloadTransactions, uploadTransactions } = useData();
+  const { downloadTransactions, uploadTransactions, clearDatabase } = useData();
   // const [isAdvancedSettingsShown, setIsAdvancedSettingsShown] = useState(false);
   const currencyHandler = (e) => {
     dispatch({ type: 'changeCurrency', currency: e.target.value });
@@ -70,7 +71,7 @@ const Settings = () => {
               </select>
             </label>
           </div>
-          <div className="my-1">
+          <div className="my-2">
             <label htmlFor="selector" className="text-gray-500 ">
               <FormattedMessage id="settings.language" />
               <select
@@ -124,6 +125,13 @@ const Settings = () => {
                   buttonName={<FormattedMessage id="settings.download" />}
                   downloadTransactions={downloadTransactions}
                   title="download all the transactions in a JSON file"
+                />
+              </li>
+              <li>
+                <ButtonClear
+                  buttonName={<FormattedMessage id="settings.clear" />}
+                  clearDatabase={clearDatabase}
+                  title="remove all the transactions"
                 />
               </li>
             </ul>

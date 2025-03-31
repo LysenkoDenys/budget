@@ -41,6 +41,7 @@ export default {
       extended: 'Rozšířená nastavení',
       upload: 'Nahrát transakce',
       download: 'Stáhnout transakce',
+      clear: 'Odstraňte všechny transakce',
       decimal: 'centy',
     },
     statistics: {

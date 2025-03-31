@@ -41,6 +41,7 @@ export default {
       extended: 'Extended settings',
       upload: 'Upload transactions',
       download: 'Download transactions',
+      clear: 'Clear all the transactions',
       decimal: 'Cents',
     },
     statistics: {

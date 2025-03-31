@@ -42,6 +42,7 @@ export default {
       extended: 'Розширені налаштування',
       upload: 'Заватнажити транзакції',
       download: 'Скачати транзакції',
+      clear: 'Видалити всі транзакції',
       decimal: 'копійки',
     },
     statistics: {

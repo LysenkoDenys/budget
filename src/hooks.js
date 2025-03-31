@@ -252,6 +252,52 @@ export const useData = () => {
     }
   };
 
+  const clearDatabase = async () => {
+    console.log('clearDatabase function triggered!');
+    try {
+      // Check if the database exists before attempting to delete it
+      const databases = await indexedDB.databases();
+      const dbExists = databases.some((db) => db.name === 'budget');
+
+      if (!dbExists) {
+        alert('Database does not exist.');
+        return;
+      }
+
+      console.log('Attempting to delete IndexedDB database...');
+      const request = indexedDB.deleteDatabase('budget');
+
+      request.onsuccess = () => {
+        console.log('Database deleted successfully!');
+        alert('База даних успішно видалена! Перезавантажте сторінку.');
+        setTimeout(() => {
+          window.location.reload(); // Reload after a small delay to ensure cleanup
+        }, 500);
+      };
+
+      // ✅ Reset state so UI knows database is empty
+      setState((prevState) => ({
+        ...prevState,
+        transactions: [],
+        status: STATUSES.IDLE,
+        hasNextPage: false,
+      }));
+
+      setTimeout(() => window.location.reload(), 500); // Optional: Reload page after 0.5s
+
+      request.onerror = (e) => {
+        console.error('Database deletion error:', e);
+        alert('Сталася помилка під час видалення бази даних.');
+      };
+
+      request.onblocked = () => {
+        alert('Закрийте всі вкладки з додатком і спробуйте знову.');
+      };
+    } catch (error) {
+      console.error('Помилка видалення бази даних:', error);
+    }
+  };
+
   return {
     ...state,
     pushTransaction,
@@ -261,5 +307,6 @@ export const useData = () => {
     loadMoreRows,
     downloadTransactions,
     uploadTransactions,
+    clearDatabase,
   };
 };
