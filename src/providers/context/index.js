@@ -4,6 +4,7 @@ import { createContext, useEffect, useReducer, useState } from 'react';
 import defaultContext from './defaultContext';
 import { getFromStorage, saveToStorage } from '../../utils/localStorage';
 import THEMES from '../themes/themeList';
+import { LOCALES } from '../i18n';
 
 const AppContext = createContext();
 
@@ -23,6 +24,7 @@ const reducer = (state, action) => {
         themeName: action.themeName,
       };
     case 'setLocal':
+      saveToStorage('locale', action.locale);
       return {
         ...state,
         locale: action.locale || LOCALES.ENGLISH,
@@ -48,6 +50,13 @@ const AppContextProvider = ({ children }) => {
       const savedTheme = getFromStorage('themeName') || THEMES.LIGHT;
       dispatch({ type: 'setTheme', themeName: savedTheme });
       setIsLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLocale = getFromStorage('locale') || LOCALES.ENGLISH;
+      dispatch({ type: 'setLocal', locale: savedLocale }); // ✅ Ensure locale is set
     }
   }, []);
 

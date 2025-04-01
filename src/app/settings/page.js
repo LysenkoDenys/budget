@@ -52,8 +52,6 @@ const Settings = () => {
     setIsModalOpen(false);
   };
 
-  console.log('Modal open state:', isModalOpen);
-
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="text-4xl mx-[2%] mt-12">
@@ -85,7 +83,7 @@ const Settings = () => {
               <FormattedMessage id="settings.language" />
               <select
                 name="locate"
-                value={state.locate}
+                value={state.locale}
                 onChange={onChangeLocale}
                 id="selectorTwo"
                 className="inline-flex w-36 justify-center gap-x-1.5 rounded-md bg-white px-1 py-1 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 ml-1"
@@ -113,7 +111,7 @@ const Settings = () => {
       </div>
       <div className="m-4">
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border border-blue-500 hover:border-transparent rounded mb-4"
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 my-1 border-2 border-blue-500 hover:border-transparent rounded mb-4"
           onClick={handleStatusChange}
         >
           <FormattedMessage id="settings.extended" />
