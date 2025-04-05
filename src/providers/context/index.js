@@ -56,7 +56,7 @@ const AppContextProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedLocale = getFromStorage('locale') || LOCALES.ENGLISH;
-      dispatch({ type: 'setLocal', locale: savedLocale }); // ✅ Ensure locale is set
+      dispatch({ type: 'setLocal', locale: savedLocale });
     }
   }, []);
 

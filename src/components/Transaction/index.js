@@ -5,6 +5,7 @@ import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
 import { RiDeleteBin4Line } from 'react-icons/ri';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
+import formatNumber from '../../utils/formatNumber';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
@@ -58,12 +59,14 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
           className="w-5 h-5 cursor-pointer mx-auto dark:shadow-white shadow-sm rounded-full"
         />
       </div>
-      <p className="text-right min-w-0 break-words whitespace-pre-wrap text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem]">
-        {new Intl.NumberFormat(state.locale, {
-          minimumFractionDigits: state.showDecimals ? 2 : 0,
-          maximumFractionDigits: state.showDecimals ? 2 : 0,
-        }).format(value)}
+      <p
+        className={`text-right min-w-0 break-words whitespace-pre-wrap text-blue-500 dark:text-blue-300 sm:text-sm  ${
+          state.showDecimals ? `text-[0.75rem]` : `text-[0.85rem]`
+        }`}
+      >
+        {formatNumber(value, state.showDecimals, state.locale)}
       </p>
+
       <p className="text-center min-w-0 sm:text-sm text-[0.4rem]">{date}</p>
       <p className="text-left min-w-0 text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem] truncate">
         {category}
