@@ -13,7 +13,7 @@ const formatNumber = (number, showDecimals = false, locale = 'en-US') => {
     return format(number / 1.0e6) + 'M';
   }
   if (Math.abs(number) >= 1.0e3) {
-    return format(number / 1.0e3) + 'k';
+    return format(number / 1.0e3) + 'K';
   }
 
   return new Intl.NumberFormat(locale, {
