@@ -302,28 +302,31 @@ const StatisticsChart = () => {
         <h2 className="text-xl font-bold text-center">
           <FormattedMessage id="statistics.budgetPer" />
           {startDate && endDate ? (
-            <p className="text-sm text-blue-400">
+            <p className="text-sm text-blue-600 dark:text-blue-200">
               ({startDate} – {endDate})
             </p>
           ) : (
             ''
           )}
         </h2>
-        <p className="text-center">
-          <FormattedMessage id="statistics.income" />{' '}
-          {new Intl.NumberFormat(state.locale).format(totalIncomes)}{' '}
-          {state.currency}
-        </p>
-        <p className="text-center">
-          <FormattedMessage id="statistics.expenses" />{' '}
-          {new Intl.NumberFormat(state.locale).format(totalExpenses)}{' '}
-          {state.currency}
-        </p>
-        <p className="text-center">
-          <FormattedMessage id="statistics.budget" />{' '}
-          {new Intl.NumberFormat(state.locale).format(totalBudget)}{' '}
-          {state.currency}
-        </p>
+        {[
+          { id: 'statistics.income', value: totalIncomes },
+          { id: 'statistics.expenses', value: totalExpenses },
+          { id: 'statistics.budget', value: totalBudget },
+        ].map((item) => (
+          <p
+            key={item.id}
+            className="mx-auto flex max-w-[300px] justify-between text-center px-4"
+          >
+            <span>
+              <FormattedMessage id={item.id} />
+            </span>
+            <span>
+              {new Intl.NumberFormat(state.locale).format(item.value)}{' '}
+              {state.currency}
+            </span>
+          </p>
+        ))}
       </div>
     </>
   );
