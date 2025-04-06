@@ -52,6 +52,11 @@ export default {
       income: 'надходження:',
       expenses: 'витрати:',
       budget: 'бюджет:',
+      current: 'Поточний',
+      previous: 'Попередній',
+      year: 'рік',
+      month: 'місяць',
+      week: 'тиждень',
     },
     confirmModal: {
       caption: 'Видалити транзакцію?',

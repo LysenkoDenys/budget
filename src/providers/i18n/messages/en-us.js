@@ -51,6 +51,11 @@ export default {
       income: 'income:',
       expenses: 'expenses:',
       budget: 'budget:',
+      current: 'Current',
+      previous: 'Previous',
+      year: 'year',
+      month: 'month',
+      week: 'week',
     },
     confirmModal: {
       caption: 'Delete the transaction?',

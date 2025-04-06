@@ -17,6 +17,12 @@ const StatisticsChart = () => {
   const currentDropdownRef = useRef(null);
   const previousDropdownRef = useRef(null);
 
+  const periods = [
+    { id: 'year', labelId: 'statistics.year' },
+    { id: 'month', labelId: 'statistics.month' },
+    { id: 'week', labelId: 'statistics.week' },
+  ];
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -193,10 +199,10 @@ const StatisticsChart = () => {
           <div className="relative inline-block text-left">
             <button
               onClick={() => setCurrentDropdownOpen(!currentDropdownOpen)}
-              className={`md:w-auto px-5 py-1 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-medium flex items-center justify-between gap-2 shadow-md transition-all duration-300 hover:from-purple-600 hover:to-indigo-600 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-400`}
+              className={`md:w-auto px-5 py-1 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-medium flex items-center justify-between gap-2 shadow-md transition-all duration-300 hover:from-green-600 hover:to-green-700 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-400`}
               aria-expanded={currentDropdownOpen}
             >
-              Current
+              <FormattedMessage id="statistics.current" />
               <svg
                 className={`w-4 h-4 transform transition-transform duration-300 ${
                   currentDropdownOpen ? 'rotate-180' : ''
@@ -218,15 +224,15 @@ const StatisticsChart = () => {
             {currentDropdownOpen && (
               <div className="absolute mt-2 w-32 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 z-10 transition-all duration-200 transform scale-95 opacity-0 animate-fade-in">
                 <div className="py-1">
-                  {['year', 'month', 'week'].map((period) => (
+                  {periods.map((period) => (
                     <button
-                      key={period}
+                      key={period.id}
                       onClick={() =>
-                        handleDateRangeSelection('current', period)
+                        handleDateRangeSelection('current', period.id)
                       }
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 w-full text-left"
                     >
-                      {period}
+                      <FormattedMessage id={period.labelId} />
                     </button>
                   ))}
                 </div>
@@ -246,7 +252,7 @@ const StatisticsChart = () => {
               className={`md:w-auto px-5 py-1 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-medium flex items-center justify-between gap-2 shadow-md transition-all duration-300 hover:from-purple-600 hover:to-indigo-600 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-purple-400`}
               aria-expanded={previousDropdownOpen}
             >
-              Previous
+              <FormattedMessage id="statistics.previous" />
               <svg
                 className={`w-4 h-4 transform transition-transform duration-200 ${
                   previousDropdownOpen ? 'rotate-180' : ''
@@ -267,15 +273,15 @@ const StatisticsChart = () => {
             {previousDropdownOpen && (
               <div className="absolute mt-2 w-32 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 z-10 transition-all duration-200 transform scale-95 opacity-0 animate-fade-in">
                 <div className="py-1">
-                  {['year', 'month', 'week'].map((period) => (
+                  {periods.map((period) => (
                     <button
-                      key={period}
+                      key={period.id}
                       onClick={() =>
-                        handleDateRangeSelection('previous', period)
+                        handleDateRangeSelection('previous', period.id)
                       }
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 w-full text-left"
                     >
-                      {period}
+                      <FormattedMessage id={period.labelId} />
                     </button>
                   ))}
                 </div>
@@ -293,8 +299,15 @@ const StatisticsChart = () => {
       </div>
 
       <div className="w-full h-auto p-4 bg-white rounded-2xl shadow-lg dark:bg-gray-500">
-        <h2 className="text-xl font-bold text-center mb-2">
+        <h2 className="text-xl font-bold text-center">
           <FormattedMessage id="statistics.budgetPer" />
+          {startDate && endDate ? (
+            <p className="text-sm text-blue-400">
+              ({startDate} – {endDate})
+            </p>
+          ) : (
+            ''
+          )}
         </h2>
         <p className="text-center">
           <FormattedMessage id="statistics.income" />{' '}
