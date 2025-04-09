@@ -29,6 +29,17 @@ const Home = () => {
 
   const { isModalOpen, openModal, closeModal } = useModal();
 
+  const [filters, setFilters] = useState({
+    starOnly: false,
+  });
+
+  const onStarToggle = (value) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      starOnly: value,
+    }));
+  };
+
   // Update balance based on transactions
   useEffect(() => {
     setTimeout(() => {
@@ -73,7 +84,10 @@ const Home = () => {
             <BalanceData transactions={transactions}>
               {(balance) => <Balance balance={balance} />}
             </BalanceData>
-            <TransactionsHeader className="sticky top-[100px] z-30 w-full" />
+            <TransactionsHeader
+              onStarToggle={onStarToggle}
+              className="sticky top-[100px] z-30 w-full"
+            />
           </div>
 
           <main className="flex flex-col gap-2 row-start-2 items-center sm:items-start w-full mt-16">
@@ -87,6 +101,7 @@ const Home = () => {
                 onEdit={onEditTransaction}
                 onStarClick={onStarClick}
                 onAddTransaction={onSave}
+                filters={filters}
               />
             )}
             {/* Handle empty transactions */}

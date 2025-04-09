@@ -1,12 +1,21 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { AppContext } from '../../providers/context';
 import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
 
-const TransactionsHeader = () => {
+const TransactionsHeader = ({ onStarToggle }) => {
   const { state } = useContext(AppContext);
+
+  const [isStarred, setIsStarred] = useState(false);
+
+  const handleStarClick = () => {
+    const newStarred = !isStarred;
+    setIsStarred(newStarred);
+    onStarToggle(newStarred);
+  };
+
   return (
     <div
       className="grid items-center grid-cols-[20px_50px_60px_50px_auto_50px] 
@@ -20,9 +29,9 @@ const TransactionsHeader = () => {
       <span className="text-center min-w-0 break-words">
         <div className="flex justify-center max-w-[20px]">
           <Image
-            // onClick={() => onStarClick(id)}
+            onClick={handleStarClick}
             src={Star}
-            // src={isStarred ? StarFilled : Star}
+            src={isStarred ? StarFilled : Star}
             alt="Star"
             width={16}
             height={16}

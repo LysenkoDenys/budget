@@ -16,6 +16,7 @@ const Transactions = ({
   isNextPageLoading,
   hasNextPage,
   onAddTransaction,
+  filters,
 }) => {
   const listRef = useRef(null);
   const itemSizeMap = useRef({});
@@ -42,14 +43,52 @@ const Transactions = ({
     setEditData(null);
   };
 
-  // Sorting transactions by date (descending)
-  const sortedData = useMemo(() => {
-    console.log('Original Data:', data); // Debugging step
+  // Sorting transactions by date (descending) + filtering:
+  const filteredData = useMemo(() => {
     if (!data || data.length === 0) return [];
-    return [...data].sort(
+
+    // console.log('Original Data:', data);
+    // console.log('Current Filters:', filtres);
+
+    let filtered = [...data];
+
+    if (filters.starOnly) {
+      filtered = filtered.filter((item) => item.isStarred);
+    }
+
+    // Додати захист, щоб переконатися, що dateRange існує перед використанням
+    if (filters.dateRange && filters.dateRange.from && filtres.dateRange.to) {
+      filtered = filtered.filter((item) => {
+        const itemDate = new Date(item.date).getTime();
+        return (
+          itemDate >= new Date(filters.dateRange.from).getTime() &&
+          itemDate <= new Date(filters.dateRange.to).getTime()
+        );
+      });
+    }
+
+    if (filters.category) {
+      filtered = filtered.filter((item) => item.category === filtres.category);
+    }
+
+    if (filters.amountRange?.min != null && filters.amountRange?.max != null) {
+      filtered = filtered.filter(
+        (item) =>
+          item.amount >= filters.amountRange.min &&
+          item.amount <= filters.amountRange.max
+      );
+    }
+
+    if (filters.comment) {
+      filtered = filtered.filter((item) =>
+        item.comment.toLowerCase().includes(filters.comment.toLowerCase())
+      );
+    }
+
+    return filtered.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
-  }, [data]);
+  }, [data, filters]);
 
   const getItemSize = (index) => itemSizeMap.current[index] || 60;
   const setItemSize = (index, size) => {
@@ -113,10 +152,10 @@ const Transactions = ({
                 itemSize={getItemSize}
                 estimatedItemSize={120}
                 onItemsRendered={onItemsRendered}
-                itemData={sortedData}
+                itemData={filteredData}
               >
                 {({ index, style }) => {
-                  const transaction = sortedData[index];
+                  const transaction = filteredData[index];
                   if (!transaction && hasNextPage && navigator.onLine) {
                     return <Spinner />;
                   }
