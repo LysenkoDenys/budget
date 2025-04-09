@@ -30,7 +30,6 @@ const TransactionsHeader = ({ onStarToggle }) => {
         <div className="flex justify-center max-w-[20px]">
           <Image
             onClick={handleStarClick}
-            src={Star}
             src={isStarred ? StarFilled : Star}
             alt="Star"
             width={16}
