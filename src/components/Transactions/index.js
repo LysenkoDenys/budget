@@ -48,7 +48,7 @@ const Transactions = ({
     if (!data || data.length === 0) return [];
 
     // console.log('Original Data:', data);
-    // console.log('Current Filters:', filtres);
+    // console.log('Current Filters:', filters);
 
     let filtered = [...data];
 
@@ -56,8 +56,7 @@ const Transactions = ({
       filtered = filtered.filter((item) => item.isStarred);
     }
 
-    // Додати захист, щоб переконатися, що dateRange існує перед використанням
-    if (filters.dateRange && filters.dateRange.from && filtres.dateRange.to) {
+    if (filters.dateRange && filters.dateRange.from && filters.dateRange.to) {
       filtered = filtered.filter((item) => {
         const itemDate = new Date(item.date).getTime();
         return (
@@ -68,7 +67,7 @@ const Transactions = ({
     }
 
     if (filters.category) {
-      filtered = filtered.filter((item) => item.category === filtres.category);
+      filtered = filtered.filter((item) => item.category === filters.category);
     }
 
     if (filters.amountRange?.min != null && filters.amountRange?.max != null) {
@@ -90,6 +89,17 @@ const Transactions = ({
     );
   }, [data, filters]);
 
+  // Is my data filtered:
+  const isFiltered = useMemo(() => {
+    return (
+      filters.starOnly ||
+      (filters.dateRange && filters.dateRange.from && filters.dateRange.to) ||
+      filters.category ||
+      (filters.amountRange?.min != null && filters.amountRange?.max != null) ||
+      filters.comment
+    );
+  }, [filters]);
+
   const getItemSize = (index) => itemSizeMap.current[index] || 60;
   const setItemSize = (index, size) => {
     if (itemSizeMap.current[index] !== size) {
@@ -98,22 +108,27 @@ const Transactions = ({
     }
   };
 
-  const isItemLoaded = (index) => !!data[index];
-  const loadMoreItems = isNextPageLoading
-    ? () => {}
-    : async () => {
-        if (!navigator.onLine) {
-          console.warn('No internet connection');
-          return;
-        }
-        try {
-          await loadMoreRows();
-        } catch (error) {
-          console.error('Failed to load more rows:', error.message);
-        }
-      };
+  const isItemLoaded = (index) => isFiltered || !!data[index];
+  const loadMoreItems =
+    isFiltered || isNextPageLoading
+      ? () => {}
+      : async () => {
+          if (!navigator.onLine) {
+            console.warn('No internet connection');
+            return;
+          }
+          try {
+            await loadMoreRows();
+          } catch (error) {
+            console.error('Failed to load more rows:', error.message);
+          }
+        };
 
-  const itemCount = hasNextPage ? data.length + 1 : data.length;
+  const itemCount = isFiltered
+    ? filteredData.length
+    : hasNextPage
+    ? data.length + 1
+    : data.length;
 
   return (
     <div className="w-full h-screen min-h-screen sm:min-h-[300px] md:min-h-[calc(100vh-127px)]">
@@ -123,7 +138,6 @@ const Transactions = ({
           You are offline. Some features may be unavailable.
         </div>
       )} */}
-
       <Modal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
@@ -131,51 +145,61 @@ const Transactions = ({
         onEdit={onEdit}
         onSave={onAddTransaction}
       />
-
-      <AutoSizer>
-        {({ height, width }) => (
-          <InfiniteLoader
-            isItemLoaded={isItemLoaded}
-            itemCount={itemCount}
-            loadMoreItems={loadMoreItems}
-          >
-            {({ onItemsRendered, ref: infiniteRef }) => (
-              <List
-                key={`list-${data.length}`}
-                ref={(node) => {
-                  listRef.current = node;
-                  infiniteRef(node);
-                }}
-                height={height}
-                width={width}
-                itemCount={itemCount}
-                itemSize={getItemSize}
-                estimatedItemSize={120}
-                onItemsRendered={onItemsRendered}
-                itemData={filteredData}
-              >
-                {({ index, style }) => {
-                  const transaction = filteredData[index];
-                  if (!transaction && hasNextPage && navigator.onLine) {
-                    return <Spinner />;
-                  }
-                  return transaction ? (
-                    <div style={{ ...style, minWidth: '100%' }}>
-                      <Transaction
-                        transaction={transaction}
-                        onDelete={onDelete}
-                        onEdit={handleEditTransaction}
-                        onStarClick={onStarClick}
-                        setItemSize={(size) => setItemSize(index, size)}
-                      />
-                    </div>
-                  ) : null;
-                }}
-              </List>
-            )}
-          </InfiniteLoader>
-        )}
-      </AutoSizer>
+      {isFiltered && filteredData.length === 0 ? (
+        <div className="flex flex-col justify-center items-center h-full text-gray-500 text-lg animate-fade-in">
+          <p className="mb-4">No transactions found for the selected filters</p>
+        </div>
+      ) : (
+        <AutoSizer>
+          {({ height, width }) => (
+            <InfiniteLoader
+              isItemLoaded={isItemLoaded}
+              itemCount={itemCount}
+              loadMoreItems={loadMoreItems}
+            >
+              {({ onItemsRendered, ref: infiniteRef }) => (
+                <List
+                  key={`list-${data.length}`}
+                  ref={(node) => {
+                    listRef.current = node;
+                    infiniteRef(node);
+                  }}
+                  height={height}
+                  width={width}
+                  itemCount={itemCount}
+                  itemSize={getItemSize}
+                  estimatedItemSize={120}
+                  onItemsRendered={onItemsRendered}
+                  itemData={filteredData}
+                >
+                  {({ index, style }) => {
+                    const transaction = filteredData[index];
+                    if (
+                      !transaction &&
+                      hasNextPage &&
+                      navigator.onLine &&
+                      !isFiltered
+                    ) {
+                      return <Spinner />;
+                    }
+                    return transaction ? (
+                      <div style={{ ...style, minWidth: '100%' }}>
+                        <Transaction
+                          transaction={transaction}
+                          onDelete={onDelete}
+                          onEdit={handleEditTransaction}
+                          onStarClick={onStarClick}
+                          setItemSize={(size) => setItemSize(index, size)}
+                        />
+                      </div>
+                    ) : null;
+                  }}
+                </List>
+              )}
+            </InfiniteLoader>
+          )}
+        </AutoSizer>
+      )}
     </div>
   );
 };
