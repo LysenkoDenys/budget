@@ -32,7 +32,7 @@ export default {
       date: 'Date',
       category: 'Category',
       comment: 'Comment',
-      actions: 'Action',
+      actions: 'Filter',
     },
     settings: {
       settings: 'Settings',
@@ -62,6 +62,9 @@ export default {
       captionDB: 'Remove ALL the transactions?',
       cancel: 'Cancel',
       delete: 'Delete',
+    },
+    filter: {
+      noData: 'No transactions found for the selected filters',
     },
   },
 };

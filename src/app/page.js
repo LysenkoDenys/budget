@@ -11,6 +11,7 @@ import ButtonAddTransaction from '../components/ButtonAddTransaction';
 import { useModal } from '../hooks';
 import Modal from '../components/Modal';
 import Spinner from '../components/Spinner';
+import FilterModal from '../components/FilterModal/FilterModal';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -27,7 +28,7 @@ const Home = () => {
     loadMoreRows,
   } = useData();
 
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const { isModalOpen, openModal, closeModal, modalType } = useModal();
 
   const [filters, setFilters] = useState({
     starOnly: false,
@@ -68,12 +69,29 @@ const Home = () => {
     setBalance(newDailyBalance);
   };
 
+  const openFilterModal = () => {
+    openModal('filter');
+  };
+
+  const onApplyFilter = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   return (
     <>
       <ChangeBalance onSave={onSave} />
 
-      <ButtonAddTransaction onClick={openModal} />
-      {isModalOpen && (
+      <ButtonAddTransaction onClick={() => openModal('addTransaction')} />
+      {isModalOpen && modalType === 'filter' && (
+        <FilterModal
+          onClose={closeModal}
+          onApplyFilter={onApplyFilter}
+          currentFilters={filters}
+          isOpen={isModalOpen}
+        />
+      )}
+
+      {isModalOpen && modalType === 'addTransaction' && (
         <Modal isOpen={isModalOpen} onClose={closeModal} onSave={onSave} />
       )}
       {status === STATUSES.PENDING && navigator.onLine ? (
@@ -86,6 +104,7 @@ const Home = () => {
             </BalanceData>
             <TransactionsHeader
               onStarToggle={onStarToggle}
+              openFilterModal={openFilterModal}
               className="sticky top-[100px] z-30 w-full"
             />
           </div>

@@ -33,7 +33,7 @@ export default {
       date: 'Дата',
       category: 'Стаття',
       comment: 'Коментар',
-      actions: 'Дія',
+      actions: 'Фільтр',
     },
     settings: {
       settings: 'Налаштування',
@@ -63,6 +63,9 @@ export default {
       captionDB: 'Видалити ВСІ транзакції?',
       cancel: 'Скасувати',
       delete: 'Видалити',
+    },
+    filter: {
+      noData: 'Немає даних за обриними фільтрами',
     },
   },
 };

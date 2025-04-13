@@ -6,6 +6,7 @@ import Transaction from '../Transaction';
 import Modal from '../Modal';
 import { useModal } from '../../hooks';
 import Spinner from '../Spinner';
+import { FormattedMessage } from 'react-intl';
 
 const Transactions = ({
   data = [],
@@ -147,7 +148,10 @@ const Transactions = ({
       />
       {isFiltered && filteredData.length === 0 ? (
         <div className="flex flex-col justify-center items-center h-full text-gray-500 text-lg animate-fade-in">
-          <p className="mb-4">No transactions found for the selected filters</p>
+          <p className="mb-4">
+            {' '}
+            <FormattedMessage id="filter.noData" />
+          </p>
         </div>
       ) : (
         <AutoSizer>

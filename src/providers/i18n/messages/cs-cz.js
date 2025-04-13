@@ -32,7 +32,7 @@ export default {
       date: 'Datum',
       category: 'Kategorie',
       comment: 'Komentář',
-      actions: 'Akce',
+      actions: 'Filtr',
     },
     settings: {
       settings: 'Nastavení',
@@ -57,6 +57,9 @@ export default {
       captionDB: 'Odstranit VŠECHNY transakce?',
       cancel: 'Zrušit',
       delete: 'Vymazat',
+    },
+    filter: {
+      noData: 'Žádná data pro vybrané filtry',
     },
   },
 };

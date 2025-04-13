@@ -95,8 +95,6 @@ https://budget4u.vercel.app
 
 <p>TODO:</p>
 <ul>
-<li>❎ set filter on the star in TransactionsHeader</li>
-<li>❎ sort transactions before the fetch and display first 20 positions</li>
 <li>❎ transactions do not scroll till the end and just jump up</li>
 <li>❎ Skipping auto-scroll behavior due to `position: sticky` or `position: fixed` on element... addButton is above scrollable component Transactions - warning message</li>
 </ul>

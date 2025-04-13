@@ -11,12 +11,20 @@ import {
 
 export const useModal = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = (type) => {
+    setModalType(type);
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalType(null);
+  };
 
   return {
     isModalOpen,
+    modalType,
     openModal,
     closeModal,
   };

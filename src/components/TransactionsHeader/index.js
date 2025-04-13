@@ -4,8 +4,9 @@ import { AppContext } from '../../providers/context';
 import Star from '../../../public/assets/img/star-00.svg';
 import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
+import { LuFilter, LuFilterX } from 'react-icons/lu';
 
-const TransactionsHeader = ({ onStarToggle }) => {
+const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
   const { state } = useContext(AppContext);
 
   const [isStarred, setIsStarred] = useState(false);
@@ -14,6 +15,9 @@ const TransactionsHeader = ({ onStarToggle }) => {
     const newStarred = !isStarred;
     setIsStarred(newStarred);
     onStarToggle(newStarred);
+  };
+  const handleFilterClick = () => {
+    openFilterModal();
   };
 
   return (
@@ -55,8 +59,12 @@ const TransactionsHeader = ({ onStarToggle }) => {
         <FormattedMessage id="header.comment" />
       </span>
       <span className="text-center min-w-0 truncate">
-        {' '}
-        <FormattedMessage id="header.actions" />
+        <button
+          onClick={handleFilterClick}
+          className="p-1 ml-4 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition"
+        >
+          <LuFilter size={18} />
+        </button>
       </span>
     </div>
   );
