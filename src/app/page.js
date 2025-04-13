@@ -32,6 +32,12 @@ const Home = () => {
 
   const [filters, setFilters] = useState({
     starOnly: false,
+    dateFrom: '',
+    dateTo: '',
+    amountFrom: '',
+    amountTo: '',
+    category: '',
+    comment: '',
   });
 
   const onStarToggle = (value) => {
