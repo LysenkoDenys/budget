@@ -22,12 +22,12 @@ const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
 
   return (
     <div
-      className="grid items-center grid-cols-[20px_50px_60px_50px_auto_50px] 
-       xs:grid-cols-[20px_70px_80px_50px_auto_50px] 
-       sm:grid-cols-[30px_100px_140px_120px_auto_60px] 
-       md:grid-cols-[30px_100px_180px_150px_auto_70px] 
-       lg:grid-cols-[30px_100px_220px_180px_auto_80px] 
-       xl:grid-cols-[30px_120px_250px_200px_auto_100px]  bg-gray-300 px-2 py-2 w-full shadow-lg dark:bg-gray-600 dark:text-gray-200
+      className="grid items-center grid-cols-[20px_50px_60px_50px_auto_25px] 
+       xs:grid-cols-[20px_70px_80px_50px_auto_20px] 
+       sm:grid-cols-[30px_100px_140px_120px_auto_25px] 
+       md:grid-cols-[30px_100px_180px_150px_auto_25px] 
+       lg:grid-cols-[30px_100px_220px_180px_auto_25px] 
+       xl:grid-cols-[30px_120px_250px_200px_auto_25px]  bg-gray-300 px-2 py-2 w-full shadow-lg dark:bg-gray-600 dark:text-gray-200
        sm:text-sm text-[0.55rem] mb-2"
     >
       <span className="text-center min-w-0 break-words">
@@ -38,7 +38,7 @@ const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
             alt="Star"
             width={16}
             height={16}
-            className="w-5 h-5 cursor-pointer mx-auto dark:shadow-white shadow-sm rounded-full"
+            className="w-5 h-5 cursor-pointer mx-auto dark:shadow-black shadow-sm rounded-full hover:scale-110 ease-in-out dark:brightness-100 dark:invert dark:filter"
           />
         </div>
       </span>
@@ -58,12 +58,14 @@ const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
         {' '}
         <FormattedMessage id="header.comment" />
       </span>
-      <span className="text-center min-w-0 truncate">
+      <span className="text-center">
         <button
           onClick={handleFilterClick}
-          className="p-1 ml-4 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition"
+          className="p-1 cursor-pointer mx-auto rounded-full hover:scale-110 ease-in-out
+    dark:text-white text-black
+    shadow-sm dark:shadow-white"
         >
-          <LuFilter size={18} />
+          <LuFilter size={14} />
         </button>
       </span>
     </div>

@@ -28,8 +28,8 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
        hover:bg-green-100 hover:text-green-700 
        dark:bg-green-900 dark:text-green-200 dark:border-green-600 
        dark:hover:text-white dark:hover:bg-green-800 cursor-pointer`
-      : `grid items-center grid-cols-[20px_50px_60px_50px_auto_30px] 
-       xs:grid-cols-[20px_70px_80px_50px_auto_25px] 
+      : `grid items-center grid-cols-[20px_50px_60px_50px_auto_25px] 
+       xs:grid-cols-[20px_70px_80px_50px_auto_20px] 
        sm:grid-cols-[30px_100px_140px_120px_auto_25px] 
        md:grid-cols-[30px_100px_180px_150px_auto_25px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_25px] 
