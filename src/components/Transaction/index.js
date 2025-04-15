@@ -23,7 +23,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
        sm:grid-cols-[30px_100px_140px_120px_auto_25px] 
        md:grid-cols-[30px_100px_180px_150px_auto_25px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_25px] 
-       xl:grid-cols-[30px_120px_250px_200px_auto_25px] py-3 px-2 
+       xl:grid-cols-[30px_120px_250px_200px_auto_25px] py-2 px-2 
        text-green-900 bg-green-200 rounded-lg border border-green-200 shadow-md dark:shadow-white 
        hover:bg-green-100 hover:text-green-700 
        dark:bg-green-900 dark:text-green-200 dark:border-green-600 
@@ -34,7 +34,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
        md:grid-cols-[30px_100px_180px_150px_auto_25px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_25px] 
        xl:grid-cols-[30px_120px_250px_200px_auto_25px] 
-      py-3 px-2 bg-white rounded-lg border border-gray-200 shadow-md dark:shadow-white hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer`;
+      py-2 px-2 bg-white rounded-lg border border-gray-200 shadow-md dark:shadow-white hover:bg-gray-100 hover:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 cursor-pointer`;
 
   const { state } = useContext(AppContext);
 

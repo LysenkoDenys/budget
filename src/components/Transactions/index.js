@@ -101,7 +101,7 @@ const Transactions = ({
     );
   }, [filters]);
 
-  const getItemSize = (index) => itemSizeMap.current[index] || 60;
+  const getItemSize = (index) => itemSizeMap.current[index] || 46;
   const setItemSize = (index, size) => {
     if (itemSizeMap.current[index] !== size) {
       itemSizeMap.current[index] = size;
