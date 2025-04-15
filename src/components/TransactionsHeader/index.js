@@ -38,7 +38,9 @@ const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
             alt="Star"
             width={16}
             height={16}
-            className="w-5 h-5 cursor-pointer mx-auto dark:shadow-black shadow-sm rounded-full hover:scale-110 ease-in-out dark:brightness-100 dark:invert dark:filter"
+            className={`w-5 h-5 cursor-pointer mx-auto rounded-full hover:scale-110 ease-in-out
+      shadow-sm dark:shadow-black
+      ${!isStarred ? 'dark:invert dark:brightness-100 dark:filter' : ''}`}
           />
         </div>
       </span>
