@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Portal from '../Portal';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
   const [localFilters, setLocalFilters] = useState(currentFilters);
@@ -127,27 +129,79 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
                 defaultMessage="Category:"
               />
             </label>
-            <select
-              value={localFilters.category || ''}
-              onChange={(e) => handleInputChange('category', e.target.value)}
-              className="w-full border rounded p-2 text-sm"
-            >
-              <option
-                value=""
-                disabled
-                hidden
-                style={{ display: 'none' }}
-              ></option>
-              {categories.map((category) => (
-                <option
-                  key={category.key}
-                  value={intl.formatMessage({ id: `form.${category.key}` })}
-                >
-                  {category.emoji}{' '}
-                  {intl.formatMessage({ id: `form.${category.key}` })}
-                </option>
-              ))}
-            </select>
+
+            <Menu as="div" className="relative inline-block text-left w-full">
+              <MenuButton className="inline-flex w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 ring-1 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white">
+                {localFilters.category || (
+                  <FormattedMessage
+                    id="form.selectCategory"
+                    defaultMessage="Select category"
+                  />
+                )}
+                <ChevronDownIcon
+                  aria-hidden="true"
+                  className="-mr-1 size-5 text-gray-400"
+                />
+              </MenuButton>
+
+              <MenuItems className="absolute z-10 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-600 ring-1 shadow-lg ring-black/5 focus:outline-none max-h-60 overflow-y-auto">
+                <div className="py-1"></div>
+                {[
+                  'income',
+                  'food',
+                  'transportation',
+                  'utility',
+                  'communication',
+                  'children',
+                  'health',
+                  'new_things',
+                  'holidays',
+                  'repairs',
+                  'other',
+                ].map((categoryKey) => {
+                  const label = intl.formatMessage({
+                    id: `form.${categoryKey}`,
+                  });
+                  const emojiMap = {
+                    income: '💰',
+                    food: '🥝',
+                    transportation: '🚍',
+                    utility: '💡',
+                    communication: '📱',
+                    children: '⚽',
+                    health: '⚕️',
+                    new_things: '💎',
+                    holidays: '🎁',
+                    repairs: '🛠️',
+                    other: '🎱',
+                  };
+                  return (
+                    <div key={categoryKey} className="py-1">
+                      <MenuItem>
+                        {({ active }) => (
+                          <button
+                            type="button"
+                            onClick={() => handleInputChange('category', label)}
+                            className={`w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 dark:text-white ${
+                              active
+                                ? 'bg-gray-100 text-gray-900 dark:bg-gray-500'
+                                : ''
+                            } ${
+                              categoryKey === 'income'
+                                ? 'bg-green-200 dark:bg-green-700'
+                                : ''
+                            }`}
+                          >
+                            <span>{emojiMap[categoryKey]}</span>
+                            <span>{label}</span>
+                          </button>
+                        )}
+                      </MenuItem>
+                    </div>
+                  );
+                })}
+              </MenuItems>
+            </Menu>
           </div>
 
           <div className="mb-4">
