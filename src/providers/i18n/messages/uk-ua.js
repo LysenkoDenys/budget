@@ -64,6 +64,16 @@ export default {
       cancel: 'Скасувати',
       delete: 'Видалити',
     },
+    filterModal: {
+      caption: 'Фільтри',
+      comment: 'Коментар',
+      amountFrom: 'Сума від',
+      amountTo: 'Сума до',
+      category: 'Категорія',
+      reset: 'Стерти',
+      cancel: 'Відміна',
+      apply: 'Застосувати',
+    },
     filter: {
       noData: 'Немає даних за обриними фільтрами',
     },

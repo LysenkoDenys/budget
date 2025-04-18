@@ -63,6 +63,16 @@ export default {
       cancel: 'Cancel',
       delete: 'Delete',
     },
+    filterModal: {
+      caption: 'Filters',
+      comment: 'Comment',
+      amountFrom: 'Amount from',
+      amountTo: 'Amount to',
+      category: 'Category',
+      reset: 'Reset',
+      cancel: 'Cancel',
+      apply: 'Apply',
+    },
     filter: {
       noData: 'No transactions found for the selected filters',
     },

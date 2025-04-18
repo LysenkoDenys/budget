@@ -79,7 +79,7 @@ const Form = ({ initialData, onSave, onClose }) => {
         name="date"
         value={form.date}
         onChange={handleChange}
-        className="min-h-10 p-1 shadow-lg rounded-lg border border-gray-200 w-full sm:w-18 md:w-22 lg:w-32 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:hover:text-white text-gray-700 hover:text-gray-900 "
+        className="min-h-10 p-1 shadow-lg rounded-lg border border-gray-200 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:hover:text-white text-gray-700 hover:text-gray-900 "
       />
 
       <input
@@ -90,19 +90,19 @@ const Form = ({ initialData, onSave, onClose }) => {
         placeholder={intl.formatMessage({ id: 'form.sum' })}
         onChange={handleChange}
         value={form.value}
-        className="w-full sm:w-18 md:w-22 lg:w-32 py-1 px-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
+        className="w-full py-1 px-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
       />
 
       {/* Category Dropdown */}
       <Menu as="div" className="relative inline-block text-left">
-        <MenuButton className="inline-flex w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 ring-1 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white">
+        <MenuButton className="inline-flex w-full gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white">
           {form.category || <FormattedMessage id="form.category" />}
           <ChevronDownIcon
             aria-hidden="true"
             className="-mr-1 size-5 text-gray-400"
           />
         </MenuButton>
-        <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden max-h-60 overflow-y-auto">
+        <MenuItems className="absolute right-0 z-10 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden max-h-60 overflow-y-auto">
           {[
             'income',
             'food',
@@ -126,7 +126,7 @@ const Form = ({ initialData, onSave, onClose }) => {
                         intl.formatMessage({ id: `form.${categoryKey}` })
                       )
                     }
-                    className={`w-full block px-4 py-0 text-base text-gray-700 gap-2 flex items-center dark:text-white ${
+                    className={`w-full px-4 py-0 text-base text-gray-700 gap-2 flex items-center dark:text-white ${
                       active ? 'bg-gray-100 text-gray-900' : ''
                     } ${
                       categoryKey === 'income'

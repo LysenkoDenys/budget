@@ -58,6 +58,16 @@ export default {
       cancel: 'Zrušit',
       delete: 'Vymazat',
     },
+    filterModal: {
+      caption: 'Filtry',
+      comment: 'Komentář',
+      amountFrom: 'Částka z',
+      amountTo: 'Částka do',
+      category: 'Kategorie',
+      reset: 'Resetovat',
+      cancel: 'Zrušit',
+      apply: 'Použít',
+    },
     filter: {
       noData: 'Žádná data pro vybrané filtry',
     },
