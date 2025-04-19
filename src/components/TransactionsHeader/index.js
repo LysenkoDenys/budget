@@ -6,7 +6,11 @@ import StarFilled from '../../../public/assets/img/star-01.svg';
 import Image from 'next/image';
 import { LuFilter, LuFilterX } from 'react-icons/lu';
 
-const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
+const TransactionsHeader = ({
+  onStarToggle,
+  openFilterModal,
+  isFilterApplied,
+}) => {
   const { state } = useContext(AppContext);
 
   const [isStarred, setIsStarred] = useState(false);
@@ -66,8 +70,9 @@ const TransactionsHeader = ({ onStarToggle, openFilterModal }) => {
           className="p-1 cursor-pointer mx-auto rounded-full hover:scale-110 ease-in-out
     dark:text-white text-black
     shadow-sm dark:shadow-white"
+          title={isFilterApplied ? 'Filters active' : 'Open filters'}
         >
-          <LuFilter size={14} />
+          {isFilterApplied ? <LuFilterX size={14} /> : <LuFilter size={14} />}
         </button>
       </span>
     </div>

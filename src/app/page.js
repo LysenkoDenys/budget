@@ -40,6 +40,10 @@ const Home = () => {
     comment: '',
   });
 
+  const isFilterApplied = Object.entries(filters).some(
+    ([key, value]) => key !== 'starOnly' && value !== ''
+  );
+
   const onStarToggle = (value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -111,6 +115,7 @@ const Home = () => {
             <TransactionsHeader
               onStarToggle={onStarToggle}
               openFilterModal={openFilterModal}
+              isFilterApplied={isFilterApplied}
               className="sticky top-[100px] z-30 w-full"
             />
           </div>
