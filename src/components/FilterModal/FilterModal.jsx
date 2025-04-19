@@ -110,7 +110,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
           <div className="mb-3">
             <Menu as="div" className="relative inline-block text-left w-full">
               <MenuButton
-                className={`inline-flex w-full gap-x-1.5 rounded-md p-1 text-lg font-semibold shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 ${
+                className={`inline-flex w-full gap-x-1.5 rounded-md p-1 text-lg font-semibold shadow-xs ring-gray-300 hover:bg-gray-50 hover:text-gray-900 dark:hover:text-white shadow-lg dark:bg-gray-700 ${
                   localFilters.category
                     ? 'text-gray-900 dark:text-white'
                     : 'text-gray-400 dark:text-gray-400'

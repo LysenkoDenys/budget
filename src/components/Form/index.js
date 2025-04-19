@@ -95,7 +95,13 @@ const Form = ({ initialData, onSave, onClose }) => {
 
       {/* Category Dropdown */}
       <Menu as="div" className="relative inline-block text-left">
-        <MenuButton className="inline-flex gap-x-1.5 rounded-md bg-white p-1 text-lg font-semibold text-gray-400 hover:text-gray-900 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white w-full">
+        <MenuButton
+          className={`inline-flex gap-x-1.5 rounded-md bg-white p-1 text-lg font-semibold text-gray-400 hover:text-gray-900 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white w-full ${
+            form.category
+              ? 'text-gray-900 dark:text-white'
+              : 'text-gray-400 dark:text-gray-400'
+          }`}
+        >
           {form.category || <FormattedMessage id="form.category" />}
           <ChevronDownIcon
             aria-hidden="true"
