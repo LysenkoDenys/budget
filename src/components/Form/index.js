@@ -90,13 +90,13 @@ const Form = ({ initialData, onSave, onClose }) => {
         placeholder={intl.formatMessage({ id: 'form.sum' })}
         onChange={handleChange}
         value={form.value}
-        className="w-full p-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
+        className="w-full p-1 h-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
       />
 
       {/* Category Dropdown */}
       <Menu as="div" className="relative inline-block text-left">
         <MenuButton
-          className={`inline-flex gap-x-1.5 rounded-md bg-white p-1 text-lg font-semibold text-gray-400 hover:text-gray-900 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white w-full ${
+          className={`inline-flex gap-x-1.5 rounded-md bg-white p-1  h-10 text-lg font-semibold text-gray-400 hover:text-gray-900 shadow-xs ring-gray-300 hover:bg-gray-50 shadow-lg dark:bg-gray-700 dark:text-gray-400 dark:hover:text-white w-full ${
             form.category
               ? 'text-gray-900 dark:text-white'
               : 'text-gray-400 dark:text-gray-400'

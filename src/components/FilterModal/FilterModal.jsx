@@ -79,13 +79,13 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
               type="date"
               value={localFilters.dateFrom || ''}
               onChange={(e) => handleInputChange('dateFrom', e.target.value)}
-              className="w-full p-1 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg appearance-none mb-1"
+              className="w-full p-1  h-10 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg appearance-none mb-1"
             />
             <input
               type="date"
               value={localFilters.dateTo || ''}
               onChange={(e) => handleInputChange('dateTo', e.target.value)}
-              className="w-full p-1 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg appearance-none"
+              className="w-full p-1 h-10 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg appearance-none"
             />
           </div>
 
@@ -95,21 +95,21 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
               value={localFilters.amountFrom || ''}
               placeholder={intl.formatMessage({ id: 'filterModal.amountFrom' })}
               onChange={(e) => handleInputChange('amountFrom', e.target.value)}
-              className="w-full p-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none mb-1"
+              className="w-full p-1 h-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none mb-1"
             />
             <input
               type="number"
               value={localFilters.amountTo || ''}
               placeholder={intl.formatMessage({ id: 'filterModal.amountTo' })}
               onChange={(e) => handleInputChange('amountTo', e.target.value)}
-              className="w-full p-1 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
+              className="w-full p-1 h-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
             />
           </div>
 
           <div className="mb-3">
             <Menu as="div" className="relative inline-block text-left w-full">
               <MenuButton
-                className={`inline-flex w-full gap-x-1.5 rounded-md p-1 text-lg font-semibold shadow-xs ring-gray-300 hover:bg-gray-50 hover:text-gray-900 dark:hover:text-white shadow-lg dark:bg-gray-700 ${
+                className={`inline-flex w-full gap-x-1.5 rounded-md p-1 h-10 text-lg font-semibold shadow-xs ring-gray-300 hover:bg-gray-50 hover:text-gray-900 dark:hover:text-white shadow-lg dark:bg-gray-700 ${
                   localFilters.category
                     ? 'text-gray-900 dark:text-white'
                     : 'text-gray-400 dark:text-gray-400'
@@ -188,20 +188,20 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
               value={localFilters.comment || ''}
               placeholder={intl.formatMessage({ id: 'filterModal.comment' })}
               onChange={(e) => handleInputChange('comment', e.target.value)}
-              className="w-full p-1 text-lg font-semibold  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
+              className="w-full p-1 h-10 text-lg font-semibold  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
             />
           </div>
 
-          <div className="flex justify-center gap-2">
+          <div className="flex justify-center gap-2 flex-wrap">
             <button
               onClick={handleReset}
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm"
+              className="px-2 py-2 bg-red-500 text-white rounded hover:bg-red-600 text-sm"
             >
               <FormattedMessage id="filterModal.reset" defaultMessage="Reset" />
             </button>
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm"
+              className="px-2 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm"
             >
               <FormattedMessage
                 id="filterModal.cancel"
@@ -210,7 +210,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
             </button>
             <button
               onClick={handleApply}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
+              className="px-2 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm"
             >
               <FormattedMessage id="filterModal.apply" defaultMessage="Apply" />
             </button>
