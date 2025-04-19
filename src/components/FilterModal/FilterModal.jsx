@@ -79,13 +79,13 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
               type="date"
               value={localFilters.dateFrom || ''}
               onChange={(e) => handleInputChange('dateFrom', e.target.value)}
-              className="w-full p-1  h-10 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg appearance-none mb-1"
+              className="w-full p-1  h-10 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg mb-1"
             />
             <input
               type="date"
               value={localFilters.dateTo || ''}
               onChange={(e) => handleInputChange('dateTo', e.target.value)}
-              className="w-full p-1 h-10 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg appearance-none"
+              className="w-full p-1 h-10 text-lg text-gray-400 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 shadow-lg"
             />
           </div>
 
