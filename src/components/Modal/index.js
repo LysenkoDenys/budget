@@ -27,7 +27,7 @@ const Modal = ({ onSave, editData, onEdit, isOpen, onClose }) => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white p-2 rounded shadow-lg dark:bg-gray-500 z-50"
+            className="bg-white p-2 rounded shadow-lg dark:bg-gray-500 z-50 max-w-60"
           >
             <div className="flex justify-between items-center mb-2 mx-1">
               <h2 className="text-md font-bold dark:text-white">

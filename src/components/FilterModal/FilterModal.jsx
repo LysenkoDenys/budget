@@ -62,7 +62,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white p-2 rounded shadow-lg dark:bg-gray-500 z-50 w-full max-w-md"
+          className="bg-white p-2 rounded shadow-lg dark:bg-gray-500 z-50 max-w-md  max-w-60"
         >
           <div className="flex justify-between items-center mb-2 mx-1">
             <h2 className="text-md font-bold dark:text-white">
@@ -118,7 +118,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
                 />
               </MenuButton>
 
-              <MenuItems className="absolute right-0 z-10 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden max-h-60 overflow-y-auto">
+              <MenuItems className="absolute right-0 z-10 mt-2 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white dark:bg-gray-500 ring-1 shadow-lg ring-black/5 focus:outline-hidden max-h-48 overflow-y-auto">
                 {[
                   'income',
                   'food',
