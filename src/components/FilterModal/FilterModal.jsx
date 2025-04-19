@@ -10,7 +10,6 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
   const [localFilters, setLocalFilters] = useState(currentFilters);
   const intl = useIntl();
 
-  // Категорії з емодзі
   const categories = [
     { key: 'income', emoji: '💰' },
     { key: 'food', emoji: '🥝' },
@@ -62,7 +61,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className="bg-white p-2 rounded shadow-lg dark:bg-gray-500 z-50 max-w-md  max-w-60"
+          className="bg-white p-2 rounded shadow-lg dark:bg-gray-500 z-50 max-w-60"
         >
           <div className="flex justify-between items-center mb-2 mx-1">
             <h2 className="text-md font-bold dark:text-white">
