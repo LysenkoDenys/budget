@@ -48,9 +48,6 @@ const Transactions = ({
   const filteredData = useMemo(() => {
     if (!data || data.length === 0) return [];
 
-    // console.log('Original Data:', data);
-    // console.log('Current Filters:', filters);
-
     let filtered = [...data];
 
     if (filters.starOnly) {
@@ -72,10 +69,11 @@ const Transactions = ({
     }
 
     if (filters.amountRange?.min != null && filters.amountRange?.max != null) {
+      const min = Math.min(filters.amountRange.min, filters.amountRange.max);
+      const max = Math.max(filters.amountRange.min, filters.amountRange.max);
+
       filtered = filtered.filter(
-        (item) =>
-          item.amount >= filters.amountRange.min &&
-          item.amount <= filters.amountRange.max
+        (item) => item.value >= min && item.value <= max
       );
     }
 

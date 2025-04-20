@@ -40,6 +40,24 @@ const Home = () => {
     comment: '',
   });
 
+  const normalizedFilters = {
+    starOnly: filters.starOnly,
+    dateRange: {
+      from: filters.dateFrom || null,
+      to: filters.dateTo || null,
+    },
+    amountRange: {
+      min: !isNaN(parseFloat(filters.amountFrom))
+        ? parseFloat(filters.amountFrom)
+        : null,
+      max: !isNaN(parseFloat(filters.amountTo))
+        ? parseFloat(filters.amountTo)
+        : null,
+    },
+    category: filters.category || null,
+    comment: filters.comment || '',
+  };
+
   const isFilterApplied = Object.entries(filters).some(
     ([key, value]) => key !== 'starOnly' && value !== ''
   );
@@ -131,7 +149,7 @@ const Home = () => {
                 onEdit={onEditTransaction}
                 onStarClick={onStarClick}
                 onAddTransaction={onSave}
-                filters={filters}
+                filters={normalizedFilters}
               />
             )}
             {/* Handle empty transactions */}
