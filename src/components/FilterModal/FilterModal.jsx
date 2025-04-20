@@ -109,7 +109,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
           <div className="mb-3">
             <Menu as="div" className="relative inline-block text-left w-full">
               <MenuButton
-                className={`inline-flex w-full gap-x-1.5 rounded-md p-1 h-10 text-lg font-semibold shadow-xs ring-gray-300 hover:bg-gray-50 hover:text-gray-900 dark:hover:text-white shadow-lg dark:bg-gray-700 ${
+                className={`inline-flex w-full gap-x-1.5 rounded-md p-1 h-10 text-lg shadow-xs ring-gray-300 hover:bg-gray-50 hover:text-gray-900 dark:hover:text-white shadow-lg dark:bg-gray-700 ${
                   localFilters.category
                     ? 'text-gray-900 dark:text-white'
                     : 'text-gray-400 dark:text-gray-400'
@@ -188,7 +188,7 @@ const FilterModal = ({ isOpen, onClose, onApplyFilter, currentFilters }) => {
               value={localFilters.comment || ''}
               placeholder={intl.formatMessage({ id: 'filterModal.comment' })}
               onChange={(e) => handleInputChange('comment', e.target.value)}
-              className="w-full p-1 h-10 text-lg font-semibold  text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
+              className="w-full p-1 h-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white shadow-lg appearance-none"
             />
           </div>
 
