@@ -72,7 +72,11 @@ const TransactionsHeader = ({
     shadow-sm dark:shadow-white"
           title={isFilterApplied ? 'Filters active' : 'Open filters'}
         >
-          {isFilterApplied ? <LuFilterX size={14} /> : <LuFilter size={14} />}
+          {isFilterApplied ? (
+            <LuFilterX size={14} className="fill-yellow-400" />
+          ) : (
+            <LuFilter size={14} />
+          )}
         </button>
       </span>
     </div>
