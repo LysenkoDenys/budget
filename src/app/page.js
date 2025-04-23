@@ -12,6 +12,8 @@ import { useModal } from '../hooks';
 import Modal from '../components/Modal';
 import Spinner from '../components/Spinner';
 import FilterModal from '../components/FilterModal/FilterModal';
+import filterTransactions from '../utils/filters';
+import { getAllData } from '../utils/indexdb';
 
 const Home = () => {
   const [balance, setBalance] = useState(0.0);
@@ -40,6 +42,8 @@ const Home = () => {
     comment: '',
   });
 
+  const [localTransactions, setTransactions] = useState([]);
+
   const normalizedFilters = {
     starOnly: filters.starOnly,
     dateRange: {
@@ -61,6 +65,9 @@ const Home = () => {
   const isFilterApplied = Object.entries(filters).some(
     ([key, value]) => key !== 'starOnly' && value !== ''
   );
+  const displayedTransactions = isFilterApplied
+    ? localTransactions
+    : transactions;
 
   const onStarToggle = (value) => {
     setFilters((prevFilters) => ({
@@ -101,8 +108,31 @@ const Home = () => {
     openModal('filter');
   };
 
-  const onApplyFilter = (newFilters) => {
-    setFilters(newFilters);
+  const onApplyFilter = async (newFilters) => {
+    try {
+      const allTransactions = await getAllData();
+
+      const transformedFilters = {
+        category: newFilters.category || undefined,
+        isStarred: newFilters.starOnly || undefined,
+        startDate: newFilters.dateFrom || undefined,
+        endDate: newFilters.dateTo || undefined,
+        minValue: newFilters.amountFrom
+          ? parseFloat(newFilters.amountFrom)
+          : undefined,
+        maxValue: newFilters.amountTo
+          ? parseFloat(newFilters.amountTo)
+          : undefined,
+        comment: newFilters.comment || undefined,
+      };
+
+      const filtered = filterTransactions(allTransactions, transformedFilters);
+
+      setFilters(newFilters);
+      setTransactions(filtered);
+    } catch (error) {
+      console.error('Filtering failed:', error);
+    }
   };
 
   return (
@@ -127,7 +157,7 @@ const Home = () => {
       ) : (
         <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">
           <div className="sticky top-[40px] z-40 w-full flex flex-col justify-center items-center">
-            <BalanceData transactions={transactions}>
+            <BalanceData transactions={displayedTransactions}>
               {(balance) => <Balance balance={balance} />}
             </BalanceData>
             <TransactionsHeader
@@ -139,25 +169,27 @@ const Home = () => {
           </div>
 
           <main className="flex flex-col gap-2 row-start-2 items-center sm:items-start w-full mt-16">
-            {status === STATUSES.SUCCESS && transactions.length > 0 && (
-              <Transactions
-                data={transactions}
-                isNextPageLoading={status === STATUSES.PENDING}
-                hasNextPage={hasNextPage}
-                loadMoreRows={loadMoreRows}
-                onDelete={onDelete}
-                onEdit={onEditTransaction}
-                onStarClick={onStarClick}
-                onAddTransaction={onSave}
-                filters={normalizedFilters}
-              />
-            )}
-            {/* Handle empty transactions */}
-            {status === STATUSES.SUCCESS && transactions.length === 0 && (
-              <div className="flex items-center justify-center h-full w-full text-center">
-                No transactions available
-              </div>
-            )}
+            {status === STATUSES.SUCCESS &&
+              displayedTransactions.length > 0 && (
+                <Transactions
+                  data={displayedTransactions}
+                  isNextPageLoading={status === STATUSES.PENDING}
+                  hasNextPage={hasNextPage}
+                  loadMoreRows={loadMoreRows}
+                  onDelete={onDelete}
+                  onEdit={onEditTransaction}
+                  onStarClick={onStarClick}
+                  onAddTransaction={onSave}
+                  filters={normalizedFilters}
+                />
+              )}
+
+            {status === STATUSES.SUCCESS &&
+              displayedTransactions.length === 0 && (
+                <div className="flex items-center justify-center h-full w-full text-center">
+                  No transactions available
+                </div>
+              )}
           </main>
           <footer className="row-start-3 flex gap-0 flex-wrap items-center justify-center"></footer>
         </div>
