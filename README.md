@@ -5,6 +5,7 @@
 ### The application is deployed here:
 
 https://budget4u.vercel.app
+https://budget-documentation.vercel.app
 
 <ul>
 <li>⭐collect your cash transactions</li>
