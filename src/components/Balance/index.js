@@ -3,19 +3,23 @@ import { FormattedMessage } from 'react-intl';
 import { AppContext } from '../../providers/context';
 import formatNumber from '../../utils/formatNumber';
 
-const Balance = ({ balance }) => {
+const Balance = ({ balance, filteredSum }) => {
   const { state } = useContext(AppContext);
 
-  // Check if balance is a valid number and fallback to 0 if not
-  const formattedBalance =
-    typeof balance === 'number' && !isNaN(balance)
-      ? formatNumber(balance, state.showDecimals, state.locale)
+  const formatValue = (value) => {
+    return typeof value === 'number' && !isNaN(value)
+      ? formatNumber(value, state.showDecimals, state.locale)
       : '0.00';
+  };
 
+  const valueToDisplay = filteredSum != null ? filteredSum : balance;
+  const formattedValue = formatValue(valueToDisplay);
+  const formattedId =
+    filteredSum != null ? 'balance.balanceFiltered' : 'balance.balance';
+  //
   return (
     <div className="bg-white dark:bg-gray-900 p-1 w-full flex justify-center">
-      <FormattedMessage id="balance.balance" /> {formattedBalance}{' '}
-      {state.currency}
+      <FormattedMessage id={formattedId} /> {formattedValue} {state.currency}
     </div>
   );
 };

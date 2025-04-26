@@ -26,6 +26,7 @@ export default {
     },
     balance: {
       balance: 'Daily budget:',
+      balanceFiltered: 'Filtered sum:',
     },
     header: {
       amount: 'Amount',

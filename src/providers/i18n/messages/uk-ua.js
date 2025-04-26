@@ -27,6 +27,7 @@ export default {
     },
     balance: {
       balance: 'Бюджет на сьогодні:',
+      balanceFiltered: 'Сума під фільтром:',
     },
     header: {
       amount: 'Сума',

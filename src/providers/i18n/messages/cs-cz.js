@@ -26,6 +26,7 @@ export default {
     },
     balance: {
       balance: 'Rozpočet na dnešek:',
+      balanceFiltered: 'Filtrovaná částka:',
     },
     header: {
       amount: 'Částka',

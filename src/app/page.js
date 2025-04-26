@@ -69,6 +69,10 @@ const Home = () => {
     ? localTransactions
     : transactions;
 
+  const filteredSum = isFilterApplied
+    ? localTransactions.reduce((sum, tx) => sum + (Number(tx.value) || 0), 0)
+    : null;
+
   const onStarToggle = (value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
@@ -158,7 +162,9 @@ const Home = () => {
         <div className="grid grid-rows-[10px_auto_10px] items-center justify-items-center h-full p-2 pb-2 pt-10 font-[family-name:var(--font-geist-sans)]">
           <div className="sticky top-[40px] z-40 w-full flex flex-col justify-center items-center">
             <BalanceData transactions={displayedTransactions}>
-              {(balance) => <Balance balance={balance} />}
+              {(balance) => (
+                <Balance balance={balance} filteredSum={filteredSum} />
+              )}
             </BalanceData>
             <TransactionsHeader
               onStarToggle={onStarToggle}
