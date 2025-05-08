@@ -6,14 +6,37 @@ import Image from 'next/image';
 import { RiDeleteBin4Line } from 'react-icons/ri';
 import ConfirmModal from '../ConfirmModal/ConfirmModal';
 import formatNumber from '../../utils/formatNumber';
+import { useSwipeable } from 'react-swipeable';
 
 const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   const { id, value, date, comment, category, isStarred } = transaction;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [translateX, setTranslateX] = useState(0);
 
   const confirmDelete = () => {
     onDelete(id);
     setIsModalOpen(false);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setIsModalOpen(true),
+    onSwiping: (eventData) => {
+      if (eventData.deltaX < 0) {
+        setTranslateX(eventData.deltaX); // Negative for left
+      }
+    },
+    onSwiped: () => {
+      setTranslateX(0); // Reset position
+    },
+    delta: 10, // Minimum distance
+    preventScrollOnSwipe: true,
+    trackTouch: true,
+    trackMouse: false,
+  });
+
+  const swipeStyle = {
+    transform: `translateX(${translateX}px)`,
+    transition: translateX === 0 ? 'transform 0.2s ease' : 'none',
   };
 
   const bgColor =
@@ -45,7 +68,12 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
   );
 
   return (
-    <div className={bgColor} onClick={editItem}>
+    <div
+      {...handlers}
+      style={swipeStyle}
+      className={bgColor}
+      onClick={editItem}
+    >
       <div className="flex justify-center max-w-[20px]">
         <Image
           onClick={(e) => {
