@@ -29,7 +29,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
       setTranslateX(0); // Reset position
     },
     delta: 10, // Minimum distance
-    preventScrollOnSwipe: true,
+    preventScrollOnSwipe: false,
     trackTouch: true,
     trackMouse: false,
   });
