@@ -41,9 +41,9 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
 
   const bgColor =
     value >= 0
-      ? `grid items-center grid-cols-[20px_50px_60px_50px_auto_25px] 
-       xs:grid-cols-[20px_70px_80px_50px_auto_20px] 
-       sm:grid-cols-[30px_100px_140px_120px_auto_25px] 
+      ? `grid items-center grid-cols-[20px_50px_60px_50px_auto] 
+       xs:grid-cols-[20px_70px_80px_50px_auto] 
+       sm:grid-cols-[30px_100px_140px_120px_auto] 
        md:grid-cols-[30px_100px_180px_150px_auto_25px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_25px] 
        xl:grid-cols-[30px_120px_250px_200px_auto_25px] py-2 px-2 
@@ -51,9 +51,9 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
        hover:bg-green-100 hover:text-green-700 
        dark:bg-green-900 dark:text-green-200 dark:border-green-600 
        dark:hover:text-white dark:hover:bg-green-800 cursor-pointer`
-      : `grid items-center grid-cols-[20px_50px_60px_50px_auto_25px] 
-       xs:grid-cols-[20px_70px_80px_50px_auto_20px] 
-       sm:grid-cols-[30px_100px_140px_120px_auto_25px] 
+      : `grid items-center grid-cols-[20px_50px_60px_50px_auto] 
+       xs:grid-cols-[20px_70px_80px_50px_auto] 
+       sm:grid-cols-[30px_100px_140px_120px_auto] 
        md:grid-cols-[30px_100px_180px_150px_auto_25px] 
        lg:grid-cols-[30px_100px_220px_180px_auto_25px] 
        xl:grid-cols-[30px_120px_250px_200px_auto_25px] 
@@ -71,7 +71,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
     <div
       {...handlers}
       style={swipeStyle}
-      className={bgColor}
+      className={`${bgColor} group`}
       onClick={editItem}
     >
       <div className="flex justify-center max-w-[20px]">
@@ -90,18 +90,20 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
         />
       </div>
       <p
-        className={`text-right min-w-0 break-words whitespace-pre-wrap text-blue-500 dark:text-blue-300 sm:text-sm  ${
+        className={`flex items-center justify-end min-w-0 break-words whitespace-pre-wrap text-blue-500 dark:text-blue-300 sm:text-sm  ${
           state.showDecimals ? `text-[0.75rem]` : `text-[0.85rem]`
         }`}
       >
         {formatNumber(value, state.showDecimals, state.locale)}
       </p>
 
-      <p className="text-center min-w-0 sm:text-sm text-[0.4rem]">{date}</p>
-      <p className="text-left min-w-0 text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem] truncate">
+      <p className="flex items-center justify-center text-center min-w-0 sm:text-sm text-[0.5rem]">
+        {date}
+      </p>
+      <p className="flex items-center text-left min-w-0 text-blue-500 dark:text-blue-300 sm:text-sm text-[0.7rem] truncate">
         {category}
       </p>
-      <p className="text-left truncate min-w-0 sm:text-sm text-[0.7rem]">
+      <p className="flex items-center text-left truncate min-w-0 sm:text-sm text-[0.6rem] pl-1">
         {comment}
       </p>
       <RiDeleteBin4Line
@@ -109,7 +111,7 @@ const Transaction = memo(({ transaction, onDelete, onStarClick, onEdit }) => {
           e.stopPropagation();
           setIsModalOpen(true);
         }}
-        className="text-xl cursor-pointer text-red-500 hover:text-red-700 dark:text-red-400"
+        className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-xl cursor-pointer text-red-500 hover:text-red-700 dark:text-red-400"
       />
       <ConfirmModal
         isOpen={isModalOpen}
